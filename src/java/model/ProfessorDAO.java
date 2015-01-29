@@ -5,22 +5,20 @@
  */
 package model;
 
-import controller.Student;
+import controller.Professor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import model.Connection;
 
 /**
  *
  * @author Aldeide Brasil
  */
-public class StudentDAO {
+public class ProfessorDAO {
 
-    private static PreparedStatement pstmt = null;
+     private static PreparedStatement pstmt = null;
     private static ResultSet rs = null;
     
-    public static boolean create(Student student) {
+    public static boolean create(Professor professor) {
         try {
             return true;
         } catch (Exception e) {
@@ -29,7 +27,7 @@ public class StudentDAO {
         }
     }
     
-    public static boolean update(Student usuario) {
+    public static boolean update(Professor professor) {
         try {
             return true;
         } catch (Exception e) {
@@ -38,7 +36,7 @@ public class StudentDAO {
         }
     }
     
-    public static boolean delete(Student student) {
+    public static boolean delete(Professor professor) {
         try {
             return true;
         } catch (Exception e) {
@@ -47,28 +45,28 @@ public class StudentDAO {
         }
     }  
 
-    public static Student getStudentLogin(String login, String password){
+    public static Professor getProfessorLogin(String login, String password){
         try {
-            Student student = null;
+            Professor professor = null;
             System.out.println(login);
             pstmt = Connection.getConnection().prepareStatement(
-                      "select * from student where id=? AND password=?");
+                      "select * from professor where id=? AND password=?");
             pstmt.setString(1, login);
             pstmt.setString(2, password);
             rs = pstmt.executeQuery();
             if(rs.next()){
-                student = new Student();
-                student.setFname(rs.getString("fname"));
-                student.setLname(rs.getString("lname"));
-                student.setID(rs.getInt("id"));
-                student.setPassword(rs.getString("password"));
-                student.setMajor(rs.getString("major"));
+                professor = new Professor();
+                professor.setFname(rs.getString("fname"));
+                professor.setLname(rs.getString("lname"));
+                professor.setID(rs.getInt("id"));
+                professor.setPassword(rs.getString("password"));
+                professor.setTitle(rs.getString("title"));
             }
-            return student;
+            return professor;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }        
     }
-       
+    
 }

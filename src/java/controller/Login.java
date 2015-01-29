@@ -5,6 +5,8 @@
  */
 package controller;
 
+import model.ProfessorDAO;
+import model.AdminDAO;
 import model.StudentDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -25,14 +27,43 @@ public class Login {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         
+       
         Student usr = new Student();
         StudentDAO usrDAO = new StudentDAO();        
         try {
             usr = usrDAO.getStudentLogin(login, password);
             if(usr == null){
-                error="User not found!";
-                request.setAttribute("error", error);
-                jsp = "/error.jsp";
+                Professor prof = new Professor();
+                ProfessorDAO profDAO = new ProfessorDAO();        
+                try{
+                    prof = profDAO.getProfessorLogin(login,password);
+                    if(prof== null){
+                    Admin adm = new Admin();
+                    AdminDAO admDAO = new AdminDAO();
+                    try{
+                    adm = admDAO.getAdminLogin(login,password);
+                    if(adm == null){
+                        error="User not found!";
+                        request.setAttribute("error", error);
+                        jsp = "/error.jsp";
+                    }else{
+                        //request.setAttribute("fname", usr.getFname());
+                        jsp = "/welcome.jsp";
+                    }
+                    }catch (Exception e) {
+                    e.printStackTrace();
+                    jsp = "";
+                    }
+
+                    }else{
+                        request.setAttribute("lname", prof.getTitle() + " " + prof.getLname());
+                        jsp = "/welcomeProfessor.jsp";
+                    }
+            
+                }catch (Exception e) {
+                e.printStackTrace();
+                jsp = "";
+                }               
             }               
             else{  
                 request.setAttribute("fname", usr.getFname());
