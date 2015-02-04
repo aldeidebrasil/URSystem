@@ -5,29 +5,29 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
-import model.StudentDAO;
+import model.ProfessorDAO;
 
 /**
  *
  * @author Aldeide Brasil
  */
-public class DeleteStudent {
+public class ListProfessor {
      public static String execute(HttpServletRequest request) {
         String jsp = "";
         try {
-
-            // lendo repectiva cidade a ser excluida
-            String id = request.getParameter("id");
-            Student student = StudentDAO.getById(Integer.parseInt(id));                            
-            boolean delete = StudentDAO.delete(student);
-            if(delete != false){
-                jsp = ListStudents.execute(request);
+            ArrayList<Professor> listProfessor = ProfessorDAO.getAll();
+            if(listProfessor != null){
+                request.setAttribute("listProfessor", listProfessor);
+                jsp = "/allProfessors.jsp";    
             }else{
-                String erro = "An error occurred!";
+                String erro="There is no Professors to show!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
             }
+                
+            
         } catch (Exception e) {
             e.printStackTrace();
             jsp = "";
