@@ -20,5 +20,12 @@ fname = (String) request.getAttribute("fname");
     </head>
     <body>
         <h2>Welcome <%=fname%> </h2>
+         <a href="seeCourses.jsp">See Courses</a><br>
+        <a href="seeBilling.jsp">See Billing </a><br>
+        <a href="seeInformation.jsp">See Information</a><br>
+       <a href="changePassword.jsp">Change Password</a><br>
+        <a href="addCourse.jsp">Add Course</a><br>
+        <a href="deleteCourse.jsp">Delete Course</a><br>
+      
     </body>
 </html>

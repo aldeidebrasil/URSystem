@@ -16,9 +16,11 @@
         <a href="insertStudent.jsp">Insert Student</a><br>
         <a href="deleteStudent.jsp">Delete Student</a><br>
         <a href="deleteStudent.jsp">Edit Student</a><br>
-        <a href="http://localhost:8080/URSystem/servletweb?action=InsertProfessor">Insert Professor</a><br>
-        <a href="http://localhost:8080/URSystem/servletweb?action=EditProfessor">Edit Professor</a><br>
-        <a href="http://localhost:8080/URSystem/servletweb?action=EditCourse">Edit Course</a><br>
-        <a href="http://localhost:8080/URSystem/servletweb?action=InsertCourse">Insert Course</a><br>
+       <a href="insertStudent.jsp">Insert Professor</a><br>
+        <a href="deleteProfessor.jsp">Delete Professor</a><br>
+        <a href="deleteProfessor.jsp">Edit Professor</a><br>
+        <a href="insertCourse.jsp">Insert Course</a><br>
+        <a href="deleteCourse.jsp">Delete Course</a><br>
+        <a href="deleteCourse.jsp">Edit Course</a><br>
     </body>
 </html>
