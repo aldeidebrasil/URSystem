@@ -21,7 +21,7 @@ public class AdminDAO {
             Admin adm = null;
             System.out.println(login);
             pstmt = Connection.getConnection().prepareStatement(
-                      "select * from adm where id=? AND password=?");
+                      "select * from admin where id=? AND password=?");
             pstmt.setString(1, login);
             pstmt.setString(2, password);
             rs = pstmt.executeQuery();

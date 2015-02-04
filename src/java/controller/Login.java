@@ -48,7 +48,7 @@ public class Login {
                         jsp = "/error.jsp";
                     }else{
                         //request.setAttribute("fname", usr.getFname());
-                        jsp = "/welcome.jsp";
+                        jsp = "/welcomeAdmin.jsp";
                     }
                     }catch (Exception e) {
                     e.printStackTrace();

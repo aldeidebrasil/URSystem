@@ -16,6 +16,7 @@ public class Student {
     private String fname;
     private String lname;
     private String major;
+    private Double billing;
 
     public Integer getID() {
         return ID;
@@ -55,6 +56,14 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public Double getBilling() {
+        return billing;
+    }
+
+    public void setBilling(Double billing) {
+        this.billing = billing;
     }
     
     

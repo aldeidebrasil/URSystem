@@ -12,6 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Welcome, Admin!</h1>
+        <a href="insertStudent.jsp">Insert Student</a><br>
+        <a href="deleteStudent.jsp">Delete Student</a><br>
+        <a href="deleteStudent.jsp">Edit Student</a><br>
+        <a href="http://localhost:8080/URSystem/servletweb?action=InsertProfessor">Insert Professor</a><br>
+        <a href="http://localhost:8080/URSystem/servletweb?action=EditProfessor">Edit Professor</a><br>
+        <a href="http://localhost:8080/URSystem/servletweb?action=EditCourse">Edit Course</a><br>
+        <a href="http://localhost:8080/URSystem/servletweb?action=InsertCourse">Insert Course</a><br>
     </body>
 </html>
