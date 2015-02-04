@@ -1,13 +1,14 @@
 <%-- 
-    Document   : updateStudent
-    Created on : Feb 3, 2015, 11:39:18 PM
+    Document   : updateProfessor
+    Created on : Feb 4, 2015, 10:33:22 AM
     Author     : Aldeide Brasil
 --%>
 
-<%@page import="controller.Student"%>
+<%@page import="controller.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% Student student = (Student)request.getAttribute("student");
+<!DOCTYPE html>
+<% Professor professor = (Professor)request.getAttribute("professor");
 %>
 <html>
     <head>
@@ -16,37 +17,33 @@
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
     </head>
     <body>
-        <form name="frmUpdateStudent" method='post'>
+        <form name="frmUpdateProfessor" method='post'>
             <table style="border: 2px black solid">
                   
             <tr ><th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Password</th>
-                <th>Major</th>
-                <th>Billing</th> 
+                <th>Title</th>
             </tr>
            
             <tr>
             <td>
-                <%=student.getID()%>
+                <%=professor.getID()%>
             </td>
             <td>
-                <%=student.getFname() %> 
+                <%=professor.getFname() %> 
             </td>
             <td>
-                <%=student.getLname()%>
+                <%=professor.getLname()%>
             </td>
             <td>           
-                <%=student.getPassword()%>
+                <%=professor.getPassword()%>
             </td><td>    
-                <%=student.getMajor()%>
-            </td>
-            <td>
-                <%=student.getBilling()%>
+                <%=professor.getTitle()%>
             </td>
             </tr>
-            <tr><td> <input type="text" name="id" id="id" size="30" value="<%=student.getID()%>" readonly="true" style="line-height: 40px; font-size: 20px;"></td>
+            <tr><td> <input type="text" name="id" id="id" size="30" value="<%=professor.getID()%>" readonly="true" style="line-height: 40px; font-size: 20px;"></td>
            <td>
             <input type="text" name="fname" id="fname" size="30" style="line-height: 40px; font-size: 20px;">
             </td><td>
@@ -54,9 +51,9 @@
            </td><td>
             <input type="password" name="password" id="password" size="30" style="line-height: 40px; font-size: 20px;">
            </td><td>
-               <input type="text" name="major" id="major" size="30" style="line-height: 40px; font-size: 20px;"></td>
+               <input type="text" name="title" id="major" size="30" style="line-height: 40px; font-size: 20px;"></td>
             </tr></table>
-            <button type="button" onClick="validateUpdateStudent()">Update Student</button>
+            <button type="button" onClick="validateUpdateProfessor()">Update Professor</button>
                  
 	</form> 
      

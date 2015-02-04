@@ -46,7 +46,7 @@
                 <%=student.getBilling()%>
             </td>
             </tr>
-           <tr><td> <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;"></td>
+            <tr><td> <input type="text" name="id" id="id" size="30" value="<%=student.getID()%>" readonly="true" style="line-height: 40px; font-size: 20px;"></td>
            <td>
             <input type="text" name="fname" id="fname" size="30" style="line-height: 40px; font-size: 20px;">
             </td><td>

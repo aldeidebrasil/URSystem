@@ -1,16 +1,16 @@
 <%-- 
-    Document   : deleteStudent
-    Created on : Feb 3, 2015, 11:29:04 PM
+    Document   : deleteProfessor
+    Created on : Feb 4, 2015, 10:27:02 AM
     Author     : Aldeide Brasil
 --%>
 
-<%@page import="model.StudentDAO"%>
+<%@page import="model.ProfessorDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<Integer> listStudentId = new ArrayList<Integer>();
-listStudentId = StudentDAO.getAllId();
+ArrayList<Integer> listProfessorId = new ArrayList<Integer>();
+listProfessorId = ProfessorDAO.getAllId();
 %>
 <html>
     <head>
@@ -19,22 +19,22 @@ listStudentId = StudentDAO.getAllId();
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
     </head>
     <body>
-        <form name="frmDeleteStudent" method='post'>
+        <form name="frmDeleteProfessor" method='post'>
             <p>ID:</p> 
-            
             <select name='id'>                                
                                 <%
                                 String selected="";
                                 
-                                for (int i = 0; i < listStudentId.size(); i++) {%>
-                                <option value='<%=listStudentId.get(i)%>' <%=selected%>><%=listStudentId.get(i)%></option>
+                                for (int i = 0; i < listProfessorId.size(); i++) {%>
+                                <option value='<%=listProfessorId.get(i)%>' <%=selected%>><%=listProfessorId.get(i)%></option>
                                 <% 
                                 }
                                 %>
                             </select>
 
-            <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
-            <button type="button" onClick="validateEditStudent()">Edit Student</button>
+           
+            <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
+            <button type="button" onClick="validateEditProfessor()">Edit Professor</button>
 	</form> 
     </body>
 </html>

@@ -42,7 +42,7 @@ public class ProfessorDAO {
     public static boolean update(Professor professor) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE professor SET id = ?, fname = ?, lname=?, password=?, major=? WHERE id = ?");
+                    "UPDATE professor SET id = ?, fname = ?, lname=?, password=?, title=? WHERE id = ?");
             pstmt.setInt(1, professor.getID());
             pstmt.setString(2, professor.getFname());
             pstmt.setString(3,professor.getLname());
@@ -148,4 +148,26 @@ public class ProfessorDAO {
             return null;
         }
     }    
+public static ArrayList<Integer> getAllId() throws SQLException {
+        try{
+            ArrayList<Integer> listAllId = null;           
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT id FROM professor");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAllId = new ArrayList<Integer>();
+                do {                    
+                    listAllId.add(rs.getInt("id"));
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAllId;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

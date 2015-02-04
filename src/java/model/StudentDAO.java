@@ -151,4 +151,25 @@ public class StudentDAO {
             return null;
         }
     }
+     public static ArrayList<Integer> getAllId() throws SQLException {
+        try{
+            ArrayList<Integer> listAllId = null;
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT id FROM student");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAllId = new ArrayList<Integer>();
+                do {                    
+                    listAllId.add(rs.getInt("id"));
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAllId;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -16,7 +16,7 @@
         <a href="insertStudent.jsp">Insert Student</a><br>
         <a href="deleteStudent.jsp">Delete Student</a><br>
         <a href="deleteStudent.jsp">Edit Student</a><br>
-       <a href="insertStudent.jsp">Insert Professor</a><br>
+       <a href="insertProfessor.jsp">Insert Professor</a><br>
         <a href="deleteProfessor.jsp">Delete Professor</a><br>
         <a href="deleteProfessor.jsp">Edit Professor</a><br>
         <a href="insertCourse.jsp">Insert Course</a><br>
