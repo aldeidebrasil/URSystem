@@ -168,4 +168,26 @@ public class CourseDAO {
         }
         return null;
     }
+     public static ArrayList<String> getAllId() throws SQLException {
+        try{
+            ArrayList<String> listAllId = null;           
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT id FROM course");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAllId = new ArrayList<String>();
+                do {                    
+                    listAllId.add(rs.getString("id"));
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAllId;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+
