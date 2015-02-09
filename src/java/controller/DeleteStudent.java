@@ -17,7 +17,6 @@ public class DeleteStudent {
         String jsp = "";
         try {
 
-            // lendo repectiva cidade a ser excluida
             String id = request.getParameter("id");
             Student student = StudentDAO.getById(Integer.parseInt(id));                            
             boolean delete = StudentDAO.delete(student);

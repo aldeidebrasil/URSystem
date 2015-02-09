@@ -16,7 +16,6 @@ public class EditStudent {
       public static String execute(HttpServletRequest request) {
         String jsp = "";
         try {
-            // lendo o CodCidade que se deseja alterar
             String id = request.getParameter("id");
             Student student = StudentDAO.getById(Integer.parseInt(id));
             if(student != null){

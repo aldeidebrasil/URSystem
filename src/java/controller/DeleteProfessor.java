@@ -17,7 +17,6 @@ public class DeleteProfessor {
         String jsp = "";
         try {
 
-            // lendo repectiva cidade a ser excluida
             String id = request.getParameter("id");
             Professor professor = ProfessorDAO.getById(Integer.parseInt(id));                            
             boolean delete = ProfessorDAO.delete(professor);
