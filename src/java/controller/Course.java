@@ -12,7 +12,7 @@ package controller;
 public class Course {
     private String ID;
     private String nameCourse;
-    private String departament;
+    private String department;
     private String prerequisite;
     private String term;
     private String status;
@@ -36,12 +36,12 @@ public class Course {
         this.nameCourse = nameCourse;
     }
     
-    public String getDepartament() {
-        return departament;
+    public String getDepartment() {
+        return department;
     }
     
-    public void setDepartament(String Departament) {
-        this.departament = departament;
+    public void setDepartment(String Department) {
+        this.department = department;
     }
     
     public String getPrerequisite() {
