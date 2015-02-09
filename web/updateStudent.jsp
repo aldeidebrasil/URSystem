@@ -14,8 +14,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        
+        <div class="content">
         <form name="frmUpdateStudent" method='post'>
             <table style="border: 2px black solid">
                   
@@ -59,6 +62,6 @@
             <button type="button" onClick="validateUpdateStudent()">Update Student</button>
                  
 	</form> 
-     
+        </div>     
     </body>
 </html>

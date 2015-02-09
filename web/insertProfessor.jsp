@@ -11,11 +11,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     
     </head>
     <body>
-       
-        <form name="frmInsertProfessor" method='post'>
+        <div class="content">
+        <form name="frmInsertProfessor" method='post' >
             <p>ID:</p> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
             <p>First Name:</p> 
@@ -28,5 +29,6 @@
             <input type="text" name="title" id="title" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
             <button type="button" onClick="validateInsertProfessor()">Insert Professor</button>
 	</form> 
+            </div>
     </body>
 </html>

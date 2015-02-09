@@ -20,8 +20,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>All Students</title>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body><table style="border: 2px black solid">
+    <body>
+        
+        <div class="content">
+        <table style="border: 2px black solid">
             <tr ><th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -56,5 +60,6 @@
             %>
         </table>
         <a href="welcomeAdmin.jsp">Home</a>
-    </body>
+        </div>
+        </body>
 </html>

@@ -17,9 +17,13 @@ error = (String)request.getAttribute("error");
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
         <title>URSystemn</title>
     </head>
     <body>
+        
+        <div class="content">
         <h2><%=error%></h2>
-    </body>
+        </div>
+        </body>
 </html>

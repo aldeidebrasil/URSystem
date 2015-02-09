@@ -11,8 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Student</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        <div class="content">
         <form name="frmInsertUser" method='post'>
             <p>ID:</p> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
@@ -26,5 +28,6 @@
             <input type="text" name="major" id="major" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
             <button type="button" onClick="validateInsertStudent()">Insert Student</button>
 	</form> 
+        </div>
     </body>
 </html>

@@ -17,6 +17,8 @@
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
     </head>
     <body>
+        
+        <div class="content">
         <form name="frmUpdateProfessor" method='post'>
             <table style="border: 2px black solid">
                   
@@ -56,6 +58,6 @@
             <button type="button" onClick="validateUpdateProfessor()">Update Professor</button>
                  
 	</form> 
-     
+        </div>
     </body>
 </html>

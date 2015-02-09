@@ -17,8 +17,11 @@ listProfessorId = ProfessorDAO.getAllId();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        
+        <div class="content">
         <form name="frmDeleteProfessor" method='post'>
             <p>ID:</p> 
             <select name='id'>                                
@@ -36,5 +39,6 @@ listProfessorId = ProfessorDAO.getAllId();
             <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
             <button type="button" onClick="validateEditProfessor()">Edit Professor</button>
 	</form> 
+        </div>
     </body>
 </html>

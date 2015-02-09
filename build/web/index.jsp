@@ -9,23 +9,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>  
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
         </head>
     <body>
-
-    <h1>Login</h1>
-    
-    <form name="frmLogin" method='post'>
-        <label>Login (ID)
-            <input type="text" name="login" id="login" maxlength="10" size="12">    
-        </label><br>
-                <br>
-        <label>Password:&nbsp;&nbsp;&nbsp;
-            <input type="password" name="password" id="password" maxlength="10" size="12">    
-        </label><br>
-                <br>
         
-        <button type="button" onclick="validateFieldsLogin()">Login</button>        
+<div class="content">
+    <div class="form">
+    <form name="frmLogin" method='post' class="frm">
+       <table> <tr><th>Login (ID)</th>
+               <td><input type="text" name="login" id="login" maxlength="10" size="30">    </td>
+           <tr><th>Password:</th><br><br>
+               <td> <input type="password" name="password" id="password" maxlength="16" size="30"> </td>    
+           </tr>
+           <tr><td colspan="2"><button type="button" onclick="validateFieldsLogin()">Login</button></td> </tr></table>       
     </form>  
-   
+        </div>
+   </div>
     </body>
 </html>

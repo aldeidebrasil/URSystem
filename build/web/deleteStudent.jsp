@@ -17,8 +17,11 @@ listStudentId = StudentDAO.getAllId();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        
+        <div class="content">
         <form name="frmDeleteStudent" method='post'>
             <p>ID:</p> 
             
@@ -36,5 +39,6 @@ listStudentId = StudentDAO.getAllId();
             <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <button type="button" onClick="validateEditStudent()">Edit Student</button>
 	</form> 
+        </div>
     </body>
 </html>

@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 8, 2015, 12:58:23 AM
+    Author     : Aldeide Brasil
+*/
+
+.adminStudent{
+   margin-left: 200px;
+   width: 300px;
+   height: 200px;
+}
+
+.adminProfessor{
+   margin-left: 600px;
+   width: 300px;
+   margin-top: -220px;
+   height: 200px;
+}
+
+.adminCourse{
+   margin-left: 1000px;
+   width: 300px;
+   margin-top:-220px;
+   height: 200px;
+}

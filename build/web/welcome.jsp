@@ -16,9 +16,12 @@ fname = (String) request.getAttribute("fname");
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
         <title>URS</title>
     </head>
     <body>
+        
+        <div class="content">
         <h2>Welcome <%=fname%> </h2>
          <a href="seeCourses.jsp">See Courses</a><br>
         <a href="seeBilling.jsp">See Billing </a><br>
@@ -26,6 +29,6 @@ fname = (String) request.getAttribute("fname");
        <a href="changePassword.jsp">Change Password</a><br>
         <a href="addCourse.jsp">Add Course</a><br>
         <a href="deleteCourse.jsp">Delete Course</a><br>
-      
+        </div>      
     </body>
 </html>
