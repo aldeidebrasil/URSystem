@@ -27,7 +27,7 @@ public class CourseDAO {
                     "INSERT INTO course(id, nameCourse, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getNameCourse());
-            pstmt.setString(3, course.getDepartament());
+            pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
             pstmt.setString(6, course.getTerm());
@@ -48,7 +48,7 @@ public class CourseDAO {
                     "UPDATE  course SET id = ?, nameCourse = ?, departament = ?, prerequisite = ?, value = ?, term = ?, status = ?, idProfessor = ? WHERE id = ?");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getNameCourse());
-            pstmt.setString(3, course.getDepartament());
+            pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
             pstmt.setString(6, course.getTerm());
@@ -92,7 +92,7 @@ public class CourseDAO {
                     course = new Course();
                     course.setID(rs.getString("id"));
                     course.setNameCourse(rs.getString("nameCourse"));
-                    course.setDepartament(rs.getString("departament"));
+                    course.setDepartment(rs.getString("department"));
                     course.setPrerequisite(rs.getString("prerequisite"));
                     course.setValue(rs.getDouble("value"));
                     course.setTerm(rs.getString("term"));
@@ -121,7 +121,7 @@ public class CourseDAO {
                 course = new Course();
                 course.setID(rs.getString("id"));
                 course.setNameCourse(rs.getString("nameCourse"));
-                course.setDepartament(rs.getString("departament"));
+                course.setDepartment(rs.getString("department"));
                 course.setPrerequisite(rs.getString("prerequisite"));
                 course.setValue(rs.getDouble("value"));
                 course.setTerm(rs.getString("term"));
@@ -150,7 +150,7 @@ public class CourseDAO {
                     course = new Course();
                     course.setID(rs.getString("id"));
                     course.setNameCourse(rs.getString("nameCourse"));
-                    course.setDepartament(rs.getString("departament"));
+                    course.setDepartment(rs.getString("department"));
                     course.setPrerequisite(rs.getString("prerequisite"));
                     course.setValue(rs.getDouble("value"));
                     course.setTerm(rs.getString("term"));
