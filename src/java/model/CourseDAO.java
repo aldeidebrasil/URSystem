@@ -136,5 +136,35 @@ public class CourseDAO {
             return null;
         }
     }    
-    
+    public static ArrayList<Course> getByIdProfessor(Integer IdProfessor) throws SQLException {
+        try{
+            ArrayList<Course> listAll = null;
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE idProfessor= ?");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAll = new ArrayList<Course>();
+                do {                    
+                    course = new Course();
+                    course.setID(rs.getString("id"));
+                    course.setNameCourse(rs.getString("nameCourse"));
+                    course.setDepartament(rs.getString("departament"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setTerm(rs.getString("term"));
+                    course.setStatus(rs.getString("status"));
+                    course.setIDProfessor(rs.getInt("idProfessor"));
+                    listAll.add(course);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
