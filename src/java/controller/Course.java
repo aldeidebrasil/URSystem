@@ -11,7 +11,7 @@ package controller;
  */
 public class Course {
     private String ID;
-    private String nameCourse;
+    private String name;
     private String department;
     private String prerequisite;
     private String term;
@@ -19,7 +19,6 @@ public class Course {
     private Double value;
     private Integer IDProfessor;
 
-    
     public String getID() {
         return ID;
     }
@@ -27,74 +26,62 @@ public class Course {
     public void setID(String ID) {
         this.ID = ID;
     }
-    
-    public String getNameCourse() {
-        return nameCourse;
+
+    public String getName() {
+        return name;
     }
-    
-    public void setNameCourse(String NameCourse) {
-        this.nameCourse = nameCourse;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
+
     public String getDepartment() {
         return department;
     }
-    
-    public void setDepartment(String Department) {
+
+    public void setDepartment(String department) {
         this.department = department;
     }
-    
+
     public String getPrerequisite() {
         return prerequisite;
     }
-    
-    public void setPrerequisite(String Prerequisite) {
+
+    public void setPrerequisite(String prerequisite) {
         this.prerequisite = prerequisite;
     }
-    
+
     public String getTerm() {
         return term;
     }
-    
-    public void setTerm(String Term) {
+
+    public void setTerm(String term) {
         this.term = term;
     }
-    
-    /*public String getStatus() {
-        if(this.status == 1){
-            return "open";
-        }
-        if (this.status == 2){
-            return "full";
-        }
-        if (this.status == 3){
-            return "canceled";
-        }
-        return null;
-    }*/
-    
+
     public String getStatus() {
         return status;
     }
-    
-    public void setStatus(String Status) {
+
+    public void setStatus(String status) {
         this.status = status;
     }
-    
+
     public Double getValue() {
         return value;
     }
-    
-    public void setValue(Double Value) {
+
+    public void setValue(Double value) {
         this.value = value;
     }
-    
+
     public Integer getIDProfessor() {
         return IDProfessor;
     }
-    
+
     public void setIDProfessor(Integer IDProfessor) {
         this.IDProfessor = IDProfessor;
-    } 
+    }
+
     
 }

@@ -24,9 +24,9 @@ public class CourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO course(id, nameCourse, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO course(id, name, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
             pstmt.setString(1, course.getID());
-            pstmt.setString(2, course.getNameCourse());
+            pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
@@ -45,9 +45,9 @@ public class CourseDAO {
     public static boolean update(Course course) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE  course SET id = ?, nameCourse = ?, departament = ?, prerequisite = ?, value = ?, term = ?, status = ?, idProfessor = ? WHERE id = ?");
+                    "UPDATE  course SET id = ?, name = ?, departament = ?, prerequisite = ?, value = ?, term = ?, status = ?, idProfessor = ? WHERE id = ?");
             pstmt.setString(1, course.getID());
-            pstmt.setString(2, course.getNameCourse());
+            pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
@@ -91,7 +91,7 @@ public class CourseDAO {
                 do {                    
                     course = new Course();
                     course.setID(rs.getString("id"));
-                    course.setNameCourse(rs.getString("nameCourse"));
+                    course.setName(rs.getString("name"));
                     course.setDepartment(rs.getString("department"));
                     course.setPrerequisite(rs.getString("prerequisite"));
                     course.setValue(rs.getDouble("value"));
@@ -120,7 +120,7 @@ public class CourseDAO {
             if (rs.next()) {
                 course = new Course();
                 course.setID(rs.getString("id"));
-                course.setNameCourse(rs.getString("nameCourse"));
+                course.setName(rs.getString("name"));
                 course.setDepartment(rs.getString("department"));
                 course.setPrerequisite(rs.getString("prerequisite"));
                 course.setValue(rs.getDouble("value"));
@@ -136,13 +136,13 @@ public class CourseDAO {
             return null;
         }
     }    
-    public static ArrayList<Course> getByIdProfessor(String IdProfessor) throws SQLException {
-        try{
+    public static ArrayList<Course> getByIdProfessor(Integer Id) throws SQLException {
+         try{
             ArrayList<Course> listAll = null;
             Course course = new Course();            
             pstmt = Connection.getConnection().prepareStatement(
-                    "SELECT * FROM course WHERE idProfessor= ?");
-             pstmt.setString(1, IdProfessor);
+                    "SELECT * FROM course WHERE idProfessor = ?");
+            pstmt.setInt(1, Id);
             rs = pstmt.executeQuery();           
             
             if (rs.next()) {
@@ -150,7 +150,7 @@ public class CourseDAO {
                 do {                    
                     course = new Course();
                     course.setID(rs.getString("id"));
-                    course.setNameCourse(rs.getString("nameCourse"));
+                    course.setName(rs.getString("name"));
                     course.setDepartment(rs.getString("department"));
                     course.setPrerequisite(rs.getString("prerequisite"));
                     course.setValue(rs.getDouble("value"));

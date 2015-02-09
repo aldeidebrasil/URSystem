@@ -16,9 +16,9 @@ import model.CourseDAO;
 public class ListCoursesProfessor {
     public static String execute(HttpServletRequest request) {
         String jsp = "";
-        //Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
+        Integer idProfessor = Integer.parseInt(request.getParameter("IdProfessor"));
         try {
-            ArrayList<Course> listCourse = CourseDAO.getByIdProfessor("101");
+            ArrayList<Course> listCourse = CourseDAO.getByIdProfessor(idProfessor);
             if(listCourse != null){
                 request.setAttribute("listCourse", listCourse);
                 jsp = "/seeCoursesProfessor.jsp";    

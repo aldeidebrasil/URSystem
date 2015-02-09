@@ -40,13 +40,17 @@
                 <%=listCourse.get(i).getID()%>
             </td>
             <td>    
-                <%=listCourse.get(i).getNameCourse()%>
+                <%=listCourse.get(i).getName()%>
             </td>
             <td>
                 <%=listCourse.get(i).getDepartment()%>
             </td>
             <td>
-                <%=listCourse.get(i).getPrerequisite()%>
+                <% if(listCourse.get(i).getPrerequisite()==null){%>
+                    None
+                <% }else {%>
+                      <%=listCourse.get(i).getPrerequisite()%>
+                <%}%>
             </td>
             <td>           
                 <%=listCourse.get(i).getValue()%>

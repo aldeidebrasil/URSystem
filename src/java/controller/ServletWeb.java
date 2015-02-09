@@ -40,7 +40,6 @@ public class ServletWeb extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String action = request.getParameter("action");
-        
         if(action.equals("Login"))            
             jsp = Login.execute(request);
         else if(action.equals("InsertStudent"))
@@ -61,7 +60,7 @@ public class ServletWeb extends HttpServlet {
             jsp = UpdateProfessor.execute(request);
         else if(action.equals("SeeCoursesProfessor"))
             jsp = ListCoursesProfessor.execute(request);
-        
+      
         //
         //Redirecionando pagina
         RequestDispatcher rd = request.getRequestDispatcher(jsp);
