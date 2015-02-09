@@ -15,7 +15,9 @@
     <body>
         
         <div class="content">
-        <h1>Hello World!</h1>
+        <a href="seeAllStudents.jsp">See all students</a>
+        <a href="seeAllStudents.jsp">See all students</a>
+        <a href="seeAllStudents.jsp">See all students</a>
         </div>
         </body>
 </html>
