@@ -55,5 +55,5 @@
             %>
         </table>
         <a href="welcomeAdmin.jsp">Home</a>
-    </body>
+        </body>
 </html>

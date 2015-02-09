@@ -59,6 +59,8 @@ public class ServletWeb extends HttpServlet {
             jsp = EditProfessor.execute(request);
         else if(action.equals("UpdateProfessor"))
             jsp = UpdateProfessor.execute(request);
+        else if(action.equals("SeeCoursesProfessor"))
+            jsp = ListCoursesProfessor.execute(request);
         
         //
         //Redirecionando pagina

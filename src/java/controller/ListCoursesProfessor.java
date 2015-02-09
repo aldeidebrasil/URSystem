@@ -13,14 +13,15 @@ import model.CourseDAO;
  *
  * @author Leticia
  */
-public class ListCourses {
+public class ListCoursesProfessor {
     public static String execute(HttpServletRequest request) {
         String jsp = "";
+        //Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
         try {
-            ArrayList<Course> listCourse = CourseDAO.getAll();
+            ArrayList<Course> listCourse = CourseDAO.getByIdProfessor("101");
             if(listCourse != null){
                 request.setAttribute("listCourse", listCourse);
-                jsp = "/allCourses.jsp";    
+                jsp = "/seeCoursesProfessor.jsp";    
             }else{
                 String erro="There is no courses to show!";
                 request.setAttribute("error", erro);
@@ -33,4 +34,5 @@ public class ListCourses {
         }
         return jsp;
     }
+    
 }

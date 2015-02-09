@@ -136,12 +136,13 @@ public class CourseDAO {
             return null;
         }
     }    
-    public static ArrayList<Course> getByIdProfessor(Integer IdProfessor) throws SQLException {
+    public static ArrayList<Course> getByIdProfessor(String IdProfessor) throws SQLException {
         try{
             ArrayList<Course> listAll = null;
             Course course = new Course();            
             pstmt = Connection.getConnection().prepareStatement(
                     "SELECT * FROM course WHERE idProfessor= ?");
+             pstmt.setString(1, IdProfessor);
             rs = pstmt.executeQuery();           
             
             if (rs.next()) {

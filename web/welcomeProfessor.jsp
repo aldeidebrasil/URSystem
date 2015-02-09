@@ -9,9 +9,11 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 <%!
 String lname = null;
+Integer idProfessor;
 %>
 <%
 lname = (String) request.getAttribute("lname");
+idProfessor = (Integer) request.getAttribute("idProfessor"); 
 %>
 <html>
     <head>
@@ -23,7 +25,8 @@ lname = (String) request.getAttribute("lname");
         
         <div class="content">
         <h2>Welcome, <%=lname%> !</h2>
-        <a href="seeCoursesProfessor.jsp">See Courses</a><br>
+        
+        <a href="/URSystem/servletweb?action=SeeCoursesProfessor">See Courses</a><br>
         <a href="seeStudents.jsp">See students</a><br>
         <a href="changePasswordProfessor.jsp">Change Password</a><br>
         </div>      

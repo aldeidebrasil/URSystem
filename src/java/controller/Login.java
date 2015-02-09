@@ -56,7 +56,10 @@ public class Login {
                     }
 
                     }else{
-                        request.setAttribute("lname", prof.getTitle() + " " + prof.getLname());
+                        
+                        request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
+                        request.setAttribute ("idProfessor", prof.getID());
+                      
                         jsp = "/welcomeProfessor.jsp";
                     }
             
