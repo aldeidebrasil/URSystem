@@ -353,3 +353,20 @@ function validateInsertStudent(){
         return true;
      }      
  }
+ function validateUpdatePasswordStudent(id){    
+    var frm = document.frmUpdatePasswordStudent;
+     var password = frm.password.value;
+     var id = id;
+     if(password == ""){
+        alert("Please, fill out the field Password!");
+        frm.password.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=UpdatePasswordStudent&IdStudent="+id;  
+        document.forms[0].action = url;  
+        window.document.forms[0].submit();
+        return true;
+     }      
+ }
+ 
+ 

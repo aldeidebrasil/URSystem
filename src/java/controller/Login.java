@@ -70,6 +70,7 @@ public class Login {
             }               
             else{  
                 request.setAttribute("fname", usr.getFname());
+                request.setAttribute("idStudent", usr.getID());
                 jsp = "/welcome.jsp";
             }
             

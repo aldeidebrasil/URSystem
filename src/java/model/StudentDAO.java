@@ -172,4 +172,19 @@ public class StudentDAO {
         }
         return null;
     }
+      public static boolean updatePassword(Student student, String password) {
+        try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "UPDATE STUDENT SET password=? WHERE id = ?");
+            
+            pstmt.setString(1, student.getPassword());
+            pstmt.setInt(2, student.getID());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
