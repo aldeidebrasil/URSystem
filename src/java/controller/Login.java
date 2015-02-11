@@ -92,14 +92,4 @@ public class Login {
         return jsp;        
      }
     
-    public static void validarSessao(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        Integer codUsuario = (Integer) request.getSession().getAttribute("codUsuario");
-        String jsp="";
-        if(codUsuario == null ){
-            jsp = "/index.jsp";
-             //Redirecionando pagina
-            RequestDispatcher rd = request.getRequestDispatcher(jsp);
-            rd.forward(request, response);
-        }        
-    }
 }
