@@ -82,7 +82,7 @@ public class Login {
                 request.setAttribute("listCourses", listAll);
                 request.setAttribute("studentxcourse", studentxcourse);
                 request.setAttribute("student", student);
-                jsp = "/welcome.jsp";
+                jsp = "/welcomeStudent.jsp";
             }
             
         } catch (Exception e) {
