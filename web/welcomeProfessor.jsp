@@ -23,11 +23,15 @@ idProfessor = (Integer) request.getAttribute("idProfessor");
     </head>
     <body>
         
+        <div class="header">
+        </div>
         <div class="content">
         <h2>Welcome, <%=lname%> !</h2>
         <a href="/URSystem/servletweb?action=SeeCoursesProfessor&IdProfessor=<%=idProfessor%>">See Courses</a><br>
         <a href="seeStudents.jsp">See students</a><br>
         <a href="changePasswordProfessor.jsp">Change Password</a><br>
         </div>      
+        <div class="footer">
+        </div>
     </body>
 </html>

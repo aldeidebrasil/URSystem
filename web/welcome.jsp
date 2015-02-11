@@ -4,16 +4,18 @@
     Author     : Aldeide Brasil
 --%>
 
+<%@page import="controller.Course"%>
+<%@page import="controller.StudentxCourse"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controller.Student"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%!
-String fname = null;
-Integer idStudent;
-%>
 <%
-fname = (String) request.getAttribute("fname");
-idStudent = (Integer) request.getAttribute("idStudent");
+    Student student = (Student)request.getAttribute("student");
+    ArrayList<StudentxCourse> studentxcourse =  (ArrayList<StudentxCourse>) request.getAttribute("studentxcourse");
+    ArrayList<Course> course =  (ArrayList<Course>) request.getAttribute("listCourses");
+
 %>
 <html>
     <head>
@@ -22,15 +24,25 @@ idStudent = (Integer) request.getAttribute("idStudent");
         <title>URS</title>
     </head>
     <body>
-        
+        <div class="header"></div>
         <div class="content">
-        <h2>Welcome <%=fname%> </h2>
-        <a href="/URSystem/servletweb?action=SeeCoursesStudent&IdStudent=<%=idStudent%>">See Courses</a><br>
-        <a href="seeBilling.jsp">See Billing </a><br>
-        <a href="/URSystem/servletweb?action=SeeInformationStudent&IdStudent=<%=idStudent%>">See Information</a><br>
-        <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=idStudent%>">Change Password</a><br>
-        <a href="addCourse.jsp">Add Course</a><br>
-        <a href="deleteCourse.jsp">Delete Course</a><br>
-        </div>      
+        <h2>Welcome <%=student.getFname()%> </h2>
+        <div class="profile">
+            <img src="images/noPhoto.png" width="100px" height="100px"><br>
+            Name: <%=student.getFname()%>&nbsp;<%=student.getLname()%><br>
+            Major: <%=student.getMajor()%><br>
+            Billing Information: <%=student.getBilling()%><br>
+             <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=student.getID()%>">Change Password</a><br>
+      
+            </div>
+        <div class="actions">
+            <% for (int i=0; i< studentxcourse.size(); i++) {%>
+            <%=studentxcourse.get(i).getIdCourse() %> - <%=course.get(i).getName()%> - <%=course.get(i).getTerm() %><br>
+            <% } %><br>
+           <a href="addCourse.jsp">Add Course</a><br>
+           <a href="deleteCourse.jsp">Drop Course</a><br><br>
+        </div>
+         </div>      
+        <div class="footer"></div>
     </body>
 </html>

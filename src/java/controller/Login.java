@@ -9,10 +9,13 @@ import model.ProfessorDAO;
 import model.AdminDAO;
 import model.StudentDAO;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CourseDAO;
+import model.StudentxCourseDAO;
 
 /**
  *
@@ -68,9 +71,17 @@ public class Login {
                 jsp = "";
                 }               
             }               
-            else{  
-                request.setAttribute("fname", usr.getFname());
-                request.setAttribute("idStudent", usr.getID());
+            else{ 
+                Student student = StudentDAO.getById(usr.getID());
+                ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent(usr.getID());
+                ArrayList<Course> listAll = new ArrayList<Course>();
+                for(int i=0; i<studentxcourse.size(); i++){
+                Course course = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
+                listAll.add(course);
+                }
+                request.setAttribute("listCourses", listAll);
+                request.setAttribute("studentxcourse", studentxcourse);
+                request.setAttribute("student", student);
                 jsp = "/welcome.jsp";
             }
             

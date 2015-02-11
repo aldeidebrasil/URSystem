@@ -12,10 +12,13 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
         </head>
     <body>
-        
+        <div class="header"></div>      
 <div class="content">
+    
     <div class="form">
-    <form name="frmLogin" method='post' class="frm">
+    
+    <div class="blackboard">
+        <form name="frmLogin" method='post' class="frm">
        <table> <tr><th>Login (ID)</th>
                <td><input type="text" name="login" id="login" maxlength="10" size="30">    </td>
            <tr><th>Password:</th><br><br>
@@ -25,5 +28,8 @@
     </form>  
         </div>
    </div>
+    </div>
+        
+        <div class="footer"></div>
     </body>
 </html>
