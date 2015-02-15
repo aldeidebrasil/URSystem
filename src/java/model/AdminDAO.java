@@ -5,7 +5,7 @@
  */
 package model;
 
-import controller.Admin;
+import controller.vo.Admin;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 

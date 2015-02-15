@@ -5,8 +5,8 @@
  */
 package model;
 
-import controller.Course;
-import controller.ProfessorxCourse;
+import controller.vo.Course;
+import controller.vo.ProfessorxCourse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.vo.ProfessorxCourse;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import model.CourseDAO;

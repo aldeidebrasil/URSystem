@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.vo.StudentxCourse;
 import javax.servlet.http.HttpServletRequest;
 import model.StudentxCourseDAO;
 

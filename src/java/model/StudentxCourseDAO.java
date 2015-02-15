@@ -5,7 +5,7 @@
  */
 package model;
 
-import controller.StudentxCourse;
+import controller.vo.StudentxCourse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

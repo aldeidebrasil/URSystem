@@ -5,6 +5,11 @@
  */
 package controller;
 
+import controller.vo.StudentxCourse;
+import controller.vo.Admin;
+import controller.vo.Professor;
+import controller.vo.Student;
+import controller.vo.Course;
 import model.ProfessorDAO;
 import model.AdminDAO;
 import model.StudentDAO;

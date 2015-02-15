@@ -5,7 +5,7 @@
  */
 package model;
 
-import controller.Student;
+import controller.vo.Student;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
