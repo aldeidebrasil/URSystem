@@ -14,8 +14,9 @@
 <%
     Student student = (Student)request.getAttribute("student");
     ArrayList<StudentxCourse> studentxcourse =  (ArrayList<StudentxCourse>) request.getAttribute("studentxcourse");
-    ArrayList<Course> courseOpen =  (ArrayList<Course>) request.getAttribute("listCoursesOpen");
-    ArrayList<Course> courseTaken = (ArrayList<Course>) request.getAttribute("listCourses");
+    ArrayList<Course> listAllCourses =  (ArrayList<Course>) request.getAttribute("listAllCourses");
+    ArrayList<Course> listCoursesDepartment = (ArrayList<Course>) request.getAttribute("listCoursesDepartment");
+    ArrayList<Course> listAllTaken = (ArrayList<Course>) request.getAttribute("listAllTaken");
 
 %>
 <html>
@@ -38,10 +39,10 @@
             </div>
         <div class="actions">
             <form action="/URSystem/servletweb?action=AddCourseStudent" method='post'>
-             <h2>Courses for your major:</h2> 
-            <% for (int i=0; i< studentxcourse.size(); i++) {
-            if(courseOpen.get(i).getStatus().equals("open")){%>
-            <input type="radio" name="rd" value="<%=courseOpen.get(i).getID() %>"><%=courseOpen.get(i).getID() %> - <%=courseOpen.get(i).getName()%>><br>
+             <h2>Courses Open:</h2> 
+            <% for (int i=0; i< listAllCourses.size(); i++) {
+            if(listAllCourses.get(i).getStatus().equals("open")){%>
+            <input type="radio" name="rd" value="<%=listAllCourses.get(i).getID() %>"><%=listAllCourses.get(i).getID() %> - <%=listAllCourses.get(i).getName()%><br>
             <% }} %><br>
             <button type="button">Add Course</button>
       
