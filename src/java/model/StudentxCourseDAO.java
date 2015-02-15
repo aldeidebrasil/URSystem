@@ -17,6 +17,23 @@ import java.util.ArrayList;
 public class StudentxCourseDAO {
     private static PreparedStatement pstmt = null;
     private static ResultSet rs = null;
+    
+     public static boolean create(StudentxCourse studentxcourse) {
+        try {
+              
+            pstmt = Connection.getConnection().prepareStatement(
+                    "INSERT INTO studentxcourse(id, name, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
+            //pstmt.setString(1, studentxcourse.getID());
+            //pstmt.setString(2, course.getName());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+  
     public static ArrayList<StudentxCourse> getByIdCourse(String Id) {
         try {
             

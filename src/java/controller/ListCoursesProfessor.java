@@ -8,6 +8,7 @@ package controller;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import model.CourseDAO;
+import model.ProfessorxCourseDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ public class ListCoursesProfessor {
         String jsp = "";
         Integer idProfessor = Integer.parseInt(request.getParameter("IdProfessor"));
         try {
-            ArrayList<Course> listCourse = CourseDAO.getByIdProfessor(idProfessor);
+            ArrayList<ProfessorxCourse> listCourse = ProfessorxCourseDAO.getByIdProfessor(idProfessor);
             if(listCourse != null){
                 request.setAttribute("listCourse", listCourse);
                 jsp = "/seeCoursesProfessor.jsp";    

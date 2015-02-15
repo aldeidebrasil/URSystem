@@ -22,11 +22,9 @@ public class InsertCourse {
         String department = request.getParameter("department");
         String prerequisite = request.getParameter("prerequisite");
         Double value = Double.parseDouble(request.getParameter("value"));
-        String term = request.getParameter("term");
+        Integer idTerm = Integer.parseInt(request.getParameter("idTerm"));
+        String year  = request.getParameter("year");
         String status = request.getParameter("status");
-        Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
-       
-        
         
         Course course = new Course();  
         try {
@@ -35,9 +33,9 @@ public class InsertCourse {
            course.setDepartment(department);
            course.setPrerequisite(prerequisite);
            course.setValue(value);
-           course.setTerm(term);
+           course.setIdTerm(idTerm);
            course.setStatus(status);
-           course.setIDProfessor(idProfessor);
+           course.setYear(year);
             Boolean create = CourseDAO.create(course);
             if(create != false){
                 jsp = ListCourses.execute(request);

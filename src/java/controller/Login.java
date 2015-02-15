@@ -74,12 +74,14 @@ public class Login {
             else{ 
                 Student student = StudentDAO.getById(usr.getID());
                 ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent(usr.getID());
-                ArrayList<Course> listAll = new ArrayList<Course>();
+                ArrayList<Course> listAllTaken = new ArrayList<Course>();
+                ArrayList<Course> listAll = CourseDAO.getByDepartment(student.getMajor());
                 for(int i=0; i<studentxcourse.size(); i++){
-                Course course = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
-                listAll.add(course);
+                    Course courseTaken = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
+                    listAllTaken.add(courseTaken);
                 }
-                request.setAttribute("listCourses", listAll);
+                request.setAttribute("listCourses", listAllTaken);
+                request.setAttribute("listCoursesOpen", listAll);
                 request.setAttribute("studentxcourse", studentxcourse);
                 request.setAttribute("student", student);
                 jsp = "/welcomeStudent.jsp";

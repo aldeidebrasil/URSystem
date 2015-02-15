@@ -24,15 +24,15 @@ public class CourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO course(id, name, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO course(id, name, departament, prerequisite, value, idTerm, status, year) VALUES(?,?,?,?,?,?,?,?)");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
-            pstmt.setString(6, course.getTerm());
+            pstmt.setInt(6, course.getIdTerm());
             pstmt.setString(7, course.getStatus());
-            pstmt.setInt(8, course.getIDProfessor());
+            pstmt.setString(8, course.getYear());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
@@ -45,15 +45,15 @@ public class CourseDAO {
     public static boolean update(Course course) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE  course SET id = ?, name = ?, departament = ?, prerequisite = ?, value = ?, term = ?, status = ?, idProfessor = ? WHERE id = ?");
+                    "UPDATE  course SET id = ?, name = ?, departament = ?, prerequisite = ?, value = ?, idTerm = ?, status = ?, year = ? WHERE id = ?");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
-            pstmt.setString(6, course.getTerm());
+            pstmt.setInt(6, course.getIdTerm());
             pstmt.setString(7, course.getStatus());
-            pstmt.setInt(8, course.getIDProfessor());
+            pstmt.setString(8, course.getYear());
             pstmt.setString(9, course.getID());
             pstmt.executeUpdate();
             pstmt.close();
@@ -95,9 +95,9 @@ public class CourseDAO {
                     course.setDepartment(rs.getString("department"));
                     course.setPrerequisite(rs.getString("prerequisite"));
                     course.setValue(rs.getDouble("value"));
-                    course.setTerm(rs.getString("term"));
+                    course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
-                    course.setIDProfessor(rs.getInt("idProfessor"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }
@@ -124,9 +124,9 @@ public class CourseDAO {
                 course.setDepartment(rs.getString("department"));
                 course.setPrerequisite(rs.getString("prerequisite"));
                 course.setValue(rs.getDouble("value"));
-                course.setTerm(rs.getString("term"));
+                course.setIdTerm(rs.getInt("idTerm"));
                 course.setStatus(rs.getString("status"));
-                course.setIDProfessor(rs.getInt("idProfessor"));
+                course.setYear(rs.getString("year"));
             }
             rs.close();
             pstmt.close();
@@ -136,38 +136,6 @@ public class CourseDAO {
             return null;
         }
     }    
-    public static ArrayList<Course> getByIdProfessor(Integer Id) throws SQLException {
-         try{
-            ArrayList<Course> listAll = null;
-            Course course = new Course();            
-            pstmt = Connection.getConnection().prepareStatement(
-                    "SELECT * FROM course WHERE idProfessor = ?");
-            pstmt.setInt(1, Id);
-            rs = pstmt.executeQuery();           
-            
-            if (rs.next()) {
-                listAll = new ArrayList<Course>();
-                do {                    
-                    course = new Course();
-                    course.setID(rs.getString("id"));
-                    course.setName(rs.getString("name"));
-                    course.setDepartment(rs.getString("department"));
-                    course.setPrerequisite(rs.getString("prerequisite"));
-                    course.setValue(rs.getDouble("value"));
-                    course.setTerm(rs.getString("term"));
-                    course.setStatus(rs.getString("status"));
-                    course.setIDProfessor(rs.getInt("idProfessor"));
-                    listAll.add(course);
-                } while (rs.next());
-            }
-            rs.close();
-            pstmt.close();
-            return listAll;
-       } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
      public static ArrayList<String> getAllId() throws SQLException {
         try{
             ArrayList<String> listAllId = null;           
@@ -189,5 +157,38 @@ public class CourseDAO {
         }
         return null;
     }
+   public static ArrayList<Course> getByDepartment(String Department) throws SQLException {
+         try{
+            ArrayList<Course> listAll = null;
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE department = ?");
+            pstmt.setString(1, Department);
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAll = new ArrayList<Course>();
+                do {                    
+                    course = new Course();
+                    course.setID(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setDepartment(rs.getString("department"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setIdTerm(rs.getInt("idTerm"));
+                    course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
+                    listAll.add(course);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }
 

@@ -14,10 +14,10 @@ public class Course {
     private String name;
     private String department;
     private String prerequisite;
-    private String term;
+    private Integer idTerm;
+    private String year;
     private String status;
     private Double value;
-    private Integer IDProfessor;
 
     public String getID() {
         return ID;
@@ -51,12 +51,20 @@ public class Course {
         this.prerequisite = prerequisite;
     }
 
-    public String getTerm() {
-        return term;
+    public Integer getIdTerm() {
+        return idTerm;
     }
 
-    public void setTerm(String term) {
-        this.term = term;
+    public void setIdTerm(Integer idTerm) {
+        this.idTerm = idTerm;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getStatus() {
@@ -74,14 +82,5 @@ public class Course {
     public void setValue(Double value) {
         this.value = value;
     }
-
-    public Integer getIDProfessor() {
-        return IDProfessor;
-    }
-
-    public void setIDProfessor(Integer IDProfessor) {
-        this.IDProfessor = IDProfessor;
-    }
-
-    
+ 
 }
