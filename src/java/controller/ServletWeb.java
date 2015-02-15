@@ -70,8 +70,10 @@ public class ServletWeb extends HttpServlet {
             jsp = EditPasswordStudent.execute(request);
       else if(action.equals("UpdatePasswordStudent"))
             jsp = UpdatePasswordStudent.execute(request);
-      else if(action.equals("AddCourseStudent"))
-            jsp = AddCourseStudent.execute(request);
+      else if(action.equals("UpdatePasswordProfessor"))
+            jsp = UpdatePasswordProfessor.execute(request);  
+      //else if(action.equals("AddCourseStudent"))
+            //jsp = AddCourseStudent.execute(request);
       
         //
         //Redirecionando pagina
