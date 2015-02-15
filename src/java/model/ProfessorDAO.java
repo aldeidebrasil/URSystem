@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Connection;
 
 /**
  *
@@ -169,5 +170,19 @@ public static ArrayList<Integer> getAllId() throws SQLException {
         }
         return null;
     }
-
+    public static boolean updatePassword(Professor professor, String password) {
+        try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "UPDATE PROFESSOR SET password=? WHERE id = ?");
+            
+            pstmt.setString(1, professor.getPassword());
+            pstmt.setInt(2, professor.getID());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
