@@ -3,18 +3,19 @@
     Created on : Jan 28, 2015, 11:30:34 PM
     Author     : Aldeide Brasil
 --%>
-
+<%@page import="controller.Course"%>
+<%@page import="controller.ProfessorxCourse"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controller.Professor"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%!
-String lname = null;
-Integer idProfessor;
-%>
 <%
-lname = (String) request.getAttribute("lname");
-idProfessor = (Integer) request.getAttribute("idProfessor");
-%>
+    Professor professor = (Professor)request.getAttribute("professor");
+    ArrayList<ProfessorxCourse> professorxcourse =  (ArrayList<ProfessorxCourse>) request.getAttribute("professorxcourse");
+    ArrayList<Course> courseTaught =  (ArrayList<Course>) request.getAttribute("listCoursesTaught");
+%>    
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
@@ -22,14 +23,19 @@ idProfessor = (Integer) request.getAttribute("idProfessor");
         <title>URS</title>
     </head>
     <body>
-        
-        <div class="header">
-        </div>
+        <div class="header"></div>
         <div class="content">
-        <h2>Welcome, <%=lname%> !</h2>
-        <a href="/URSystem/servletweb?action=SeeCoursesProfessor&IdProfessor=<%=idProfessor%>">See Courses</a><br>
-        <a href="seeStudents.jsp">See students</a><br>
-        <a href="changePasswordProfessor.jsp">Change Password</a><br>
+        <h2>Welcome, <%=professor.getLname()%> <h2>
+        <div class="profile">
+            <img src="images/noPhoto.png" width="100px" height="100px"><br>
+            Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>
+            Title: <%=professor.getTitle() %><br>
+            <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=professor.getID()%>">Change Password</a><br>
+        
+        </div>
+        
+       
+        
         </div>      
         <div class="footer">
         </div>
