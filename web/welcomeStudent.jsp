@@ -14,7 +14,8 @@
 <%
     Student student = (Student)request.getAttribute("student");
     ArrayList<StudentxCourse> studentxcourse =  (ArrayList<StudentxCourse>) request.getAttribute("studentxcourse");
-    ArrayList<Course> course =  (ArrayList<Course>) request.getAttribute("listCourses");
+    ArrayList<Course> courseOpen =  (ArrayList<Course>) request.getAttribute("listCoursesOpen");
+    ArrayList<Course> courseTaken = (ArrayList<Course>) request.getAttribute("listCourses");
 
 %>
 <html>
@@ -36,11 +37,27 @@
       
             </div>
         <div class="actions">
-            <% for (int i=0; i< studentxcourse.size(); i++) {%>
-            <%=studentxcourse.get(i).getIdCourse() %> - <%=course.get(i).getName()%> - <%=course.get(i).getTerm() %><br>
-            <% } %><br>
+            <form action="/URSystem/servletweb?action=AddCourseStudent" method='post'>
+             <h2>Courses for your major:</h2> 
+            <% for (int i=0; i< studentxcourse.size(); i++) {
+            if(courseOpen.get(i).getStatus().equals("open")){%>
+            <input type="radio" name="rd" value="<%=courseOpen.get(i).getID() %>"><%=courseOpen.get(i).getID() %> - <%=courseOpen.get(i).getName()%>><br>
+            <% }} %><br>
+            <button type="button">Add Course</button>
+      
+            </form>
+            
+           <h2>Courses you are registered for this semester</h2>
+           
            <a href="addCourse.jsp">Add Course</a><br>
            <a href="deleteCourse.jsp">Drop Course</a><br><br>
+        
+            
+           <!-- <h2>Courses you have taken: </h2>
+            for (int i=0; i< studentxcourse.size(); i++) {%>
+            studentxcourse.get(i).getIdCourse() %> - courseTaken.get(i).getName()%> - courseTaken.get(i).getTerm() %><br>
+            <br>
+            -->
         </div>
          </div>      
         <div class="footer"></div>

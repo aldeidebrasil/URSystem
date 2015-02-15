@@ -56,13 +56,7 @@
                 <%=listCourse.get(i).getValue()%>
             </td>
             <td>           
-                <%=listCourse.get(i).getTerm()%>
-            </td>
-            <td>           
                 <%=listCourse.get(i).getStatus()%>
-            </td>
-            <td>           
-                <%=listCourse.get(i).getIDProfessor()%>
             </td>
             </tr>
             <%
