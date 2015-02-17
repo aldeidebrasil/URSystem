@@ -8,6 +8,7 @@ package model;
 import controller.vo.StudentxCourse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,9 +23,11 @@ public class StudentxCourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO studentxcourse(id, name, departament, prerequisite, value, term, status, idProfessor) VALUES(?,?,?,?,?,?,?,?)");
-            //pstmt.setString(1, studentxcourse.getID());
-            //pstmt.setString(2, course.getName());
+                    "INSERT INTO studentxcourse(idCourse, idStudent, idTerm, year) VALUES(?,?,?,?)");
+            pstmt.setString(1, studentxcourse.getIdCourse());
+            pstmt.setInt(2, studentxcourse.getIdStudent());
+            pstmt.setInt(3, studentxcourse.getIdTerm());
+            pstmt.setString(4, studentxcourse.getYear());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
@@ -49,6 +52,8 @@ public class StudentxCourseDAO {
                 studentxcourse = new StudentxCourse();
                 studentxcourse.setIdCourse(rs.getString("idCourse"));
                 studentxcourse.setIdStudent(rs.getInt("idStudent"));
+                studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setIdTerm(rs.getInt("idTerm"));
                 } while (rs.next());
             }
             rs.close();
@@ -75,6 +80,40 @@ public class StudentxCourseDAO {
                 studentxcourse = new StudentxCourse();
                 studentxcourse.setIdCourse(rs.getString("idCourse"));
                 studentxcourse.setIdStudent(rs.getInt("idStudent"));
+                 studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setIdTerm(rs.getInt("idTerm"));
+                listAll.add(studentxcourse);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+     public static ArrayList<StudentxCourse> getBySemester(Integer IdTerm, Integer IdStudent, String Year) throws SQLException {
+        try {
+            System.out.println(IdTerm);
+            System.out.println(IdStudent);
+           ArrayList<StudentxCourse> listAll = null;
+            StudentxCourse studentxcourse = new StudentxCourse();            
+            pstmt = Connection.getConnection().prepareStatement(
+                     "SELECT * FROM studentxcourse WHERE idTerm = ? AND idStudent= ? AND year = ?");
+            pstmt.setInt(1, IdTerm);
+            pstmt.setInt(2, IdStudent);
+            pstmt.setString(3, Year);
+                rs = pstmt.executeQuery();
+                if (rs.next()) {
+                listAll = new ArrayList<StudentxCourse>();
+                do {                    
+    
+                studentxcourse = new StudentxCourse();
+                studentxcourse.setIdCourse(rs.getString("idCourse"));
+                studentxcourse.setIdStudent(rs.getInt("idStudent"));
+                studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setIdTerm(rs.getInt("idTerm"));
                 listAll.add(studentxcourse);
                 } while (rs.next());
             }

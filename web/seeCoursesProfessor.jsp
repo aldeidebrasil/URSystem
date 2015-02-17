@@ -4,7 +4,7 @@
     Author     : Leticia
 --%>
 
-<%@page import="controller.Course"%>
+<%@page import="controller.vo.Course"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

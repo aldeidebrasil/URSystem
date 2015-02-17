@@ -6,6 +6,7 @@
 package controller;
 
 import controller.vo.StudentxCourse;
+import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import model.StudentxCourseDAO;
 
@@ -17,16 +18,16 @@ public class AddCourseStudent {
      public static String execute(HttpServletRequest request) {
      String error="";        
         String jsp=""; 
-       // String id = request.getParameter("id");
-        
+        String idCourse = request.getParameter("rd");
+        String idStudent = request.getParameter("IdStudent");
         StudentxCourse studentxcourse = new StudentxCourse();  
         try {
-           //studentxcourse.setID(id);
+           studentxcourse.setIdCourse(idCourse);
+           studentxcourse.setIdStudent(Integer.parseInt(idStudent));
+           studentxcourse.setIdTerm(VerifyTerm.execute());
+           studentxcourse.setYear(""+Calendar.getInstance().get(Calendar.YEAR));
            Boolean create = StudentxCourseDAO.create(studentxcourse);
-            if(create != false){
-                jsp = ListCourses.execute(request);
-               
-            }else{
+            if(create == false){
                 String erro = "ERROR!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";

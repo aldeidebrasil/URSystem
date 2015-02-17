@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="org.omg.PortableInterceptor.SYSTEM_EXCEPTION"%>
-<%@page import="controller.Professor"%>
+<%@page import="controller.vo.Professor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

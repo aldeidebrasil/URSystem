@@ -4,7 +4,7 @@
     Author     : Aldeide Brasil
 --%>
 
-<%@page import="controller.Student"%>
+<%@page import="controller.vo.Student"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% Student student = (Student)request.getAttribute("student");

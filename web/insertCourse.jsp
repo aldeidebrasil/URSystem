@@ -7,7 +7,7 @@
 <%@page import="model.CourseDAO"%>
 <%@page import="model.ProfessorDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="controller.Professor"%>
+<%@page import="controller.vo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%! ArrayList<Integer> listProfessorID;

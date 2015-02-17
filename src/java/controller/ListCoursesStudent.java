@@ -15,14 +15,16 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 class ListCoursesStudent {
-     public static String execute(HttpServletRequest request) {
+     public static String execute(HttpServletRequest request, Integer idTerm) {
         String jsp = "";
         Integer idStudent = Integer.parseInt(request.getParameter("IdStudent"));
-        try {
-            ArrayList<StudentxCourse> listCourse = StudentxCourseDAO.getByIdStudent(idStudent);
-            if(listCourse != null){
-                request.setAttribute("listCourse", listCourse);
-                jsp = "/seeCoursesStudent.jsp";    
+        String idCourse = request.getParameter("rd");
+         System.out.println(idTerm);
+      /*  try {
+            ArrayList<StudentxCourse> listSemester = StudentxCourseDAO.getBySemester(idTerm, idStudent);
+            if(listSemester != null){
+                request.setAttribute("listSemester", listSemester);
+                jsp = "/welcomeStudent.jsp?";    
             }else{
                 String erro="There is no courses to show!";
                 request.setAttribute("error", erro);
@@ -32,7 +34,7 @@ class ListCoursesStudent {
         } catch (Exception e) {
             e.printStackTrace();
             jsp = "";
-        }
+        }*/
         return jsp;
     }
     
