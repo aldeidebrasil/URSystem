@@ -60,18 +60,20 @@ public class ServletWeb extends HttpServlet {
             jsp = UpdateProfessor.execute(request);
         else if(action.equals("InsertCourse"))
             jsp = InsertCourse.execute(request);
-       else if(action.equals("SeeCoursesProfessor"))
+        else if(action.equals("SeeCoursesProfessor"))
             jsp = ListCoursesProfessor.execute(request);
-      else if(action.equals("SeeCoursesStudent"))
+        else if(action.equals("SeeCoursesStudent"))
             jsp = ListCoursesStudent.execute(request);
-      else if(action.equals("SeeInformationStudent"))
+        else if(action.equals("SeeInformationStudent"))
             jsp = SeeInformationStudent.execute(request);
-      else if(action.equals("EditPasswordStudent"))
+        else if(action.equals("EditPasswordStudent"))
             jsp = EditPasswordStudent.execute(request);
-      else if(action.equals("UpdatePasswordStudent"))
+        else if(action.equals("UpdatePasswordStudent"))
             jsp = UpdatePasswordStudent.execute(request);
-      else if(action.equals("UpdatePasswordProfessor"))
-            jsp = UpdatePasswordProfessor.execute(request);  
+        else if(action.equals("UpdatePasswordProfessor"))
+            jsp = UpdatePasswordProfessor.execute(request);
+        else if(action.equals("SeeStudents"))
+            jsp = SeeStudents.execute(request);
       //else if(action.equals("AddCourseStudent"))
             //jsp = AddCourseStudent.execute(request);
       
