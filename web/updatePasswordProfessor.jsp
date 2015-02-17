@@ -4,7 +4,7 @@
     Author     : Leticia
 --%>
 
-<%@page import="controller.Professor"%>
+<%@page import="controller.vo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% Professor professor = (Professor)request.getAttribute("professor");
