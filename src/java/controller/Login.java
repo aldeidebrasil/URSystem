@@ -6,6 +6,7 @@
 package controller;
 
 import controller.vo.StudentxCourse;
+import controller.vo.ProfessorxCourse;
 import controller.vo.Admin;
 import controller.vo.Professor;
 import controller.vo.Student;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.CourseDAO;
 import model.StudentxCourseDAO;
+import model.ProfessorxCourseDAO;
 
 /**
  *
@@ -68,6 +70,17 @@ public class Login {
                         request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
                         request.setAttribute ("idProfessor", prof.getID());
                       
+                        Professor professor = ProfessorDAO.getById(prof.getID());
+                        ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor(prof.getID());
+                        ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
+                        for(int i=0; i<professorxcourse.size(); i++){
+                             Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
+                             listCoursesTaught.add(courseTaught);
+                        }
+                        request.setAttribute("listCoursesTaught", listCoursesTaught);
+                        request.setAttribute("professorxcourse", professorxcourse);
+                        request.setAttribute("professor", professor);
+                        
                         jsp = "/welcomeProfessor.jsp";
                     }
             
