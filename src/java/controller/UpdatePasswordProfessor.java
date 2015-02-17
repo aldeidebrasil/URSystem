@@ -24,7 +24,7 @@ public class UpdatePasswordProfessor {
             professor.setPassword(password);
             Boolean update = ProfessorDAO.updatePassword(professor,password);
             if(update!=false)
-                jsp = SeeInformationStudent.execute(request);
+                jsp = SeeInformationProfessor.execute(request);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
