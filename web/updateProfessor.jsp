@@ -4,7 +4,7 @@
     Author     : Aldeide Brasil
 --%>
 
-<%@page import="controller.Professor"%>
+<%@page import="controller.vo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
