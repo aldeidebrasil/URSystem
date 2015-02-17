@@ -16,6 +16,7 @@ import model.AdminDAO;
 import model.StudentDAO;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -92,14 +93,23 @@ public class Login {
             else{ 
                 Student student = StudentDAO.getById(usr.getID());
                 ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent(usr.getID());
+                String year = "" + Calendar.getInstance().get(Calendar.YEAR);
+                ArrayList<StudentxCourse> studentxcourseTerm = StudentxCourseDAO.getBySemester(VerifyTerm.execute(),usr.getID(),year);
                 ArrayList<Course> listAllTaken = new ArrayList<Course>();
                 for(int i=0; i<studentxcourse.size(); i++){
                     Course courseTaken = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
                     listAllTaken.add(courseTaken);
                 }
-                
                 ArrayList <Course> listAllCourses = CourseDAO.getAll();
                 ArrayList<Course> listCoursesDepartment = CourseDAO.getByDepartment(student.getMajor());
+                ArrayList<Course> listNew = VerifyCourseNew.execute(listAllTaken);
+                ArrayList<Course> listTerm =  new ArrayList<Course>();
+                for(int i=0; i<studentxcourseTerm.size(); i++){
+                    Course courseTaken = CourseDAO.getById(studentxcourseTerm.get(i).getIdCourse());
+                   listAllTaken.add(courseTaken);
+                }
+                request.setAttribute("listNew",listNew);
+                request.setAttribute("listTerm",listTerm);        
                 request.setAttribute("listCoursesDepartment", listCoursesDepartment);
                 request.setAttribute("listAllCourses", listAllCourses);
                 request.setAttribute("listCoursesTaken", listAllTaken);
