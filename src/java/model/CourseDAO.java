@@ -24,13 +24,13 @@ public class CourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO course(id, name, departament, prerequisite, value, idTerm, status, year) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO course(id, name, department, prerequisite, value, idTerm, status, year) VALUES(?,?,?,?,?,?,?,?)");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
-            pstmt.setInt(6, course.getIdTerm());
+            pstmt.setInt   (6, course.getIdTerm());
             pstmt.setString(7, course.getStatus());
             pstmt.setString(8, course.getYear());
             pstmt.executeUpdate();
@@ -45,7 +45,7 @@ public class CourseDAO {
     public static boolean update(Course course) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE  course SET id = ?, name = ?, departament = ?, prerequisite = ?, value = ?, idTerm = ?, status = ?, year = ? WHERE id = ?");
+                    "UPDATE  course SET id = ?, name = ?, department = ?, prerequisite = ?, value = ?, idTerm = ?, status = ?, year = ? WHERE id = ?");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());

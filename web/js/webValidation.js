@@ -384,4 +384,134 @@ function validateInsertStudent(){
         return true;
      }   
  }
+ function validateInsertCourse(){    
+    var frm = document.frmInsertCourse;
+     var id = frm.id.value;
+     var name = frm.name.value;
+     var department = frm.department.value;
+     var prerequisite = frm.prerequisite.value;
+     var value = frm.value.value;
+     var idterm = frm.idterm.value;
+     var status = frm.status.value;
+     var year = frm.year.value;
+     
+     if(id == ""){
+        alert("Please, fill out the field ID!");
+        frm.id.focus();
+        return false;
+     }else if(name == ""){
+        alert("Please, fill out the field Name!");
+        frm.name.focus();
+        return false;
+     }else if(department == ""){
+        alert("Please, fill out the field Department!");
+        frm.department.focus();
+        return false;
+     }else if(prerequisite == ""){
+        alert("Please, fill out the field Prerequisite!");
+        frm.prerequisite.focus();
+        return false;
+     }else if(value == ""){
+        alert("Please, fill out the field Value!");
+        frm.value.focus();
+        return false;
+     }else if(idterm == ""){
+        alert("Please, fill out the field Term!");
+        frm.idterm.focus();
+        return false;
+     }else if(status == ""){
+        alert("Please, fill out the field Status!");
+        frm.status.focus();
+        return false;
+     }else if(year == ""){
+        alert("Please, fill out the field  Year!");
+        frm.year.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=InsertCourse";  
+        document.forms[0].action = url;  
+        window.document.forms[0].submit();
+        return true;
+     }      
+ }
+
+ function validateUpdateCourse(){    
+    var frm = document.frmUpdateCourse;
+     var id = frm.id.value;
+     var name = frm.name.value;
+     var department = frm.department.value;
+     var prerequisite = frm.prerequisite.value;
+     var value = frm.value.value;
+     var idterm = frm.idterm.value;
+     var status = frm.status.value;
+     var year = frm.year.value;
+     
+     if(id == ""){
+        alert("Please, fill out the field ID!");
+        frm.id.focus();
+        return false;
+     }else if(name == ""){
+        alert("Please, fill out the field Name!");
+        frm.name.focus();
+        return false;
+     }else if(department == ""){
+        alert("Please, fill out the field Department!");
+        frm.department.focus();
+        return false;
+     }else if(prerequisite == ""){
+        alert("Please, fill out the field Prerequisite!");
+        frm.prerequisite.focus();
+        return false;
+     }else if(value == ""){
+        alert("Please, fill out the field Value!");
+        frm.value.focus();
+        return false;
+     }else if(idterm == ""){
+        alert("Please, fill out the field Term!");
+        frm.idterm.focus();
+        return false;
+     }else if(status == ""){
+        alert("Please, fill out the field Status!");
+        frm.status.focus();
+        return false;
+     }else if(year == ""){
+        alert("Please, fill out the field  Year!");
+        frm.year.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=UpdateCourse";  
+        document.forms[0].action = url;  
+        window.document.forms[0].submit();
+        return true;
+     }      
+ }
+ 
+ function validateDeleteCourse(){    
+    var frm = document.frmDeleteCourse;
+     var id = frm.id.value; 
+     if(id == ""){
+        alert("Please, fill out the field ID!");
+        frm.id.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=DeleteCourse";  
+        document.forms[0].action = url;  
+        window.document.forms[0].submit();
+        return true;
+     }      
+ }
+ function validateEditCourse(){    
+    var frm = document.frmDeleteCourse;
+     var id = frm.id.value;
+     if(id == ""){
+        alert("Please, fill out the field ID!");
+        frm.id.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=EditCourse";  
+        document.forms[0].action = url;  
+        window.document.forms[0].submit();
+        return true;
+     }      
+ }
  

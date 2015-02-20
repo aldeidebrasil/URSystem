@@ -74,7 +74,18 @@ public class ServletWeb extends HttpServlet {
             jsp = SeeStudents.execute(request);
      else if(action.equals("AddCourseStudent"))
             jsp = AddCourseStudent.execute(request);
-      
+     else if(action.equals("Logout"))
+            jsp = Logout.execute(request);
+       else if(action.equals("EditCourse"))
+            jsp = EditCourse.execute(request);
+        else if(action.equals("DeleteCourse"))
+            jsp = DeleteCourse.execute(request);
+        else if(action.equals("UpdateCourse"))
+        {
+            jsp = UpdateCourse.execute(request);
+            System.out.println(jsp);
+        }
+        
         //
         //Redirecionando pagina
         RequestDispatcher rd = request.getRequestDispatcher(jsp);

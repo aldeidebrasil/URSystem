@@ -23,12 +23,13 @@ public class InsertCourse {
         String department = request.getParameter("department");
         String prerequisite = request.getParameter("prerequisite");
         Double value = Double.parseDouble(request.getParameter("value"));
-        Integer idTerm = Integer.parseInt(request.getParameter("idTerm"));
+        Integer idTerm = Integer.parseInt(request.getParameter("idterm"));
         String year  = request.getParameter("year");
         String status = request.getParameter("status");
         
         Course course = new Course();  
         try {
+            
            course.setID(id);
            course.setName(name);
            course.setDepartment(department);

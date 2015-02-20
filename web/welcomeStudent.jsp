@@ -115,6 +115,6 @@
             -->
         </div>
          </div>      
-        <div class="footer"></div>
+        <div class="footer"><a href="/URSystem/servletweb?action=Logout">Logout</a></div>
     </body>
 </html>
