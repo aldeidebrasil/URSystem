@@ -54,6 +54,7 @@
         <div class="header"></div>
         <div class="content">
         <h2>Welcome <%=student.getFname()%> </h2>
+        <a href="/URSystem/servletweb?action=Logout">Logout</a>
         <div class="profile">
             <img src="images/noPhoto.png" width="100px" height="100px"><br>
             Name: <%=student.getFname()%>&nbsp;<%=student.getLname()%><br>
@@ -115,6 +116,6 @@
             -->
         </div>
          </div>      
-        <div class="footer"><a href="/URSystem/servletweb?action=Logout">Logout</a></div>
+        <div class="footer"></div>
     </body>
 </html>

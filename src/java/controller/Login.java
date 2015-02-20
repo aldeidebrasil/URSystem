@@ -59,7 +59,6 @@ public class Login {
                         request.setAttribute("error", error);
                         jsp = "/error.jsp";
                     }else{
-                        //request.setAttribute("fname", usr.getFname());
                         session.setAttribute("userid",adm.getID());
                         jsp = "/welcomeAdmin.jsp";
                     }
@@ -70,21 +69,7 @@ public class Login {
 
                     }else{
                         session.setAttribute("userid",prof.getID());
-                        request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
-                        request.setAttribute ("idProfessor", prof.getID());
-                      
-                        Professor professor = ProfessorDAO.getById(prof.getID());
-                        ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor(prof.getID());
-                        ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
-                        for(int i=0; i<professorxcourse.size(); i++){
-                             Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
-                             listCoursesTaught.add(courseTaught);
-                        }
-                        request.setAttribute("listCoursesTaught", listCoursesTaught);
-                        request.setAttribute("professorxcourse", professorxcourse);
-                        request.setAttribute("professor", professor);
-                        
-                        jsp = "/welcomeProfessor.jsp";
+                        jsp = OpenProfessor.execute(request,session);
                     }
             
                 }catch (Exception e) {
@@ -94,33 +79,8 @@ public class Login {
             }               
             else{ 
                 session.setAttribute("userid",usr.getID());
-                System.out.println("userid");
-                Student student = StudentDAO.getById(usr.getID());
-                ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent(usr.getID());
-                String year = "" + Calendar.getInstance().get(Calendar.YEAR);
-                ArrayList<StudentxCourse> studentxcourseTerm = StudentxCourseDAO.getBySemester(VerifyTerm.execute(),usr.getID(),year);
-                ArrayList<Course> listAllTaken = new ArrayList<Course>();
-                for(int i=0; i<studentxcourse.size(); i++){
-                    Course courseTaken = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
-                    listAllTaken.add(courseTaken);
-                }
-                ArrayList <Course> listAllCourses = CourseDAO.getAll();
-                ArrayList<Course> listCoursesDepartment = CourseDAO.getByDepartment(student.getMajor());
-                ArrayList<Course> listNew = VerifyCourseNew.execute(listAllTaken);
-                ArrayList<Course> listTerm =  new ArrayList<Course>();
-                for(int i=0; i<studentxcourseTerm.size(); i++){
-                    Course courseTaken = CourseDAO.getById(studentxcourseTerm.get(i).getIdCourse());
-                   listAllTaken.add(courseTaken);
-                }
-                request.setAttribute("listNew",listNew);
-                request.setAttribute("listTerm",listTerm);        
-                request.setAttribute("listCoursesDepartment", listCoursesDepartment);
-                request.setAttribute("listAllCourses", listAllCourses);
-                request.setAttribute("listCoursesTaken", listAllTaken);
-                request.setAttribute("studentxcourse", studentxcourse);
-                request.setAttribute("student", student);
-                jsp = "/welcomeStudent.jsp";
-            }
+                jsp = OpenStudent.execute(request,session);
+               }
             
         } catch (Exception e) {
             e.printStackTrace();
