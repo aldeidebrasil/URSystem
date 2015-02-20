@@ -21,6 +21,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 import model.StudentxCourseDAO;
 import model.ProfessorxCourseDAO;
@@ -37,8 +38,8 @@ public class Login {
         String jsp="";        
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        HttpSession session = request.getSession(true);
         
-       
         Student usr = new Student();
         StudentDAO usrDAO = new StudentDAO();        
         try {
@@ -59,6 +60,7 @@ public class Login {
                         jsp = "/error.jsp";
                     }else{
                         //request.setAttribute("fname", usr.getFname());
+                        session.setAttribute("userid",adm.getID());
                         jsp = "/welcomeAdmin.jsp";
                     }
                     }catch (Exception e) {
@@ -67,7 +69,7 @@ public class Login {
                     }
 
                     }else{
-                        
+                        session.setAttribute("userid",prof.getID());
                         request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
                         request.setAttribute ("idProfessor", prof.getID());
                       
@@ -91,6 +93,8 @@ public class Login {
                 }               
             }               
             else{ 
+                session.setAttribute("userid",usr.getID());
+                System.out.println("userid");
                 Student student = StudentDAO.getById(usr.getID());
                 ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent(usr.getID());
                 String year = "" + Calendar.getInstance().get(Calendar.YEAR);

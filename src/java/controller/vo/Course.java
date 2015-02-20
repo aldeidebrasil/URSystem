@@ -7,7 +7,7 @@ package controller.vo;
 
 /**
  *
- * @author Leticia
+ * @author Aldeide Brasil
  */
 public class Course {
     private String ID;
@@ -82,5 +82,5 @@ public class Course {
     public void setValue(Double value) {
         this.value = value;
     }
- 
+
 }
