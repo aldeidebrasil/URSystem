@@ -18,7 +18,7 @@ import model.StudentxCourseDAO;
  */
 public class VerifyCourseNew {
     public static ArrayList<Course> execute(ArrayList<Course> listAllTaken) throws SQLException{
-       ArrayList<Course> listAllCourses = CourseDAO.getAll();
+        ArrayList<Course> listAllCourses = CourseDAO.getAll();
        if(listAllTaken.removeAll(listAllCourses)){
             return listAllTaken;
        }
