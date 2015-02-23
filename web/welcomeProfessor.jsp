@@ -30,7 +30,7 @@
             <img src="images/noPhoto.png" width="100px" height="100px"><br>
             Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>
             Title: <%=professor.getTitle() %><br>
-            <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=professor.getID()%>">Change Password</a><br>
+            <a href="/URSystem/servletweb?action=EditPasswordProfessor&IdProfessor=<%=professor.getID()%>">Change Password</a><br>
         
         </div>
         <div class="actions">

@@ -127,6 +127,8 @@ public class ProfessorDAO {
     }
     
      public static Professor getById(int Id) {
+         //System.out.println("TESTE");
+        // System.out.println(Id);
         try {
             Professor professor = null;
             pstmt = Connection.getConnection().prepareStatement(

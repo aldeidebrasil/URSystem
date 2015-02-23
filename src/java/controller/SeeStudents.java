@@ -5,9 +5,12 @@
  */
 package controller;
 
-import controller.vo.Professor;
 import javax.servlet.http.HttpServletRequest;
-import model.ProfessorDAO;
+import model.StudentxCourseDAO;
+import model.StudentDAO;
+import controller.vo.StudentxCourse;
+import controller.vo.Student;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,19 +20,17 @@ public class SeeStudents {
     public static String execute(HttpServletRequest request) {
         String jsp = "";
         try {
-            String password = request.getParameter("password");
-            Integer id = Integer.parseInt(request.getParameter("IdProfessor"));
-          
-            Professor professor = ProfessorDAO.getById(id);
-            professor.setPassword(password);
-            Boolean update = ProfessorDAO.updatePassword(professor,password);
-            if(update!=false)
-                jsp = SeeInformationStudent.execute(request);
-            else{
-                String erro = "Error Update";
-                request.setAttribute("error", erro);
-                jsp = "/error.jsp";
-            }
+            String id = request.getParameter("rd");
+           
+            ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourse(id);
+            ArrayList<Student> listStudents = new ArrayList<Student>();
+            
+            for(int i = 0; i < studentxcourse.size(); i++){
+                Student student = StudentDAO.getById(studentxcourse.get(i).getIdStudent());
+                listStudents.add(student);
+            } 
+            request.setAttribute("listStudents", listStudents);
+            return "/seeStudents.jsp";
             
         } catch (Exception e) {
             e.printStackTrace();

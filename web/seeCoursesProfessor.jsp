@@ -21,7 +21,9 @@
         <title>All Courses</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body><table style="border: 2px black solid">
+    <body>
+        <div class="content">
+        <table style="border: 2px black solid">
             <tr ><th>Course ID</th>
                 <th>Course Name</th>
                 <th>Department</th>

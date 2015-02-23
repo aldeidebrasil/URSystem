@@ -18,15 +18,16 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        
         <div class="content">
+            Password changed successfully.
+            <br><br>
             <table style="border: 2px black solid">
                   
             <tr ><th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Password</th>
                 <th>Title</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Password</th>
             </tr>
            
             <tr>
@@ -34,16 +35,16 @@
                 <%=professor.getID()%>
             </td>
             <td>
-                <%=professor.getFname() %> 
+                <%=professor.getTitle()%>
             </td>
             <td>
                 <%=professor.getLname()%>
             </td>
             <td>           
-                <%=professor.getPassword()%>
+                <%=professor.getFname()%>
             </td>
             <td>    
-                <%=professor.getTitle()%>
+                <%=professor.getPassword()%>
             </td>
             </tr>
             </table> 

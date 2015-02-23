@@ -68,11 +68,15 @@ public class ServletWeb extends HttpServlet {
             jsp = EditPasswordStudent.execute(request);
         else if(action.equals("UpdatePasswordStudent"))
             jsp = UpdatePasswordStudent.execute(request);
+         else if(action.equals("SeeInformationProfessor"))
+            jsp = SeeInformationProfessor.execute(request);
+        else if(action.equals("EditPasswordProfessor"))
+            jsp = EditPasswordProfessor.execute(request);
         else if(action.equals("UpdatePasswordProfessor"))
             jsp = UpdatePasswordProfessor.execute(request);
         else if(action.equals("SeeStudents"))
             jsp = SeeStudents.execute(request);
-     else if(action.equals("AddCourseStudent"))
+      else if(action.equals("AddCourseStudent"))
             jsp = AddCourseStudent.execute(request);
      else if(action.equals("Logout"))
             jsp = Logout.execute(request);
@@ -81,10 +85,8 @@ public class ServletWeb extends HttpServlet {
         else if(action.equals("DeleteCourse"))
             jsp = DeleteCourse.execute(request);
         else if(action.equals("UpdateCourse"))
-        {
             jsp = UpdateCourse.execute(request);
-            System.out.println(jsp);
-        }
+           
         
         //
         //Redirecionando pagina
