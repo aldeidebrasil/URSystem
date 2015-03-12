@@ -5,9 +5,13 @@
  */
 package controller;
 
+import controller.vo.Course;
 import controller.vo.StudentxCourse;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
+import model.CourseDAO;
 import model.StudentxCourseDAO;
 
 /**
@@ -15,7 +19,7 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 public class AddCourseStudent {
-     public static String execute(HttpServletRequest request) {
+     public static String execute(HttpServletRequest request) throws SQLException {
      String error="";        
         String jsp=""; 
         String idCourse = request.getParameter("rd");
@@ -36,7 +40,15 @@ public class AddCourseStudent {
             e.printStackTrace();
             jsp = "";
         }
-        return jsp;
+        String year = ""+Calendar.getInstance().get(Calendar.YEAR);
+        ArrayList<Course> listCourse = new ArrayList<>();
+        ArrayList<StudentxCourse> studentxcourseList = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), Integer.parseInt(idStudent),year);
+        for(int i=0; i<studentxcourseList.size();i++){
+            Course course = CourseDAO.getById(studentxcourseList.get(i).getIdCourse());
+            listCourse.add(course);
+        }
+        request.setAttribute("listCourse", listCourse);
+        return "allCoursesStudent.jsp";
     
     }
 }

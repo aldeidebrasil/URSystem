@@ -8,13 +8,19 @@ package controller;
 import controller.vo.Course;
 import controller.vo.Professor;
 import controller.vo.ProfessorxCourse;
+import controller.vo.Student;
+import controller.vo.StudentxCourse;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 import model.ProfessorDAO;
 import model.ProfessorxCourseDAO;
+import model.StudentDAO;
+import model.StudentxCourseDAO;
 
 /**
  *
@@ -27,7 +33,7 @@ public class OpenProfessor {
         Professor prof = ProfessorDAO.getById((int)session.getAttribute("userid"));
         request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
         request.setAttribute ("idProfessor", prof.getID());
-                    
+                
         Professor professor = ProfessorDAO.getById(prof.getID());
         ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor((int)session.getAttribute("userid"));
         ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
@@ -35,6 +41,21 @@ public class OpenProfessor {
              Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
              listCoursesTaught.add(courseTaught);
         }
+        Map<Course,ArrayList<Student>> mapStudent = new HashMap();
+           
+        for(int j=0; j<listCoursesTaught.size();j++){
+        ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
+        ArrayList<Student> listStudents = new ArrayList<Student>();
+       if(studentxcourse!=null){
+            for(int i = 0; i < studentxcourse.size(); i++){
+                Student student = StudentDAO.getById(studentxcourse.get(i).getIdStudent());
+                listStudents.add(student);
+            }
+            mapStudent.put(listCoursesTaught.get(j), listStudents);
+            
+           }
+        }
+        request.setAttribute("mapStudent", mapStudent);
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);
         request.setAttribute("professor", professor);

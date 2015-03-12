@@ -54,6 +54,36 @@ public class StudentxCourseDAO {
                 studentxcourse.setIdStudent(rs.getInt("idStudent"));
                 studentxcourse.setYear(rs.getString("year"));
                 studentxcourse.setIdTerm(rs.getInt("idTerm"));
+               listAll.add(studentxcourse);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ArrayList<StudentxCourse> getByIdCourseTerm(String Id, int IdTerm) {
+        try {
+            
+           ArrayList<StudentxCourse> listAll = null;
+            StudentxCourse studentxcourse = new StudentxCourse();            
+            pstmt = Connection.getConnection().prepareStatement(
+                     "SELECT * FROM studentxcourse WHERE idCourse = ? AND idTerm = ?");
+            pstmt.setString(1, Id);
+            pstmt.setInt(2, IdTerm);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                listAll = new ArrayList<StudentxCourse>();
+                do {                    
+                studentxcourse = new StudentxCourse();
+                studentxcourse.setIdCourse(rs.getString("idCourse"));
+                studentxcourse.setIdStudent(rs.getInt("idStudent"));
+                studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setIdTerm(rs.getInt("idTerm"));
+               listAll.add(studentxcourse);
                 } while (rs.next());
             }
             rs.close();
@@ -66,21 +96,18 @@ public class StudentxCourseDAO {
     }
     public static ArrayList<StudentxCourse>getByIdStudent(Integer Id) {
         try {
-           ArrayList<StudentxCourse> listAll = null;
+            ArrayList<StudentxCourse> listAll = new ArrayList<StudentxCourse>();
             StudentxCourse studentxcourse = new StudentxCourse();            
             pstmt = Connection.getConnection().prepareStatement(
                     "SELECT * FROM studentxcourse WHERE idStudent = ?");
             pstmt.setInt(1, Id);
             rs = pstmt.executeQuery();           
-            
             if (rs.next()) {
-                listAll = new ArrayList<StudentxCourse>();
                 do {                    
-    
                 studentxcourse = new StudentxCourse();
                 studentxcourse.setIdCourse(rs.getString("idCourse"));
                 studentxcourse.setIdStudent(rs.getInt("idStudent"));
-                 studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setYear(rs.getString("year"));
                 studentxcourse.setIdTerm(rs.getInt("idTerm"));
                 listAll.add(studentxcourse);
                 } while (rs.next());
@@ -95,9 +122,7 @@ public class StudentxCourseDAO {
     }
      public static ArrayList<StudentxCourse> getBySemester(Integer IdTerm, Integer IdStudent, String Year) throws SQLException {
         try {
-            System.out.println(IdTerm);
-            System.out.println(IdStudent);
-           ArrayList<StudentxCourse> listAll = null;
+            ArrayList<StudentxCourse> listAll = null;
             StudentxCourse studentxcourse = new StudentxCourse();            
             pstmt = Connection.getConnection().prepareStatement(
                      "SELECT * FROM studentxcourse WHERE idTerm = ? AND idStudent= ? AND year = ?");

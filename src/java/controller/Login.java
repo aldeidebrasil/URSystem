@@ -5,26 +5,14 @@
  */
 package controller;
 
-import controller.vo.StudentxCourse;
-import controller.vo.ProfessorxCourse;
 import controller.vo.Admin;
 import controller.vo.Professor;
 import controller.vo.Student;
-import controller.vo.Course;
 import model.ProfessorDAO;
 import model.AdminDAO;
 import model.StudentDAO;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.CourseDAO;
-import model.StudentxCourseDAO;
-import model.ProfessorxCourseDAO;
 
 /**
  *

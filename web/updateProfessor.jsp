@@ -47,13 +47,13 @@
             </tr>
             <tr><td> <input type="text" name="id" id="id" size="30" value="<%=professor.getID()%>" readonly="true" style="line-height: 40px; font-size: 20px;"></td>
            <td>
-            <input type="text" name="fname" id="fname" size="30" style="line-height: 40px; font-size: 20px;">
+            <input type="text" name="fname" id="fname" size="30" value="<%=professor.getFname()%>" style="line-height: 40px; font-size: 20px;">
             </td><td>
-            <input type="text" name="lname" id="lname" size="30" style="line-height: 40px; font-size: 20px;">
+            <input type="text" name="lname" id="lname" size="30" value="<%=professor.getLname()%>" style="line-height: 40px; font-size: 20px;">
            </td><td>
-            <input type="password" name="password" id="password" size="30" style="line-height: 40px; font-size: 20px;">
+            <input type="password" name="password" id="password" value="<%=professor.getPassword()%>" size="30" style="line-height: 40px; font-size: 20px;">
            </td><td>
-               <input type="text" name="title" id="major" size="30" style="line-height: 40px; font-size: 20px;"></td>
+               <input type="text" name="title" id="title" size="30" value="<%=professor.getTitle()%>" style="line-height: 40px; font-size: 20px;"></td>
             </tr></table>
             <button type="button" onClick="validateUpdateProfessor()">Update Professor</button>
                  

@@ -22,7 +22,9 @@
         <title>All Students</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body><table style="border: 2px black solid">
+    <body>
+        <div class="content">
+           <table style="border: 2px black solid">
             <tr ><th>ID</th>
                 <th>Title</th>
                 <th>First Name</th>
@@ -55,5 +57,6 @@
             %>
         </table>
         <a href="welcomeAdmin.jsp">Home</a>
+        </div>
         </body>
 </html>

@@ -21,20 +21,18 @@
         <div class="adminStudent">
         <h2>Student</h2>
         <a href="insertStudent.jsp">Insert Student</a><br>
-        <a href="deleteStudent.jsp">Delete Student</a><br>
-        <a href="deleteStudent.jsp">Edit Student</a><br>
+        <a href="deleteStudent.jsp">Edit or Delete Student</a><br>
+        
         </div>     
         <div class="adminProfessor">
         <h2>Professor</h2>
         <a href="insertProfessor.jsp">Insert Professor</a><br>
-        <a href="deleteProfessor.jsp">Delete Professor</a><br>
-        <a href="deleteProfessor.jsp">Edit Professor</a><br>
+        <a href="deleteProfessor.jsp">Edit or Delete Professor</a><br>
         </div>
         <div class="adminCourse">
         <h2>Course</h2>
         <a href="insertCourse.jsp">Insert Course</a><br>
-        <a href="deleteCourse.jsp">Delete Course</a><br>
-        <a href="deleteCourse.jsp">Edit Course</a><br>
+        <a href="deleteCourse.jsp">Edit or Delete Course</a><br>
         </div>
     </div>
     </body>

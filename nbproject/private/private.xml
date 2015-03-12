@@ -3,29 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/deleteStudent.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/adminStyle.css</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/updateStudent.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcome.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdateStudent.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/insertProfessor.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ServletWeb.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/DeleteProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/header.jsp</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/index.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/js/webValidation.js</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListProfessor.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeProfessor.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/error.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/style.css</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/updateProfessor.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/ProfessorDAO.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/deleteProfessor.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdateProfessor.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/StudentDAO.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allProfessors.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/insertStudent.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allStudents.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeAdmin.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/js/showContent.js</file>
         </group>
     </open-files>
 </project-private>

@@ -17,12 +17,26 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 public class VerifyCourseNew {
-    public static ArrayList<Course> execute(ArrayList<Course> listAllTaken) throws SQLException{
+    public static ArrayList<String> execute(ArrayList<Course> listAllTaken) throws SQLException{
+        ArrayList<String> idCourseNew = new ArrayList<>();
+        ArrayList<String> idAllCourses = new ArrayList<>();
+        ArrayList<String> idAllTaken = new ArrayList<>();
+        
         ArrayList<Course> listAllCourses = CourseDAO.getAll();
-       if(listAllTaken.removeAll(listAllCourses)){
-            return listAllTaken;
+      for(int i=0; i<listAllCourses.size();i++){
+          idAllCourses.add(listAllCourses.get(i).getID());
+      }
+      for(int j=0; j<listAllTaken.size();j++){
+          idAllTaken.add(listAllTaken.get(j).getID());
+      }
+       idAllCourses.removeAll(idAllTaken);
+      for(int k=0; k<idAllCourses.size();k++){
+          idCourseNew.add(idAllCourses.get(k));
+      }
+      
+      
+       return idCourseNew;
        }
-       return listAllCourses;
     }
     
-}
+

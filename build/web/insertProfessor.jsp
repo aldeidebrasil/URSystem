@@ -26,7 +26,11 @@
             <p>Password:</p> 
             <input type="password" name="password" id="password" size="30" style="line-height: 40px; font-size: 20px;">
             <p>Title:</p> 
-            <input type="text" name="title" id="title" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
+           <select name="title">
+                <option value="Doctor">Doctor</option>
+                <option value="Master">Master</option>
+                
+           </select><br><br>
             <button type="button" onClick="validateInsertProfessor()">Insert Professor</button>
 	</form> 
             </div>

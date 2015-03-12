@@ -7,6 +7,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -77,7 +80,11 @@ public class ServletWeb extends HttpServlet {
         else if(action.equals("SeeStudents"))
             jsp = SeeStudents.execute(request);
       else if(action.equals("AddCourseStudent"))
-            jsp = AddCourseStudent.execute(request);
+           try {
+               jsp = AddCourseStudent.execute(request);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+        }
      else if(action.equals("Logout"))
             jsp = Logout.execute(request);
        else if(action.equals("EditCourse"))
