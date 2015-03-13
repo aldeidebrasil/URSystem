@@ -5,9 +5,14 @@
  */
 package controller;
 
+import controller.vo.Course;
+import controller.vo.Student;
 import controller.vo.StudentxCourse;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
+import model.CourseDAO;
+import model.StudentDAO;
 import model.StudentxCourseDAO;
 
 /**
@@ -15,16 +20,22 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 class ListCoursesStudent {
-     public static String execute(HttpServletRequest request, Integer idTerm) {
+     public static String execute(HttpServletRequest request) {
         String jsp = "";
         Integer idStudent = Integer.parseInt(request.getParameter("IdStudent"));
-        String idCourse = request.getParameter("rd");
-         System.out.println(idTerm);
-      /*  try {
-            ArrayList<StudentxCourse> listSemester = StudentxCourseDAO.getBySemester(idTerm, idStudent);
-            if(listSemester != null){
-                request.setAttribute("listSemester", listSemester);
-                jsp = "/welcomeStudent.jsp?";    
+        String year = ""+Calendar.getInstance().get(Calendar.YEAR);
+        try {
+            ArrayList<StudentxCourse> listCoursesStudent = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), idStudent, year);
+            ArrayList<Course> listCourses = new ArrayList<>();
+            Student student = StudentDAO.getById(idStudent);
+            if(listCoursesStudent != null){
+                for(int i=0; i<listCoursesStudent.size(); i++){
+                    Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
+                    listCourses.add(course);
+                }
+                request.setAttribute("student", student);
+                request.setAttribute("listCourses", listCourses);
+                jsp = "/listCourseStudent.jsp";    
             }else{
                 String erro="There is no courses to show!";
                 request.setAttribute("error", erro);
@@ -34,7 +45,7 @@ class ListCoursesStudent {
         } catch (Exception e) {
             e.printStackTrace();
             jsp = "";
-        }*/
+        }
         return jsp;
     }
     

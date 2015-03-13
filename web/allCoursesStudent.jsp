@@ -67,6 +67,5 @@
                 }
             %>
         </table>
-        <a href="welcomeStudent.jsp">Home</a>
         </body>
 </html>

@@ -19,7 +19,6 @@
     ArrayList<Course> listAllTaken = (ArrayList<Course>) request.getAttribute("listAllTaken");
     ArrayList<Course> listNew = (ArrayList<Course>) request.getAttribute("listNew");
     ArrayList<Course> listTerm = (ArrayList<Course>) request.getAttribute("listTerm");
-
 %>
 <html>
     <head>
@@ -79,8 +78,7 @@
                 <%}}} else{%>
                     No courses to show.
                 <% }%>
-                <a href="addCourse.jsp">Add Course</a><br>
-                <a href="deleteCourse.jsp">Drop Course</a><br><br>
+                <a href="/URSystem/servletweb?action=ListCoursesStudent&IdStudent=<%=student.getID()%>">Drop Course</a><br><br>
                 <!-- <h2>Courses you have taken: </h2>
                 for (int i=0; i< studentxcourse.size(); i++) {%>
                 studentxcourse.get(i).getIdCourse() %> - courseTaken.get(i).getName()%> - courseTaken.get(i).getTerm() %><br>

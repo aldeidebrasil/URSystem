@@ -71,7 +71,7 @@ public class ServletWeb extends HttpServlet {
             jsp = EditPasswordStudent.execute(request);
         else if(action.equals("UpdatePasswordStudent"))
             jsp = UpdatePasswordStudent.execute(request);
-         else if(action.equals("SeeInformationProfessor"))
+        else if(action.equals("SeeInformationProfessor"))
             jsp = SeeInformationProfessor.execute(request);
         else if(action.equals("EditPasswordProfessor"))
             jsp = EditPasswordProfessor.execute(request);
@@ -79,13 +79,17 @@ public class ServletWeb extends HttpServlet {
             jsp = UpdatePasswordProfessor.execute(request);
         else if(action.equals("SeeStudents"))
             jsp = SeeStudents.execute(request);
-      else if(action.equals("AddCourseStudent"))
+        else if(action.equals("AddCourseStudent"))
            try {
                jsp = AddCourseStudent.execute(request);
         } catch (SQLException ex) {
             Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
         }
-     else if(action.equals("Logout"))
+        else if(action.equals("ListCoursesStudent"))
+            jsp = ListCoursesStudent.execute(request);
+        else if(action.equals("DropCourseStudent"))
+            jsp = DropCourseStudent.execute(request);
+        else if(action.equals("Logout"))
             jsp = Logout.execute(request);
        else if(action.equals("EditCourse"))
             jsp = EditCourse.execute(request);

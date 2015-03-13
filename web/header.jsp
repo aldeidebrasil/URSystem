@@ -13,7 +13,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        HEADER
-         <a href="/URSystem/servletweb?action=Logout">Logout</a>
+        <div class="header"> 
+            <img src="images/banner.png">
+            <a href="/URSystem/servletweb?action=Logout">Logout</a>
+        </div>
     </body>
 </html>

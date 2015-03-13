@@ -36,6 +36,25 @@ public class StudentxCourseDAO {
             return false;
         }
     }
+     public static boolean delete(StudentxCourse studentxcourse) {
+         System.out.println(studentxcourse.getIdStudent());
+         System.out.println(studentxcourse.getIdCourse());
+           
+         try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "DELETE FROM studentxcourse WHERE idCourse = ? AND idStudent = ?");
+            pstmt.setString(1, studentxcourse.getIdCourse());
+            pstmt.setInt(2, studentxcourse.getIdStudent());
+            System.out.println(studentxcourse.getIdStudent());
+            System.out.println(studentxcourse.getIdCourse());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
   
     public static ArrayList<StudentxCourse> getByIdCourse(String Id) {
         try {
@@ -60,6 +79,30 @@ public class StudentxCourseDAO {
             rs.close();
             pstmt.close();
             return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static StudentxCourse getByIdCourseStudent(String Id, int IdStudent) {
+        try {
+            StudentxCourse studentxcourse = null;
+                        
+            pstmt = Connection.getConnection().prepareStatement(
+                     "SELECT * FROM studentxcourse WHERE idCourse = ? AND idStudent = ?");
+            pstmt.setString(1, Id);
+            pstmt.setInt(2, IdStudent);
+            rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                                    
+                studentxcourse = new StudentxCourse();
+                studentxcourse.setIdCourse(rs.getString("idCourse"));
+                studentxcourse.setIdStudent(rs.getInt("idStudent"));
+                studentxcourse.setYear(rs.getString("year"));
+                studentxcourse.setIdTerm(rs.getInt("idTerm"));
+            }   
+            return studentxcourse;
        } catch (Exception e) {
             e.printStackTrace();
         }
