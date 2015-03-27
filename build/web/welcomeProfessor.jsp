@@ -25,53 +25,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="css/professorStyle.css" type="text/css" rel="stylesheet"/>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-          <script type="text/javascript" language="JavaScript" src="js/professorJS.js"></script>
-      
-        <title>URS</title>
-        <script>
-           function showHideDiv(id){
-  var obj = document.getElementById(id);
-      if (obj.style.display=="none"){
-      obj.style.display='block';
-       
-    } else if(obj.style.display=="block"){
-      obj.style.display='none';
-      
-      
-        }
-}
-        </script>
-
-    </head>
+        <script type="text/javascript" language="JavaScript" src="js/professorJS.js"></script>
+        <title>Home - Professor</title>
+ </head>
     <body>
-        <div class="header"></div>
-        <div class="content">
-        <h2>Welcome, <%=professor.getTitle()%>&nbsp<%=professor.getLname()%>! </h2>
-        <div class="profile">
-            <img src="images/noPhoto.png" width="100px" height="100px" ><br>
-            Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>
-            Title: <%=professor.getTitle() %><br>
-            <a href="/URSystem/servletweb?action=EditPasswordProfessor&IdProfessor=<%=professor.getID()%>">Change Password</a><br>
-        
+     <div class="header">
+            <%@include file="header.jsp" %>
         </div>
-        <div class="actions">
-            <form name="frmSeeStudents" method='post'>
-             <h2>Your Courses:</h2> 
-             <p>Click in the options bellow to see information about the course.</p>
-             <% for (int i=0; i< listCoursesTaught.size(); i++) {
-            if(listCoursesTaught.get(i).getStatus().equals("open")){%>
-            <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%><br>
-            <div id="all<%=i%>" style="display: none;">
-                <% for (int j=0; j<mapStudent.size(); j++){ %>
-                <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> <br>   
-                <%} %>
-                
-            
+        <div class="content">
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
             </div>
-            <% }} %><br>
-            <button type="button" onclick="validateSeeStudents()">See Details</button>
-       </form>
+             <h2>Welcome, <%=professor.getTitle()%>&nbsp<%=professor.getLname()%>! </h2>
+            <div class="profile">
+                <img src="images/noPhoto.png" width="100px" height="100px" ><br>
+                Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>
+                Title: <%=professor.getTitle() %><br>
+                <a href="/URSystem/servletweb?action=EditPasswordProfessor&IdProfessor=<%=professor.getID()%>">Change Password</a><br>
+            </div>
+            <div class="actions">
+                <form name="frmSeeStudents" method='post'>
+                <h2>Your Courses:</h2> 
+                <p>Click in the options bellow to see information about the course.</p>
+                <% for (int i=0; i< listCoursesTaught.size(); i++) {
+                    if(listCoursesTaught.get(i).getStatus().equals("open")){%>  
+                    <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%><br>
+                    <div id="all<%=i%>" style="display: none;">
+                        <table class="mapStudent"><tr><th>Students</th><th>Major</th></tr>
+                        <% for (int j=0; j<mapStudent.size(); j++){ %>
+                        <tr><td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
+                        <%} %>
+                        </table>
+                    </div>
+                <% }} %><br>
+                </form>
+            </div>
         </div>      
         <div class="footer">
         </div>

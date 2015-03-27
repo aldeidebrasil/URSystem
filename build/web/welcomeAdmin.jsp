@@ -14,8 +14,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <div class="content">
-        <div class="welcome">
+   <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
+        <div class="content">
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+             <div class="welcome">
         <p>Welcome, Admin!</p>
         </div>
         <div class="adminStudent">

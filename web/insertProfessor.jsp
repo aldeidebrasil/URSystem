@@ -15,8 +15,14 @@
     
     </head>
     <body>
+      <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-        <form name="frmInsertProfessor" method='post' >
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+          <form name="frmInsertProfessor" method='post' >
             <p>ID:</p> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
             <p>First Name:</p> 

@@ -17,8 +17,13 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        
+        <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
         <form name="frmUpdatePasswordStudent" method='post'>
             <table style="border: 2px black solid">
                   

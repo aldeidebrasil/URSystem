@@ -31,9 +31,14 @@
         <title>Home - Professor</title>
  </head>
     <body>
-        <div class="header"></div>
+     <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-            <h2>Welcome, <%=professor.getTitle()%>&nbsp<%=professor.getLname()%>! </h2>
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+             <h2>Welcome, <%=professor.getTitle()%>&nbsp<%=professor.getLname()%>! </h2>
             <div class="profile">
                 <img src="images/noPhoto.png" width="100px" height="100px" ><br>
                 Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>

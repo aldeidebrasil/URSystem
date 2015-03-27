@@ -17,8 +17,13 @@
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
     </head>
     <body>
-        
+        <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
         <form name="frmUpdateProfessor" method='post'>
             <table style="border: 2px black solid">
                   

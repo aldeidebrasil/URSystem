@@ -8,6 +8,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,8 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import model.Connection;
-
 /**
  *
  * @author Aldeide Brasil
@@ -69,8 +71,16 @@ public class ServletWeb extends HttpServlet {
             jsp = SeeInformationStudent.execute(request);
         else if(action.equals("EditPasswordStudent"))
             jsp = EditPasswordStudent.execute(request);
-        else if(action.equals("UpdatePasswordStudent"))
+        else if(action.equals("UpdatePasswordStudent")){
             jsp = UpdatePasswordStudent.execute(request);
+            if(jsp.equals("OK")){
+                try {
+                    jsp = OpenStudent.executeAlert(request, request.getSession(),"OK");
+                } catch (SQLException ex) {
+                    Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         else if(action.equals("SeeInformationProfessor"))
             jsp = SeeInformationProfessor.execute(request);
         else if(action.equals("EditPasswordProfessor"))
@@ -80,8 +90,8 @@ public class ServletWeb extends HttpServlet {
         else if(action.equals("SeeStudents"))
             jsp = SeeStudents.execute(request);
         else if(action.equals("AddCourseStudent"))
-           try {
-               jsp = AddCourseStudent.execute(request);
+          try {
+              jsp = AddCourseStudent.execute(request);
         } catch (SQLException ex) {
             Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,7 +107,15 @@ public class ServletWeb extends HttpServlet {
             jsp = DeleteCourse.execute(request);
         else if(action.equals("UpdateCourse"))
             jsp = UpdateCourse.execute(request);
+        else if(action.equals("OpenStudent")){
+            try {
+                jsp = OpenStudent.execute(request, request.getSession());
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+            }
            
+        }
+            
         
         //
         //Redirecionando pagina

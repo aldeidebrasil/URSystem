@@ -23,3 +23,15 @@ function showHideDiv(id,id2,id3,id4){
       obj4.style.display='none';
         }
 }
+function showNewPassword(id,id2){
+  var obj = document.getElementById(id);
+  var obj2 = document.getElementById(id2);
+    if (obj.style.display=="none"){
+      obj.style.display='block';
+      obj.style.height = '100px';
+      obj2.style.display='none';
+    } else if(obj.style.display=="block"){
+      obj.style.display='none';
+      obj2.style.display='block';
+        }
+}

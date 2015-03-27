@@ -25,9 +25,14 @@
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
     </head>
     <body>
-        
+       <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-        <form name="frmUpdateCourse" method='post'>
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+         <form name="frmUpdateCourse" method='post'>
             <table style="border: 2px black solid">
                   
             <tr ><th>ID</th>

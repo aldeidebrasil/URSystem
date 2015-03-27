@@ -189,6 +189,32 @@ public class CourseDAO {
         }
         return null;
     }
-    
+    public static Course prerequisite(String IdCourse){
+        try{
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE prerequisite = ?");
+            pstmt.setString(1, IdCourse);
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                    course.setID(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setDepartment(rs.getString("department"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setIdTerm(rs.getInt("idTerm"));
+                    course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
+                    
+                }
+            rs.close();
+            pstmt.close();
+            return course;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 

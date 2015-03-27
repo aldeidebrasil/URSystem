@@ -22,8 +22,14 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+       <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-        <table style="border: 2px black solid">
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+         <table style="border: 2px black solid">
             <tr ><th>Course ID</th>
                 <th>Course Name</th>
                 <th>Department</th>

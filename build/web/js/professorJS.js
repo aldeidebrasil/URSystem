@@ -4,18 +4,12 @@
  * and open the template in the editor.
  */
 
-function validateSeeStudents(){    
-    var frm = document.frmSeeStudents;
-    var rd = frm.rd.value;
-    if(rd == ""){
-        alert("Please, fill out the field ID!");
-        frm.rd.focus();
-        return false;
-     }else{
-        url = "/URSystem/servletweb?action=SeeStudents";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
-        return true;
-     }      
- }
+function showHideDiv(id){
+    var obj = document.getElementById(id);
+    if (obj.style.display=="none"){
+        obj.style.display='block';
+    } else if(obj.style.display=="block"){
+        obj.style.display='none';
+    }
+}
 

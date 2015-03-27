@@ -4,8 +4,14 @@
     Author     : Aldeide Brasil
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="controller.vo.Student"%>
 <% Student student = (Student)request.getAttribute("student");
+    DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY HH:mm");
+    Date date = new Date();
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -16,8 +22,24 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+      <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-            Password changed successfully.
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+            <p>Today is <%=dateFormat.format(date)%></p>
+            <h2>Welcome, <%=student.getFname()%>!</h2>
+            <!--Show Information -->
+            <div class="profile">
+                <img src="images/noPhoto.png" width="150px" height="150px" ><br>
+                <p><b><%=student.getFname()%>&nbsp;<%=student.getLname()%></b></p>
+                <p><b>Major:</b> <%=student.getMajor()%></p>
+                <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=student.getID()%>">Change Password</a><br>
+            </div> <div class="actions">
+    
+         Password changed successfully.
             <br><br>
             <table style="border: 2px black solid">
                   
@@ -46,6 +68,7 @@
             </td>
             </tr>
             </table> 
-        </div>     
+        </div><a href="/URSystem/servletweb?action=OpenStudent">Home</a></div>
+       
     </body>
 </html>

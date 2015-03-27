@@ -20,9 +20,14 @@ listCourseId = CourseDAO.getAllId();
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        
+     <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-        <form name="frmDeleteCourse" method='post'>
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+           <form name="frmDeleteCourse" method='post'>
             <p>ID:</p> 
             <select name='id'>                                
                                 <%

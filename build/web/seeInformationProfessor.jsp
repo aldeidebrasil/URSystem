@@ -18,8 +18,14 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+      <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-            Password changed successfully.
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+              Password changed successfully.
             <br><br>
             <table style="border: 2px black solid">
                   

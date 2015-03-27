@@ -15,7 +15,6 @@
     <body>
         <div class="header"> 
             <img src="images/banner.png">
-            <a href="/URSystem/servletweb?action=Logout">Logout</a>
         </div>
     </body>
 </html>

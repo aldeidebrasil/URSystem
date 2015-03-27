@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Student;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JOptionPane;
 import model.StudentDAO;
 
 /**
@@ -23,8 +24,10 @@ public class UpdatePasswordStudent {
             Student student = StudentDAO.getById(id);
             student.setPassword(password);
             Boolean update = StudentDAO.updatePassword(student,password);
-            if(update!=false)
-                jsp = SeeInformationStudent.execute(request);
+            if(update!=false){
+                jsp = "OK";
+            }
+               // jsp = SeeInformationStudent.execute(request);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
@@ -33,7 +36,7 @@ public class UpdatePasswordStudent {
             
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+           jsp = "";
         }
         return jsp;
     }

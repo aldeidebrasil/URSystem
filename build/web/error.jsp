@@ -21,9 +21,14 @@ error = (String)request.getAttribute("error");
         <title>URSystemn</title>
     </head>
     <body>
-        
+   <div class="header">
+            <%@include file="header.jsp" %>
+        </div>
         <div class="content">
-        <h2><%=error%></h2>
+            <div class="logout">
+                <a href="/URSystem/servletweb?action=Logout">Logout</a>
+            </div>
+             <h2><%=error%></h2>
         </div>
         </body>
 </html>
