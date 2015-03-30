@@ -45,8 +45,13 @@ public class ServletWeb extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action.equals("Login"))            
+        if(action.equals("Login"))   {         
             jsp = Login.execute(request);
+        if(jsp.equals("notFound")){
+            request.setAttribute("ok", "notFound");
+            jsp="/index.jsp";
+        }
+        }
         else if(action.equals("InsertStudent"))
             jsp = InsertStudent.execute(request);
         else if(action.equals("DeleteStudent"))
@@ -99,6 +104,14 @@ public class ServletWeb extends HttpServlet {
             jsp = ListCoursesStudent.execute(request);
         else if(action.equals("DropCourseStudent"))
             jsp = DropCourseStudent.execute(request);
+        else if(action.equals("ListAllCoursesStudent"))
+            jsp = ListAllCoursesStudent.execute(request);
+         else if(action.equals("BillingInformation"))
+            try {
+                jsp = BillingInformation.execute(request);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+        }
         else if(action.equals("Logout"))
             jsp = Logout.execute(request);
        else if(action.equals("EditCourse"))

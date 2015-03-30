@@ -363,8 +363,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdatePasswordStudent&IdStudent="+id;  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[1].action = url;  
+        window.document.forms[1].submit();
         return true;
      }      
  }

@@ -15,37 +15,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
-   
+   ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
+   Double bill = (Double)request.getAttribute("billing");
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>All Course</title>
+        <title>Billing Information</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
         <div class="header">
             <%@include file="header.jsp" %>
         </div>
-        <div class="content">
+       <div class="content">
            <%@include file="profile.jsp"%>
-     <div class="actions2">
-    <% if(!listCourse.isEmpty()){ %>
-            <table style="border: 2px black solid">
-             <tr class="headTable"><th>ID</th>
+            <div class="actions2">
+     
+       <form name="frmDropCourse" method='post'>
+      <table style="border: 2px black solid">
+            <tr class="headTable"><th>ID</th>
                 <th>Course</th>
                 <th>Department</th>
-                <th>Prerequisites</th>
                 <th>Value</th>
-                <th>Term</th>
-                <th>Status</th>
-                <th>Year</th>
+                
                 
                 
             </tr>
-             <%
-                for (int i = 0; i < listCourse.size(); i++) {
+            <% int i=0;
+                for (i = 0; i < listCourse.size(); i++) {
                     if(i%2==0){
             %>
             <tr class="even">
@@ -61,30 +59,25 @@
             <td>
                 <%=listCourse.get(i).getDepartment() %> 
             </td>
-            <td>
-              <% if (listCourse.get(i).getPrerequisite()==null){ %>None <% }else{ %>
-                 <%=listCourse.get(i).getPrerequisite()%>
-              <% }%>
-            </td>
             <td>           
                 <%=listCourse.get(i).getValue()%>
             </td>
-            <td>           
-                <%=listCourse.get(i).getIdTerm()%>
-            </td>
-            <td>           
-                <%=listCourse.get(i).getStatus()%>
-            </td>
-            <td>           
-                <%=listCourse.get(i).getYear()%>
-            </td>
             </tr>
             <%
-                }
+                } if(i%2==0){
             %>
-            </table><% } else{ %><h2>You do not have previous courses to show.</h2> <% } %></div></div>
-            <div class="footer">
+            <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %><th colspan="3">Total</th>
+                <td><%=bill%></td>
+                </tr>
+            </table><br>
+          
+            </div>
+       </div>
+       <div class="footer">
             <%@include file="footer.jsp" %>
         </div>
-        </body>
+   </body>
 </html>

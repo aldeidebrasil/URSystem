@@ -27,7 +27,7 @@ public class AdminDAO {
             rs = pstmt.executeQuery();
             if(rs.next()){
                 adm = new Admin();
-                adm.setID(rs.getInt("id"));
+                adm.setID(rs.getString("id"));
                 adm.setPassword(rs.getString("password"));
             }
             return adm;

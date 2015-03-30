@@ -28,6 +28,7 @@ public class DropCourseStudent {
             System.out.println(delete);
             if(delete != false){
                 jsp = ListCoursesStudent.execute(request);
+                
             }else{
                 String erro = "An error occurred!";
                 request.setAttribute("error", erro);

@@ -18,7 +18,7 @@ body{
    
 }
 .footer{
- width: 1350px;
+    width: 1350px;
     height: 80px;
      margin-left: 250px;
      background-color: #003366;
@@ -29,6 +29,7 @@ body{
     color: white;
     text-align: center;
     font-size: 14px;
+    position: absolute;
    }
 .blackboard{
     background-color: #f6f6f6;
@@ -71,6 +72,7 @@ body{
 .content{
     background-color: white;
     margin-left: 250px;
+    height: fit-content;
     width: 1350px;
     padding: 50px;
 }
@@ -100,15 +102,38 @@ input[type="text"], [type="password"]{
 }
 .actions{
     width: 500px;
-    position: absolute;
+    position: relative;
     margin-left: 450px;
     margin-top: -580px;
     
 }
+
 .moreActions{
-    width: 500px;
-    margin-top: -550px;
-    margin-left: 1070px;
-    position: absolute;
+    margin-left:1000px;
+    margin-top:-356px;
+    position:absolute;
+     width:500px;
     
 }
+.actions2{
+    width: 1000px;
+    position: absolute;
+    margin-left: 350px;
+    margin-top: -520px;
+    text-align: center;
+}
+.even{
+    background-color:#66CCFF;
+    height: 40px;
+
+}
+.headTable{
+    background-color: #003366;
+    color: white;
+   
+}
+.headTable th{
+    width: 100px;
+    height: 40px;
+}
+

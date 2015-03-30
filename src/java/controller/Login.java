@@ -43,9 +43,9 @@ public class Login {
                     try{
                     adm = admDAO.getAdminLogin(login,password);
                     if(adm == null){
-                        error="User not found!";
-                        request.setAttribute("error", error);
-                        jsp = "/error.jsp";
+                       // error="User not found!";
+                      //  request.setAttribute("error", error);
+                        jsp = "notFound";
                     }else{
                         session.setAttribute("userid",adm.getID());
                         jsp = "/welcomeAdmin.jsp";

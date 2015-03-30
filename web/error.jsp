@@ -15,20 +15,23 @@ error = (String)request.getAttribute("error");
 %>
 
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>All Course</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-        <title>URSystemn</title>
     </head>
     <body>
-   <div class="header">
+        <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
+           <%@include file="profile.jsp"%>
+     <div class="actions2">
              <h2><%=error%></h2>
         </div>
-        </body>
+        </div>
+        <div class="footer">
+            <%@include file="footer.jsp" %>
+        </div>
+     </body>
 </html>

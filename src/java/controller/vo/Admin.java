@@ -10,14 +10,14 @@ package controller.vo;
  * @author Aldeide Brasil
  */
 public class Admin {
-    private Integer ID;
+    private String ID;
     private String password;
 
-    public Integer getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

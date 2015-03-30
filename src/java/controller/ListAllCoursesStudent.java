@@ -19,24 +19,25 @@ import model.StudentxCourseDAO;
  *
  * @author Aldeide Brasil
  */
-class ListCoursesStudent {
+public class ListAllCoursesStudent {
      public static String execute(HttpServletRequest request) {
         String jsp = "";
         Integer idStudent = Integer.parseInt(request.getParameter("IdStudent"));
         String year = ""+Calendar.getInstance().get(Calendar.YEAR);
         try {
-            ArrayList<StudentxCourse> listCoursesStudent = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), idStudent, year);
-            ArrayList<Course> listCourses = new ArrayList<>();
+            ArrayList<StudentxCourse> listCoursesStudent = StudentxCourseDAO.getByIdStudent(idStudent);
+            ArrayList<Course> listCourse = new ArrayList<>();
             Student student = StudentDAO.getById(idStudent);
             if(listCoursesStudent != null){
                 for(int i=0; i<listCoursesStudent.size(); i++){
-                    Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
-                    listCourses.add(course);
-                    
+                    if(!listCoursesStudent.get(i).getYear().equals(year)){
+                        Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
+                        listCourse.add(course);
+                    }
                 }
                 request.setAttribute("student", student);
-                request.setAttribute("listCourses", listCourses);
-                jsp = "/listCourseStudent.jsp";    
+                request.setAttribute("listCourse", listCourse);
+                jsp = "/allCoursesStudent.jsp";    
                 
             }else{
                 String erro="There is no courses to show!";
@@ -50,5 +51,4 @@ class ListCoursesStudent {
         }
         return jsp;
     }
-    
 }
