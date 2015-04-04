@@ -19,15 +19,12 @@ listProfessorId = ProfessorDAO.getAllId();
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body>
-      <div class="header">
+    <body><div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-          <form name="frmDeleteProfessor" method='post'>
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions"> <form name="frmDeleteProfessor" method='post'>
             <p>ID:</p> 
             <select name='id'>                                
                                 <%
@@ -44,6 +41,9 @@ listProfessorId = ProfessorDAO.getAllId();
             <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
             <button type="button" onClick="validateEditProfessor()">Edit Professor</button>
 	</form> 
-        </div>
+        </div></div>
+               <div class="footer">
+            <%@include file="footer.jsp" %>
+        </div>              
     </body>
 </html>

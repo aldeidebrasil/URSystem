@@ -82,7 +82,7 @@
                 <tr class="odd"> 
                 <% } %>
                 <td>
-                <input type="radio" id="id" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
+                <input type="radio" id="id" name="rd" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
             </td>
             <td>    
                 <%=listCourses.get(i).getName()%>

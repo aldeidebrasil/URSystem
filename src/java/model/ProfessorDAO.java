@@ -177,7 +177,7 @@ public static ArrayList<Integer> getAllId() throws SQLException {
              pstmt = Connection.getConnection().prepareStatement(
                     "UPDATE PROFESSOR SET password=? WHERE id = ?");
             
-            pstmt.setString(1, professor.getPassword());
+            pstmt.setString(1, password);
             pstmt.setInt(2, professor.getID());
             pstmt.executeUpdate();
             pstmt.close();

@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Professor;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.ProfessorDAO;
 
 /**
@@ -14,7 +15,7 @@ import model.ProfessorDAO;
  * @author Aldeide Brasil
  */
 public class DeleteProfessor {
-    public static String execute(HttpServletRequest request) {
+    public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
         try {
 
@@ -22,7 +23,7 @@ public class DeleteProfessor {
             Professor professor = ProfessorDAO.getById(Integer.parseInt(id));                            
             boolean delete = ProfessorDAO.delete(professor);
             if(delete != false){
-                jsp = ListProfessor.execute(request);
+                jsp = ListProfessor.execute(request, session);
             }else{
                 String erro = "An error occurred!";
                 request.setAttribute("error", erro);
@@ -34,4 +35,5 @@ public class DeleteProfessor {
         }
         return jsp;
     }
+
 }

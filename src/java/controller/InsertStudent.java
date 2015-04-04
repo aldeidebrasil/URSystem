@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Student;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.StudentDAO;
 
 /**
@@ -15,7 +16,7 @@ import model.StudentDAO;
  */
 public class InsertStudent {
 
-    static String execute(HttpServletRequest request) {        
+    static String execute(HttpServletRequest request, HttpSession session) {        
         
         String error="";        
         String jsp=""; 
@@ -35,7 +36,7 @@ public class InsertStudent {
                     
             Boolean create = StudentDAO.create(student);
             if(create != false){
-                jsp = ListStudents.execute(request);
+                jsp = ListStudents.execute(request, session);
                
             }else{
                 String erro = "ERROR!";
@@ -49,5 +50,6 @@ public class InsertStudent {
         return jsp;
     
 }
+
     
 }

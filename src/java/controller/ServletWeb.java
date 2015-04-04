@@ -45,33 +45,97 @@ public class ServletWeb extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String action = request.getParameter("action");
+        //Login
         if(action.equals("Login"))   {         
             jsp = Login.execute(request);
-        if(jsp.equals("notFound")){
-            request.setAttribute("ok", "notFound");
-            jsp="/index.jsp";
+            if(jsp.equals("notFound")){
+                request.setAttribute("ok", "notFound");
+                jsp="/index.jsp";
+            }
         }
-        }
+        //Admin Action
+         else if(action.equals("OpenPage")){
+            jsp = OpenPage.execute(request, request.getSession());
+            
+            
+         }
         else if(action.equals("InsertStudent"))
-            jsp = InsertStudent.execute(request);
+            jsp = InsertStudent.execute(request, request.getSession());
         else if(action.equals("DeleteStudent"))
-            jsp = DeleteStudent.execute(request);
+            jsp = DeleteStudent.execute(request, request.getSession());
         else if(action.equals("EditStudent"))
-            jsp = EditStudent.execute(request);
+            jsp = EditStudent.execute(request, request.getSession());
         else if(action.equals("UpdateStudent"))
-            jsp = UpdateStudent.execute(request);
+            jsp = UpdateStudent.execute(request, request.getSession());
         else if(action.equals("InsertProfessor"))
-            jsp = InsertProfessor.execute(request);
+            jsp = InsertProfessor.execute(request, request.getSession());
         else if(action.equals("DeleteProfessor"))
-            jsp = DeleteProfessor.execute(request);
+            jsp = DeleteProfessor.execute(request, request.getSession());
         else if(action.equals("EditProfessor"))
-            jsp = EditProfessor.execute(request);
+            jsp = EditProfessor.execute(request, request.getSession());
         else if(action.equals("UpdateProfessor"))
-            jsp = UpdateProfessor.execute(request);
+            jsp = UpdateProfessor.execute(request, request.getSession());
         else if(action.equals("InsertCourse"))
-            jsp = InsertCourse.execute(request);
+            jsp = InsertCourse.execute(request, request.getSession());
+        else if(action.equals("EditCourse"))
+            jsp = EditCourse.execute(request, request.getSession());
+        else if(action.equals("DeleteCourse"))
+            jsp = DeleteCourse.execute(request, request.getSession());
+        else if(action.equals("UpdateCourse"))
+            jsp = UpdateCourse.execute(request, request.getSession());
+        else if(action.equals("UpdatePasswordAdmin")){
+            jsp = UpdatePasswordAdmin.execute(request);
+            System.out.println("JSP"+jsp);
+            if(jsp.equals("OK")){
+                try {
+                    jsp = OpenAdmin.executeAlert(request, request.getSession(),"OK");
+                } catch (SQLException ex) {
+                    Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        else if(action.equals("OpenAdmin")){
+            try {
+                jsp = OpenAdmin.execute(request, request.getSession());
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        //Professot
         else if(action.equals("SeeCoursesProfessor"))
             jsp = ListCoursesProfessor.execute(request);
+        else if(action.equals("SeeInformationProfessor"))
+            jsp = SeeInformationProfessor.execute(request);
+        else if(action.equals("EditPasswordProfessor"))
+            jsp = EditPasswordProfessor.execute(request);
+        else if(action.equals("UpdatePasswordProfessor")){
+            jsp = UpdatePasswordProfessor.execute(request);
+            if(jsp.equals("OK")){
+                try {
+                    jsp = OpenProfessor.executeAlert(request, request.getSession(),"OK");
+                } catch (SQLException ex) {
+                    Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        else if(action.equals("OpenProfessor")){
+            try {
+                jsp = OpenProfessor.execute(request, request.getSession());
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        //Student
+        else if(action.equals("OpenStudent")){
+            try {
+                jsp = OpenStudent.execute(request, request.getSession());
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
         else if(action.equals("SeeInformationStudent"))
             jsp = SeeInformationStudent.execute(request);
         else if(action.equals("EditPasswordStudent"))
@@ -86,12 +150,6 @@ public class ServletWeb extends HttpServlet {
                 }
             }
         }
-        else if(action.equals("SeeInformationProfessor"))
-            jsp = SeeInformationProfessor.execute(request);
-        else if(action.equals("EditPasswordProfessor"))
-            jsp = EditPasswordProfessor.execute(request);
-        else if(action.equals("UpdatePasswordProfessor"))
-            jsp = UpdatePasswordProfessor.execute(request);
         else if(action.equals("SeeStudents"))
             jsp = SeeStudents.execute(request);
         else if(action.equals("AddCourseStudent"))
@@ -114,21 +172,9 @@ public class ServletWeb extends HttpServlet {
         }
         else if(action.equals("Logout"))
             jsp = Logout.execute(request);
-       else if(action.equals("EditCourse"))
-            jsp = EditCourse.execute(request);
-        else if(action.equals("DeleteCourse"))
-            jsp = DeleteCourse.execute(request);
-        else if(action.equals("UpdateCourse"))
-            jsp = UpdateCourse.execute(request);
-        else if(action.equals("OpenStudent")){
-            try {
-                jsp = OpenStudent.execute(request, request.getSession());
-            } catch (SQLException ex) {
-                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       
+      
            
-        }
-            
         
         //
         //Redirecionando pagina

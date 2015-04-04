@@ -59,7 +59,40 @@ public class OpenProfessor {
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);
         request.setAttribute("professor", professor);
-        return "welcomeProfessor.jsp";
+        return "/welcomeProfessor.jsp";
+    } 
+     static String executeAlert(HttpServletRequest request, HttpSession session, String confirm) throws SQLException {
+                        
+        Professor prof = ProfessorDAO.getById((int)session.getAttribute("userid"));
+        request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
+        request.setAttribute ("idProfessor", prof.getID());
+                
+        Professor professor = ProfessorDAO.getById(prof.getID());
+        ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor((int)session.getAttribute("userid"));
+        ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
+        for(int i=0; i<professorxcourse.size(); i++){
+             Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
+             listCoursesTaught.add(courseTaught);
+        }
+        Map<Course,ArrayList<Student>> mapStudent = new HashMap();
+           
+        for(int j=0; j<listCoursesTaught.size();j++){
+        ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
+        ArrayList<Student> listStudents = new ArrayList<Student>();
+       if(studentxcourse!=null){
+            for(int i = 0; i < studentxcourse.size(); i++){
+                Student student = StudentDAO.getById(studentxcourse.get(i).getIdStudent());
+                listStudents.add(student);
+            }
+            mapStudent.put(listCoursesTaught.get(j), listStudents);
+            
+           }
+        }
+        request.setAttribute("ok", confirm);
+        request.setAttribute("mapStudent", mapStudent);
+        request.setAttribute("listCoursesTaught", listCoursesTaught);
+        request.setAttribute("professorxcourse", professorxcourse);
+        request.setAttribute("professor", professor);
+        return "/welcomeProfessor.jsp";
     }
-    
 }

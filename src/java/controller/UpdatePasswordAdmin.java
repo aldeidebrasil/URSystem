@@ -5,28 +5,25 @@
  */
 package controller;
 
-import controller.vo.Student;
+import controller.vo.Admin;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
-import model.StudentDAO;
+import model.AdminDAO;
 
 /**
  *
  * @author Aldeide Brasil
  */
-public class UpdatePasswordStudent {
-     public static String execute(HttpServletRequest request) {
+public class UpdatePasswordAdmin {
+    static String execute(HttpServletRequest request){
         String jsp = "";
         try {
             String password = request.getParameter("password");
-            Integer id = Integer.parseInt(request.getParameter("IdStudent"));
-          
-            Student student = StudentDAO.getById(id);
-            Boolean update = StudentDAO.updatePassword(student,password);
-            if(update!=false){
-                jsp = "OK";
-            }
-               // jsp = SeeInformationStudent.execute(request);
+            String id = request.getParameter("IdAdmin");
+            System.out.println("OKKK");
+            Admin admin = AdminDAO.getById(id);
+            Boolean update = AdminDAO.updatePassword(admin,password);
+            if(update!=false)
+                jsp = "OK";    
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
@@ -35,8 +32,10 @@ public class UpdatePasswordStudent {
             
         } catch (Exception e) {
             e.printStackTrace();
-           jsp = "";
+            jsp = "";
         }
         return jsp;
     }
+    
 }
+

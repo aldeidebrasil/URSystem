@@ -75,6 +75,7 @@ body{
     height: fit-content;
     width: 1350px;
     padding: 50px;
+    min-height: 480px;
 }
 .time{
     font-size: 15px;
@@ -105,6 +106,7 @@ input[type="text"], [type="password"]{
     position: relative;
     margin-left: 450px;
     margin-top: -580px;
+    padding:60px;
     
 }
 

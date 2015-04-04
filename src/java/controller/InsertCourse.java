@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Course;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 
 /**
@@ -14,7 +15,7 @@ import model.CourseDAO;
  * @author Aldeide Brasil
  */
 public class InsertCourse {
-    static String execute(HttpServletRequest request) {        
+    static String execute(HttpServletRequest request, HttpSession session) {        
         
         String error="";        
         String jsp=""; 
@@ -40,7 +41,7 @@ public class InsertCourse {
            course.setYear(year);
             Boolean create = CourseDAO.create(course);
             if(create != false){
-                jsp = ListCourses.execute(request);
+                jsp = ListCourses.execute(request, session);
                
             }else{
                 String erro = "ERROR!";

@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Professor;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.ProfessorDAO;
 
 /**
@@ -14,11 +15,11 @@ import model.ProfessorDAO;
  * @author Aldeide Brasil
  */
 public class InsertProfessor {
-    static String execute(HttpServletRequest request) {        
+    static String execute(HttpServletRequest request, HttpSession session) {        
         
         String error="";        
         String jsp=""; 
-        Integer id = Integer.parseInt(request.getParameter("id"));
+         Integer id = Integer.parseInt(request.getParameter("id"));
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
         String password = request.getParameter("password");
@@ -34,7 +35,7 @@ public class InsertProfessor {
                     
             Boolean create = ProfessorDAO.create(professor);
             if(create != false){
-                jsp = ListProfessor.execute(request);
+                jsp = ListProfessor.execute(request, session);
                
             }else{
                 String erro = "ERROR!";
@@ -48,4 +49,6 @@ public class InsertProfessor {
         return jsp;
     
 }
+
+    
 }

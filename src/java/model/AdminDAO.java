@@ -36,5 +36,41 @@ public class AdminDAO {
             return null;
         }        
     }
+     public static Admin getById(String Id) {
+        try {
+            Admin admin = null;
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM admin WHERE id = ?");
+            pstmt.setString(1, Id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                admin = new Admin();
+                admin.setID(rs.getString("id"));
+                admin.setPassword(rs.getString("password"));
+                
+            }
+            rs.close();
+            pstmt.close();
+            return admin;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static boolean updatePassword(Admin admin, String password) {
+        try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "UPDATE admin SET password=? WHERE id = ?");
+            
+            pstmt.setString(1, password);
+            pstmt.setString(2, admin.getID());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     
 }

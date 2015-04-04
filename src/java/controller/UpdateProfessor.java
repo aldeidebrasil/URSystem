@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Professor;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.ProfessorDAO;
 
 /**
@@ -14,7 +15,7 @@ import model.ProfessorDAO;
  * @author Aldeide Brasil
  */
 public class UpdateProfessor {
-     public static String execute(HttpServletRequest request) {
+     public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
         try {
             // 
@@ -32,7 +33,7 @@ public class UpdateProfessor {
             professor.setTitle(title);
             Boolean update = ProfessorDAO.update(professor);
             if(update!=false)
-                jsp = ListProfessor.execute(request);
+                jsp = ListProfessor.execute(request, session);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);

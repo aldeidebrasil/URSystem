@@ -21,15 +21,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>All Course</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-    </head>
-    <div class="header">
+    </head><div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-        <table style="border: 2px black solid">
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions"><table style="border: 2px black solid">
             <tr ><th>ID</th>
                 <th>Course</th>
                 <th>Department</th>
@@ -74,7 +71,10 @@
                 }
             %>
         </table>
-        <a href="welcomeAdmin.jsp">Home</a>
+        </div>
+        </div>
+         <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
 </body>
 </html>

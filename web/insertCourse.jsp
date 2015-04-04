@@ -25,15 +25,12 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     
     </head>
-    <body>
-     <div class="header">
+    <body><div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-           <form name="frmInsertCourse" method='post' >
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions"> <form name="frmInsertCourse" method='post' >
             <p>ID:</p> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
             <p>Name:</p> 
@@ -79,6 +76,9 @@
                             </select>
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
 	</form> 
-            </div>
+            </div></div>
+               <div class="footer">
+            <%@include file="footer.jsp" %>
+        </div> 
     </body>
 </html>

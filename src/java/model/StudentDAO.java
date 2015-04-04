@@ -177,7 +177,7 @@ public class StudentDAO {
              pstmt = Connection.getConnection().prepareStatement(
                     "UPDATE STUDENT SET password=? WHERE id = ?");
             
-            pstmt.setString(1, student.getPassword());
+            pstmt.setString(1, password);
             pstmt.setInt(2, student.getID());
             pstmt.executeUpdate();
             pstmt.close();

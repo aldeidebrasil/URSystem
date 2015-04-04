@@ -5,8 +5,11 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Student;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.StudentDAO;
 
 /**
@@ -14,12 +17,14 @@ import model.StudentDAO;
  * @author Aldeide Brasil
  */
 public class EditStudent {
-      public static String execute(HttpServletRequest request) {
+      public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
         try {
+            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
             Student student = StudentDAO.getById(Integer.parseInt(id));
             if(student != null){
+                request.setAttribute("admin", admin);
                 request.setAttribute("student",student);            
                 jsp = "/updateStudent.jsp";
             }else{
@@ -34,5 +39,7 @@ public class EditStudent {
         }
         return jsp;
     }
+
+    
     
 }

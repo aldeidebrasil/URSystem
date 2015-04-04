@@ -5,9 +5,12 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Professor;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.ProfessorDAO;
 
 /**
@@ -20,6 +23,29 @@ public class ListProfessor {
         try {
             ArrayList<Professor> listProfessor = ProfessorDAO.getAll();
             if(listProfessor != null){
+                request.setAttribute("listProfessor", listProfessor);
+                jsp = "/allProfessors.jsp";    
+            }else{
+                String erro="There is no Professors to show!";
+                request.setAttribute("error", erro);
+                jsp = "/error.jsp";
+            }
+                
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsp = "";
+        }
+        return jsp;
+    }
+
+    static String execute(HttpServletRequest request, HttpSession session) {
+        String jsp = "";
+        try {
+             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+            ArrayList<Professor> listProfessor = ProfessorDAO.getAll();
+            if(listProfessor != null){
+                request.setAttribute("admin", admin);
                 request.setAttribute("listProfessor", listProfessor);
                 jsp = "/allProfessors.jsp";    
             }else{

@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Course;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 
 /**
@@ -14,11 +15,10 @@ import model.CourseDAO;
  * @author Aldeide Brasil
  */
 public class UpdateCourse {
-     public static String execute(HttpServletRequest request) {
+     public static String execute(HttpServletRequest request,HttpSession session) {
         String jsp = "";
         try {
             // 
-            
             String id = request.getParameter("id");
             String name = request.getParameter("name");
             String department = request.getParameter("department");
@@ -39,7 +39,7 @@ public class UpdateCourse {
             course.setYear(year);
             Boolean update = CourseDAO.update(course);
             if(update!=false)
-                jsp = ListCourses.execute(request);
+                jsp = ListCourses.execute(request, session);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);

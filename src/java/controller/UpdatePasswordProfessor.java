@@ -21,10 +21,10 @@ public class UpdatePasswordProfessor {
             Integer id = Integer.parseInt(request.getParameter("IdProfessor"));
           
             Professor professor = ProfessorDAO.getById(id);
-            professor.setPassword(password);
             Boolean update = ProfessorDAO.updatePassword(professor,password);
             if(update!=false)
-                jsp = SeeInformationProfessor.execute(request);
+                jsp = "OK";    
+            //jsp = SeeInformationProfessor.execute(request);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
