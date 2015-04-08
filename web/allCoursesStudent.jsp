@@ -39,7 +39,6 @@
                 <th>Prerequisites</th>
                 <th>Value</th>
                 <th>Term</th>
-                <th>Status</th>
                 <th>Year</th>
                 
                 
@@ -70,10 +69,13 @@
                 <%=listCourse.get(i).getValue()%>
             </td>
             <td>           
-                <%=listCourse.get(i).getIdTerm()%>
-            </td>
-            <td>           
-                <%=listCourse.get(i).getStatus()%>
+                <% if(listCourse.get(i).getIdTerm()==1){%>
+                    Spring
+                <% }else if(listCourse.get(i).getIdTerm()==2){ %>
+                    Fall
+                <% }else if(listCourse.get(i).getIdTerm()==3){ %>
+                    Summer
+                <% } %>
             </td>
             <td>           
                 <%=listCourse.get(i).getYear()%>

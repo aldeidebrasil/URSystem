@@ -5,9 +5,11 @@
  */
 package controller;
 
+import controller.vo.Course;
 import controller.vo.StudentxCourse;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
+import model.CourseDAO;
 import model.StudentxCourseDAO;
 
 /**
@@ -23,10 +25,12 @@ public class DropCourseStudent {
             String id = request.getParameter("IdCourse");
             int idStudent = Integer.parseInt(request.getParameter("IdStudent"));
             StudentxCourse studentxcourse = StudentxCourseDAO.getByIdCourseStudent(id, idStudent);
+            Course course = CourseDAO.getById(id);
            if(studentxcourse!=null){
             boolean delete = StudentxCourseDAO.delete(studentxcourse);
-            System.out.println(delete);
             if(delete != false){
+                course.setStatus("open");
+                CourseDAO.updateStatus(course);
                 jsp = ListCoursesStudent.execute(request);
                 
             }else{

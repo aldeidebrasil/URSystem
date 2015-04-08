@@ -22,7 +22,7 @@ public class VerifyCourseNew {
         ArrayList<String> idAllCourses = new ArrayList<>();
         ArrayList<String> idAllTaken = new ArrayList<>();
         
-        ArrayList<Course> listAllCourses = CourseDAO.getAll();
+        ArrayList<Course> listAllCourses = CourseDAO.getAllOpen();
       for(int i=0; i<listAllCourses.size();i++){
           idAllCourses.add(listAllCourses.get(i).getID());
       }

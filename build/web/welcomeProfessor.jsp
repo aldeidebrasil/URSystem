@@ -14,12 +14,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <%
-    Professor professor = (Professor)request.getAttribute("professor");
-    ArrayList<ProfessorxCourse> professorxcourse =  (ArrayList<ProfessorxCourse>) request.getAttribute("professorxcourse");
     ArrayList<Course> listCoursesTaught =  (ArrayList<Course>) request.getAttribute("listCoursesTaught");
-    ArrayList<Student> student = new ArrayList<Student>();
     Map<Course,ArrayList<Student>> mapStudent = (HashMap<Course, ArrayList<Student>>) request.getAttribute("mapStudent");;
-       
+    String confirm = (String)request.getAttribute("ok");   
 %>    
 
 <html>
@@ -35,17 +32,8 @@
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-             <h2>Welcome, <%=professor.getTitle()%>&nbsp<%=professor.getLname()%>! </h2>
-            <div class="profile">
-                <img src="images/noPhoto.png" width="100px" height="100px" ><br>
-                Name: <%=professor.getFname()%>&nbsp;<%=professor.getLname()%><br>
-                Title: <%=professor.getTitle() %><br>
-                <a href="/URSystem/servletweb?action=EditPasswordProfessor&IdProfessor=<%=professor.getID()%>">Change Password</a><br>
-            </div>
-            <div class="actions">
+             <%@include file="profileProfessor.jsp"%>
+             <div class="actions" style="height: 500px;">
                 <form name="frmSeeStudents" method='post'>
                 <h2>Your Courses:</h2> 
                 <p>Click in the options bellow to see information about the course.</p>
@@ -54,8 +42,15 @@
                     <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%><br>
                     <div id="all<%=i%>" style="display: none;">
                         <table class="mapStudent"><tr><th>Students</th><th>Major</th></tr>
-                        <% for (int j=0; j<mapStudent.size(); j++){ %>
-                        <tr><td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
+                        <% for (int j=0; j<mapStudent.size(); j++){
+                            if(j%2==0){
+                        %>
+                            
+                            <tr class="even">
+                                <% }else{ %>
+                             <tr class="odd">  
+                                 <% } %>
+                                <td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
                         <%} %>
                         </table>
                     </div>
@@ -64,6 +59,10 @@
             </div>
         </div>      
         <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
+        <% if(confirm != null) { confirm = null;%>
+            <script>alert("Password changed successfully");</script>
+        <%} %>
     </body>
 </html>

@@ -16,8 +16,13 @@ public class CalcBilling {
    
     static double execute(ArrayList<Course> listCourse) {
         double bill=0;
-        for(int i=0; i<listCourse.size(); i++){
-            bill+= listCourse.get(i).getValue();
+           for(int i=0; i<listCourse.size(); i++){
+               System.out.println("i"+i);
+               System.out.println("size"+listCourse.size());
+               System.out.println("list"+listCourse.get(i).getID());
+               System.out.println("value"+listCourse.get(i).getValue());
+                bill= bill + listCourse.get(i).getValue();
+                System.out.println(bill);
         }
         return bill;
     }

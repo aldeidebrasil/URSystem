@@ -30,8 +30,10 @@ class ListCoursesStudent {
             Student student = StudentDAO.getById(idStudent);
             if(listCoursesStudent != null){
                 for(int i=0; i<listCoursesStudent.size(); i++){
-                    Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
-                    listCourses.add(course);
+                    Course course = CourseDAO.getByIdStatus(listCoursesStudent.get(i).getIdCourse());
+                    if(course!=null){
+                     listCourses.add(course);
+                    }
                     
                 }
                 request.setAttribute("student", student);

@@ -31,49 +31,65 @@ public class AddCourseStudent {
         String idStudent = request.getParameter("IdStudent");
         Student student = StudentDAO.getById(Integer.parseInt(idStudent));
         request.setAttribute("student", student);
-        StudentxCourse studentxcourse = new StudentxCourse();
-        ArrayList<StudentxCourse> allStudentxcourse = StudentxCourseDAO.getByIdStudent(Integer.parseInt(idStudent));
-        Course courseNew = CourseDAO.getById(idCourse);
-        if(courseNew.getPrerequisite()!= null){
-            for(int i = 0; i<allStudentxcourse.size(); i++){
-                if(allStudentxcourse.get(i).getIdCourse().equals(courseNew.getPrerequisite()) && !allStudentxcourse.get(i).getIdTerm().equals(courseNew.getIdTerm())){
-                    confirm = true;
+        if(VerifyTermDate.execute(VerifyTerm.execute())){
+        if(VerifyStudentxCourse.execute(idCourse)<10){
+            StudentxCourse studentxcourse = new StudentxCourse();
+            ArrayList<StudentxCourse> allStudentxcourse = StudentxCourseDAO.getByIdStudent(Integer.parseInt(idStudent));
+            Course courseNew = CourseDAO.getById(idCourse);
+            if(courseNew.getPrerequisite()!= null){
+                for(int i = 0; i<allStudentxcourse.size(); i++){
+                    if(allStudentxcourse.get(i).getIdCourse().equals(courseNew.getPrerequisite()) && !allStudentxcourse.get(i).getIdTerm().equals(courseNew.getIdTerm())){
+                        confirm = true;
+                    }
+                    System.out.println(confirm);
+
                 }
-                System.out.println(confirm);
-        
             }
-        }
-        if(courseNew.getPrerequisite()== null || confirm == true){
-          try{  
-           studentxcourse.setIdCourse(idCourse);
-           studentxcourse.setIdStudent(Integer.parseInt(idStudent));
-           studentxcourse.setIdTerm(VerifyTerm.execute());
-           studentxcourse.setYear(""+Calendar.getInstance().get(Calendar.YEAR));
-           Boolean create = StudentxCourseDAO.create(studentxcourse);
-            if(create == false){
-                String erro = "ERROR!";
-                request.setAttribute("error", erro);
-               jsp = "/error.jsp";
+            if(courseNew.getPrerequisite()== null || confirm == true){
+              try{  
+               studentxcourse.setIdCourse(idCourse);
+               studentxcourse.setIdStudent(Integer.parseInt(idStudent));
+               studentxcourse.setIdTerm(VerifyTerm.execute());
+               studentxcourse.setYear(""+Calendar.getInstance().get(Calendar.YEAR));
+               Boolean create = StudentxCourseDAO.create(studentxcourse);
+                if(create == false){
+                    String erro = "ERROR!";
+                    request.setAttribute("error", erro);
+                   jsp = "/error.jsp";
+                }else{
+                    if(VerifyStudentxCourse.execute(idCourse)==10){
+                        courseNew.setStatus("full");
+                        CourseDAO.updateStatus(courseNew);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                jsp = "";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsp = "";
-        }
-        String year = ""+Calendar.getInstance().get(Calendar.YEAR);
-        ArrayList<Course> listCourse = new ArrayList<>();
-        ArrayList<StudentxCourse> studentxcourseList = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), Integer.parseInt(idStudent),year);
-        for(int i=0; i<studentxcourseList.size();i++){
-            Course course = CourseDAO.getById(studentxcourseList.get(i).getIdCourse());
-            listCourse.add(course);
-        }
-        
-        
-        request.setAttribute("listCourse", listCourse);
-        return "allCoursesStudent.jsp";
-       }else{
-          String erro = "Sorry! You do not have the prerequisite!<br><br>You have to take "+courseNew.getPrerequisite()+" first.";
-          request.setAttribute("error", erro);
-          jsp = "/error.jsp";
+            String year = ""+Calendar.getInstance().get(Calendar.YEAR);
+            ArrayList<Course> listCourse = new ArrayList<>();
+            ArrayList<StudentxCourse> studentxcourseList = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), Integer.parseInt(idStudent),year);
+            for(int i=0; i<studentxcourseList.size();i++){
+                Course course = CourseDAO.getById(studentxcourseList.get(i).getIdCourse());
+                listCourse.add(course);
+            }
+
+
+            request.setAttribute("listCourse", listCourse);
+            return "allCoursesStudent.jsp";
+           }else{
+              String erro = "Sorry! You do not have the prerequisite!<br><br>You have to take "+courseNew.getPrerequisite()+" first.";
+              request.setAttribute("error", erro);
+              jsp = "/error.jsp";
+            }
+        }else{
+        String erro = "Sorry! This course is full.";
+        request.setAttribute("error", erro);
+        jsp = "/error.jsp";
+    }}else{
+            String erro = "Sorry! You cannot change your schedule anymore.";
+            request.setAttribute("error", erro);
+            jsp = "/error.jsp";
         }
          return jsp;
     }

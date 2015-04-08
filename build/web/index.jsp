@@ -3,7 +3,9 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-
+<% 
+    String confirm = (String)request.getAttribute("ok");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,5 +37,11 @@
         <div class="footer">
             <%@include file="footer.jsp" %>
         </div>
+        <% 
+             System.out.println(confirm);
+        if(confirm != null) {confirm = null; %>
+            <script>alert("User not found");</script>
+            
+        <%} %>
     </body>
 </html>

@@ -30,12 +30,18 @@ public class BillingInformation {
         String year = ""+Calendar.getInstance().get(Calendar.YEAR);
         ArrayList <Course> listCourse = new ArrayList<>();
         ArrayList <StudentxCourse> studentxcourse = StudentxCourseDAO.getBySemester(VerifyTerm.execute(), idStudent, year);
+        
         if(studentxcourse != null){
-            for (int i=0; i<studentxcourse.size(); i++){
-                Course course = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
-                listCourse.add(course);
+            for(int i=0; i<studentxcourse.size(); i++){
+                        Course courseTerm = CourseDAO.getByIdStatus(studentxcourse.get(i).getIdCourse());
+                        if(courseTerm!=null){
+                            listCourse.add(courseTerm);
+                        }
+                
+                }
+            if(listCourse!=null){
+              bill = CalcBilling.execute(listCourse);
             }
-            bill = CalcBilling.execute(listCourse);
             request.setAttribute("student", student);
             request.setAttribute("listCourse", listCourse);
             request.setAttribute("billing", bill);

@@ -23,6 +23,7 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+         
         <h2>Student</h2>
         <a href="/URSystem/servletweb?action=OpenPage&page=insertStudent">Insert Student</a><br>
         <a href="/URSystem/servletweb?action=OpenPage&page=deleteStudent">Edit or Delete Student</a><br>
@@ -34,6 +35,9 @@
         <h2>Course</h2>
         <a href="/URSystem/servletweb?action=OpenPage&page=insertCourse">Insert Course</a><br>
         <a href="/URSystem/servletweb?action=OpenPage&page=deleteCourse">Edit or Delete Course</a><br>
+      
+         <h2>Term</h2>
+        <a href="/URSystem/servletweb?action=OpenPage&page=editTerm">Edit Term</a><br>
         </div>
  </div>
         <div class="footer">

@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.vo.Student;
 import controller.vo.StudentxCourse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -163,6 +164,7 @@ public class StudentxCourseDAO {
         }
         return null;
     }
+    
      public static ArrayList<StudentxCourse> getBySemester(Integer IdTerm, Integer IdStudent, String Year) throws SQLException {
         try {
             ArrayList<StudentxCourse> listAll = null;
@@ -192,6 +194,28 @@ public class StudentxCourseDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    
+     public static int getNumberStudents(String Id, String Year, int IdTerm) {
+        try {
+            int count = 0;
+                        
+            pstmt = Connection.getConnection().prepareStatement(
+                     "SELECT COUNT(idStudent) FROM studentxcourse WHERE idCourse = ? AND year = ? AND idTerm=?");
+            pstmt.setString(1, Id);
+            pstmt.setString(2, Year);
+            pstmt.setInt(3, IdTerm);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()){
+                 
+                count = rs.getInt("count(idStudent)");
+            }   
+            return count;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
     
 }

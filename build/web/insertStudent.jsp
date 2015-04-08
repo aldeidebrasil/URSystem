@@ -14,14 +14,13 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-      <div class="header">
+       <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-          <form name="frmInsertUser" method='post'>
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions">
+        <form name="frmInsertUser" method='post'>
             <p>ID:</p> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
             <p>First Name:</p> 
@@ -39,6 +38,9 @@
            </select><br><br>
             <button type="button" onClick="validateInsertStudent()">Insert Student</button>
 	</form> 
+        </div></div>
+        <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

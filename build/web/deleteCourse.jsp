@@ -19,15 +19,12 @@ listCourseId = CourseDAO.getAllId();
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body>
-     <div class="header">
+    <body><div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-           <form name="frmDeleteCourse" method='post'>
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions"><form name="frmDeleteCourse" method='post'>
             <p>ID:</p> 
             <select name='id'>                                
                                 <%
@@ -44,6 +41,9 @@ listCourseId = CourseDAO.getAllId();
             <button type="button" onClick="validateEditCourse()">Edit Course</button>
             <button type="button" onClick="validateDeleteCourse()">Delete Course</button>
 	</form> 
+        </div></div>
+                             <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

@@ -29,7 +29,9 @@ import model.StudentxCourseDAO;
 public class OpenProfessor {
 
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
-                        
+         if(!VerifyTermDate.execute(VerifyTerm.execute())){
+           ChangeStatusCourses.execute();
+        }                
         Professor prof = ProfessorDAO.getById((int)session.getAttribute("userid"));
         request.setAttribute ("lname", prof.getTitle() + " " + prof.getLname());
         request.setAttribute ("idProfessor", prof.getID());

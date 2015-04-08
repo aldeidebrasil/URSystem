@@ -16,9 +16,6 @@
 <!DOCTYPE html>
 <%
     ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
-    Student student = StudentDAO.getById(Integer.parseInt(session.getAttribute("userid").toString()));
-     DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY HH:mm");
-    Date date = new Date();
    
 %>
 <html>
@@ -32,37 +29,29 @@
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-            <p>Today is <%=dateFormat.format(date)%></p>
-            <h2>Welcome, <%=student.getFname()%>!</h2>
-            <!--Show Information -->
-            <div class="profile">
-                <img src="images/noPhoto.png" width="150px" height="150px" ><br>
-                <p><b><%=student.getFname()%>&nbsp;<%=student.getLname()%></b></p>
-                <p><b>Major:</b> <%=student.getMajor()%></p>
-                <a href="/URSystem/servletweb?action=EditPasswordStudent&IdStudent=<%=student.getID()%>">Change Password</a><br>
-            </div>
-     <div class="actions">
-    
+           <%@include file="profile.jsp"%>
+     <div class="actions2">
+    <% if(!listCourse.isEmpty()){ %>
             <table style="border: 2px black solid">
-            <tr ><th>ID</th>
+             <tr class="headTable"><th>ID</th>
                 <th>Course</th>
                 <th>Department</th>
                 <th>Prerequisites</th>
                 <th>Value</th>
                 <th>Term</th>
-                <th>Status</th>
                 <th>Year</th>
                 
                 
             </tr>
-            <%
+             <%
                 for (int i = 0; i < listCourse.size(); i++) {
+                    if(i%2==0){
             %>
-            <tr>
-            <td>
+            <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %>
+                <td>
                 <%=listCourse.get(i).getID()%>
             </td>
             <td>    
@@ -72,18 +61,21 @@
                 <%=listCourse.get(i).getDepartment() %> 
             </td>
             <td>
-                <% if (listCourse.get(i).getPrerequisite()==null){ %>None <% }else{ %>
-                    <%=listCourse.get(i).getPrerequisite()%>
-                <% }%>
+              <% if (listCourse.get(i).getPrerequisite()==null){ %>None <% }else{ %>
+                 <%=listCourse.get(i).getPrerequisite()%>
+              <% }%>
             </td>
             <td>           
                 <%=listCourse.get(i).getValue()%>
             </td>
             <td>           
-                <%=listCourse.get(i).getIdTerm()%>
-            </td>
-            <td>           
-                <%=listCourse.get(i).getStatus()%>
+                <% if(listCourse.get(i).getIdTerm()==1){%>
+                    Spring
+                <% }else if(listCourse.get(i).getIdTerm()==2){ %>
+                    Fall
+                <% }else if(listCourse.get(i).getIdTerm()==3){ %>
+                    Summer
+                <% } %>
             </td>
             <td>           
                 <%=listCourse.get(i).getYear()%>
@@ -92,6 +84,9 @@
             <%
                 }
             %>
-            </table></div><a href="/URSystem/servletweb?action=OpenStudent">Home</a></div>
+            </table><% } else{ %><h2>You do not have previous courses to show.</h2> <% } %></div></div>
+            <div class="footer">
+            <%@include file="footer.jsp" %>
+        </div>
         </body>
 </html>

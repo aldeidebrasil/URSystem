@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,9 +57,13 @@ public class ServletWeb extends HttpServlet {
         //Admin Action
          else if(action.equals("OpenPage")){
             jsp = OpenPage.execute(request, request.getSession());
-            
-            
-         }
+          }
+         else if(action.equals("EditDateTerm"))
+            try { 
+                jsp = EditDateTerm.execute(request, request.getSession());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+        } 
         else if(action.equals("InsertStudent"))
             jsp = InsertStudent.execute(request, request.getSession());
         else if(action.equals("DeleteStudent"))

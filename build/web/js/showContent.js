@@ -28,7 +28,7 @@ function showNewPassword(id,id2){
   var obj2 = document.getElementById(id2);
     if (obj.style.display=="none"){
       obj.style.display='block';
-      obj.style.height = '100px';
+      obj.style.height = '200px';
       obj2.style.display='none';
     } else if(obj.style.display=="block"){
       obj.style.display='none';

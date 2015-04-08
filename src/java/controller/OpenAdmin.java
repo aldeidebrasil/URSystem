@@ -17,7 +17,11 @@ import model.AdminDAO;
  */
 public class OpenAdmin {
      static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
-                        
+        if(!VerifyTermDate.execute(VerifyTerm.execute())){
+           ChangeStatusCourses.execute();
+        }else{
+           ChangeStatusCourses.executeCanceled(); 
+        }
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         request.setAttribute ("admin", admin);
         return "/welcomeAdmin.jsp";

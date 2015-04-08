@@ -54,8 +54,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=InsertStudent";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -69,8 +69,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=DeleteStudent";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -84,8 +84,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=EditStudent";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -119,8 +119,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdateStudent";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -154,8 +154,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=InsertProfessor";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -168,8 +168,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=DeleteProfessor";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -182,8 +182,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=EditProfessor";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -218,8 +218,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdateProfessor";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -319,8 +319,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdateCourse";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -334,8 +334,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=DeleteCourse";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -348,8 +348,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=EditCourse";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }
@@ -363,8 +363,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdatePasswordStudent&IdStudent="+id;  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[1].action = url;  
+        window.document.forms[1].submit();
         return true;
      }      
  }
@@ -379,11 +379,27 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=UpdatePasswordProfessor&IdProfessor="+id;  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[1].action = url;  
+        window.document.forms[1].submit();
         return true;
      }   
  }
+ function validateUpdatePasswordAdmin(id){ 
+    var frm = document.frmUpdatePasswordAdmin;
+     var password = frm.password.value;
+     var id = id;
+     if(password == ""){
+        alert("Please, fill out the field Password!");
+        frm.password.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=UpdatePasswordAdmin&IdAdmin="+id;  
+        document.forms[1].action = url;  
+        window.document.forms[1].submit();
+        return true;
+     }      
+ }
+ 
  function validateInsertCourse(){    
     var frm = document.frmInsertCourse;
      var id = frm.id.value;
@@ -514,5 +530,29 @@ function validateInsertStudent(){
         return true;
      }      
  }
- 
+ function validateDate(){    
+    var frm = document.frmDate;
+     var dateStart = frm.termDate.value;
+     var dateLimit = frm.dateLimit.value;
+     var dateEnd = frm.dateEnd.value;
+     
+     if(dateStart == ""){
+        alert("Please, fill out the field Date Start!");
+        frm.termDate.focus();
+        return false;
+     }else if(dateLimit == ""){
+        alert("Please, fill out the field Date Limit!");
+        frm.dateLimit.focus();
+        return false;
+     }else if(dateEnd == ""){
+        alert("Please, fill out the field Date End!");
+        frm.dateEnd.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=EditDateTerm";  
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
+        return true;
+     }      
+ }
  

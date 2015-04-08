@@ -530,5 +530,29 @@ function validateInsertStudent(){
         return true;
      }      
  }
- 
+ function validateDate(){    
+    var frm = document.frmDate;
+     var dateStart = frm.termDate.value;
+     var dateLimit = frm.dateLimit.value;
+     var dateEnd = frm.dateEnd.value;
+     
+     if(dateStart == ""){
+        alert("Please, fill out the field Date Start!");
+        frm.termDate.focus();
+        return false;
+     }else if(dateLimit == ""){
+        alert("Please, fill out the field Date Limit!");
+        frm.dateLimit.focus();
+        return false;
+     }else if(dateEnd == ""){
+        alert("Please, fill out the field Date End!");
+        frm.dateEnd.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=EditDateTerm";  
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
+        return true;
+     }      
+ }
  

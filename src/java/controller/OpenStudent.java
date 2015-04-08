@@ -24,6 +24,11 @@ import model.StudentxCourseDAO;
 public class OpenStudent {
     
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
+             if(!VerifyTermDate.execute(VerifyTerm.execute())){
+              ChangeStatusCourses.execute();
+             }else{
+                    ChangeStatusCourses.executeCanceled(); 
+                }
                 String jsp="";
                 Student student = StudentDAO.getById((int)session.getAttribute("userid"));
                 ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent((int) session.getAttribute("userid"));
@@ -34,21 +39,25 @@ public class OpenStudent {
                 
                 if(studentxcourse != null && studentxcourseTerm != null){
                     for(int i=0; i<studentxcourse.size(); i++){
-                    Course courseTaken = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
-                    listAllTaken.add(courseTaken);
+                        Course courseTaken = CourseDAO.getById(studentxcourse.get(i).getIdCourse());
+                        listAllTaken.add(courseTaken);
                     }
                     for(int i=0; i<studentxcourseTerm.size(); i++){
-                    Course courseTerm = CourseDAO.getById(studentxcourseTerm.get(i).getIdCourse());
-                    listTerm.add(courseTerm);
-                    }
+                        Course courseTerm = CourseDAO.getByIdStatus(studentxcourseTerm.get(i).getIdCourse());
+                        if(courseTerm!=null){
+                            listTerm.add(courseTerm);
+                            System.out.println("COURSE TERM"+courseTerm);
+                        }
+                        }
                 
                 }
+                
                 ArrayList <Course> listAllCourses = CourseDAO.getAll();
                 ArrayList<Course> listCoursesDepartment = CourseDAO.getByDepartment(student.getMajor());
                 ArrayList<String> idCourseNew = VerifyCourseNew.execute(listAllTaken);
                 ArrayList<Course> listNew = new ArrayList<>();
                 for(int k=0; k<idCourseNew.size(); k++){
-                    listNew.add(CourseDAO.getById(idCourseNew.get(k)));
+                    listNew.add(CourseDAO.getCourseOpen(idCourseNew.get(k)));
                 }
                 request.setAttribute("listNew",listNew);
                 request.setAttribute("listTerm",listTerm);        
@@ -62,6 +71,11 @@ public class OpenStudent {
                 return jsp;
     }
     static String executeAlert(HttpServletRequest request, HttpSession session, String confirm) throws SQLException {
+                if(!VerifyTermDate.execute(VerifyTerm.execute())){
+                    ChangeStatusCourses.execute();
+                }else{
+                    ChangeStatusCourses.executeCanceled(); 
+                }
                 String jsp="";
                 Student student = StudentDAO.getById((int)session.getAttribute("userid"));
                 ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdStudent((int) session.getAttribute("userid"));

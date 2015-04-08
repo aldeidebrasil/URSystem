@@ -32,6 +32,8 @@ public class ListAllCoursesStudent {
                 for(int i=0; i<listCoursesStudent.size(); i++){
                     if(!listCoursesStudent.get(i).getYear().equals(year)){
                         Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
+                        course.setIdTerm(listCoursesStudent.get(i).getIdTerm());
+                        course.setYear(listCoursesStudent.get(i).getYear());
                         listCourse.add(course);
                     }
                 }

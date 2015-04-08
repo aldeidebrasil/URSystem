@@ -63,6 +63,20 @@ public class CourseDAO {
             return false;
         }
     }
+     public static boolean updateStatus(Course course) {
+        try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "UPDATE  course SET status = ? WHERE id = ?");
+            pstmt.setString(1, course.getStatus());
+             pstmt.setString(2, course.getID());
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     
     public static boolean delete(Course course) {
         try {
@@ -84,6 +98,68 @@ public class CourseDAO {
             Course course = new Course();            
             pstmt = Connection.getConnection().prepareStatement(
                     "SELECT * FROM course ORDER BY id");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAll = new ArrayList<Course>();
+                do {                    
+                    course = new Course();
+                    course.setID(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setDepartment(rs.getString("department"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setIdTerm(rs.getInt("idTerm"));
+                    course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
+                    listAll.add(course);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ArrayList<Course> getAllOpen() throws SQLException {
+        try{
+            ArrayList<Course> listAll = null;
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE status='open' ORDER BY id");
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAll = new ArrayList<Course>();
+                do {                    
+                    course = new Course();
+                    course.setID(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setDepartment(rs.getString("department"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setIdTerm(rs.getInt("idTerm"));
+                    course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
+                    listAll.add(course);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ArrayList<Course> getAllCanceled() throws SQLException {
+        try{
+            ArrayList<Course> listAll = null;
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE status='canceled' ORDER BY id");
             rs = pstmt.executeQuery();           
             
             if (rs.next()) {
@@ -135,7 +211,60 @@ public class CourseDAO {
             e.printStackTrace();
             return null;
         }
-    }    
+    } 
+     public static Course getCourseOpen(String Id) {
+        try {
+            Course course = null;
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE id = ? AND status='open'");
+            pstmt.setString(1, Id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                course = new Course();
+                course.setID(rs.getString("id"));
+                course.setName(rs.getString("name"));
+                course.setDepartment(rs.getString("department"));
+                course.setPrerequisite(rs.getString("prerequisite"));
+                course.setValue(rs.getDouble("value"));
+                course.setIdTerm(rs.getInt("idTerm"));
+                course.setStatus(rs.getString("status"));
+                course.setYear(rs.getString("year"));
+            }
+            rs.close();
+            pstmt.close();
+            return course;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    } 
+      
+     public static Course getByIdStatus(String Id) {
+        try {
+            Course course = null;
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE id = ? AND status<>'canceled'");
+            pstmt.setString(1, Id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                course = new Course();
+                course.setID(rs.getString("id"));
+                course.setName(rs.getString("name"));
+                course.setDepartment(rs.getString("department"));
+                course.setPrerequisite(rs.getString("prerequisite"));
+                course.setValue(rs.getDouble("value"));
+                course.setIdTerm(rs.getInt("idTerm"));
+                course.setStatus(rs.getString("status"));
+                course.setYear(rs.getString("year"));
+            }
+            rs.close();
+            pstmt.close();
+            return course;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
      public static ArrayList<String> getAllId() throws SQLException {
         try{
             ArrayList<String> listAllId = null;           

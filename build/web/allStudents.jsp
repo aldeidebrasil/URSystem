@@ -23,15 +23,14 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-       <div class="header">
+      <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions">
          <table style="border: 2px black solid">
-            <tr ><th>ID</th>
+            <tr class="headTable"><th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Password</th>
@@ -40,8 +39,12 @@
             </tr>
             <%
                 for (int i = 0; i < listStudents.size(); i++) {
-            %>
-            <tr>
+            if(i%2==0){
+                    %>
+            <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %>
             <td>
                 <%=listStudents.get(i).getID()%>
             </td>
@@ -64,7 +67,10 @@
                 }
             %>
         </table>
-        <a href="welcomeAdmin.jsp">Home</a>
+        </div>
+        </div> 
+        <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
         </body>
 </html>

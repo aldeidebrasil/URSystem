@@ -74,10 +74,10 @@
                     <h3>Regular courses:</h3>
                 <%for (int i=0; i< listTerm.size(); i++) { 
                     if(i<4){%>
-                    <%=listTerm.get(i).getID()%> - <%=listTerm.get(i).getName()%><br>
+                    <%=listTerm.get(i).getID()%> - <%=listTerm.get(i).getName()%> - <%=listTerm.get(i).getStatus().toUpperCase() %><br>
                     <%} else{ if(i==4){%>
                     <h3>Extra courses:</h3><%}%>
-                    <%=listTerm.get(i).getID()%> - <%=listTerm.get(i).getName()%><br>
+                    <%=listTerm.get(i).getID()%> - <%=listTerm.get(i).getName()%> - <%=listTerm.get(i).getStatus().toUpperCase() %><br>
                 <%}}} else{%>
                     No courses to show.
                 <% }%>

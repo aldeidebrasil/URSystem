@@ -20,15 +20,16 @@ listStudentId = StudentDAO.getAllId();
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-       <div class="header">
+        <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-         <form name="frmDeleteStudent" method='post'>
-            <p>ID:</p> 
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions">
+            <h2>Update or Delete a Student</h2>
+            <p>To update an information or delete a student, you have to choose the student's ID and click the button.</p>
+            <form name="frmDeleteStudent" method='post'>
+            <b>Student's ID:</b> 
             
             <select name='id'>                                
                                 <%
@@ -44,6 +45,10 @@ listStudentId = StudentDAO.getAllId();
             <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <button type="button" onClick="validateEditStudent()">Edit Student</button>
 	</form> 
+        </div>
+        </div>
+        <div class="footer">
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

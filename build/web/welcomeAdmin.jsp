@@ -6,40 +6,45 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+ <% 
+    String confirm = (String)request.getAttribute("ok");
+ %>   
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
         <link href="css/adminStyle.css" type="text/css" rel="stylesheet"/>
-        <title>JSP Page</title>
+        <title>Home - Admin</title>
     </head>
     <body>
    <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-            <div class="logout">
-                <a href="/URSystem/servletweb?action=Logout">Logout</a>
-            </div>
-             <div class="welcome">
-        <p>Welcome, Admin!</p>
-        </div>
-        <div class="adminStudent">
+           <%@include file="profileAdmin.jsp" %>
+        <div class="actions">
+         
         <h2>Student</h2>
-        <a href="insertStudent.jsp">Insert Student</a><br>
-        <a href="deleteStudent.jsp">Edit or Delete Student</a><br>
+        <a href="/URSystem/servletweb?action=OpenPage&page=insertStudent">Insert Student</a><br>
+        <a href="/URSystem/servletweb?action=OpenPage&page=deleteStudent">Edit or Delete Student</a><br>
         
-        </div>     
-        <div class="adminProfessor">
         <h2>Professor</h2>
-        <a href="insertProfessor.jsp">Insert Professor</a><br>
-        <a href="deleteProfessor.jsp">Edit or Delete Professor</a><br>
-        </div>
-        <div class="adminCourse">
+        <a href="/URSystem/servletweb?action=OpenPage&page=insertProfessor">Insert Professor</a><br>
+        <a href="/URSystem/servletweb?action=OpenPage&page=deleteProfessor">Edit or Delete Professor</a><br>
+      
         <h2>Course</h2>
-        <a href="insertCourse.jsp">Insert Course</a><br>
-        <a href="deleteCourse.jsp">Edit or Delete Course</a><br>
+        <a href="/URSystem/servletweb?action=OpenPage&page=insertCourse">Insert Course</a><br>
+        <a href="/URSystem/servletweb?action=OpenPage&page=deleteCourse">Edit or Delete Course</a><br>
+      
+         <h2>Term</h2>
+        <a href="/URSystem/servletweb?action=OpenPage&page=editTerm">Edit Term</a><br>
         </div>
-    </div>
+ </div>
+        <div class="footer">
+            <%@include file="footer.jsp" %>
+        </div>
+        <% if(confirm != null) { confirm = null;%>
+            <script>alert("Password changed successfully");</script>
+        <%} %>
     </body>
 </html>
