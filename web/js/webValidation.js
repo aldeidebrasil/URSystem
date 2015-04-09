@@ -32,7 +32,12 @@ function validateInsertStudent(){
      var password = frm.password.value;
      var major = frm.major.value;
      
-     if(id == ""){
+    if(isNaN(id)){
+        alert("Please, the ID must have only numbers!");
+        frm.id.focus();
+        return false;
+    } 
+    else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
@@ -89,7 +94,7 @@ function validateInsertStudent(){
         return true;
      }      
  }
- function validateUpdateStudent(){    
+ function validateUpdateStudent(idOld){    
     var frm = document.frmUpdateStudent;
      var id = frm.id.value;
      var fname = frm.fname.value;
@@ -118,7 +123,7 @@ function validateInsertStudent(){
         frm.major.focus();
         return false;
      }else{
-        url = "/URSystem/servletweb?action=UpdateStudent";  
+        url = "/URSystem/servletweb?action=UpdateStudent&IdStudent="+idOld;  
         document.forms[2].action = url;  
         window.document.forms[2].submit();
         return true;
@@ -132,7 +137,12 @@ function validateInsertStudent(){
      var password = frm.password.value;
      var title = frm.title.value;
      
-     if(id == ""){
+    if(isNaN(id)){
+        alert("The ID must have only numbers!");
+        frm.id.focus();
+        return false;
+     }
+    else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
@@ -188,15 +198,19 @@ function validateInsertStudent(){
      }      
  }
 
- function validateUpdateProfessor(){    
+ function validateUpdateProfessor(idOld){    
     var frm = document.frmUpdateProfessor;
      var id = frm.id.value;
      var fname = frm.fname.value;
      var lname = frm.lname.value;
      var password = frm.password.value;
      var title = frm.title.value;
-     
-     if(id == ""){
+     if(isNaN(id)){
+        alert("The ID must have only numbers!");
+        frm.id.focus();
+        return false;
+     }
+     else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
@@ -217,24 +231,30 @@ function validateInsertStudent(){
         frm.title.focus();
         return false;
      }else{
-        url = "/URSystem/servletweb?action=UpdateProfessor";  
+        url = "/URSystem/servletweb?action=UpdateProfessor&IdProfessor="+idOld;  
         document.forms[2].action = url;  
         window.document.forms[2].submit();
         return true;
      }      
  }
- function validateInsertCourse(){    
+ function validateInsertCourse(){ 
+    
     var frm = document.frmInsertCourse;
-     var id = frm.id.value;
-     var name = frm.name.value;
-     var department = frm.department.value;
-     var prerequisite = frm.prerequisite.value;
-     var value = frm.value.value;
-     var term = frm.term.value;
-     var status = frm.status.value;
-     var idProfessor = frm.idProfessor.value;
+    var id = frm.id.value;
+    var name = frm.name.value;
+    var department = frm.department.value;
+    var prerequisite = frm.prerequisite.value;
+    var val = frm.val.value;
+    var idTerm = frm.idTerm.value;
+    var status = frm.status.value;
+    var idProfessor = frm.idProfessor.value;
+    if(isNaN(val)){
+      alert("Please, fill out the field ID!");
+        frm.val.focus();
+       return false;  
+    } 
      
-     if(id == ""){
+    else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
@@ -250,13 +270,13 @@ function validateInsertStudent(){
         alert("Please, fill out the field Prerequisite!");
         frm.prerequisite.focus();
         return false;
-     }else if(value == ""){
+     }else if(val == ""){
         alert("Please, fill out the field Value!");
         frm.value.focus();
         return false;
-     }else if(term == ""){
+     }else if(idTerm == ""){
         alert("Please, fill out the field Term!");
-        frm.term.focus();
+        frm.idTerm.focus();
         return false;
      }else if(status == ""){
         alert("Please, fill out the field Status!");
@@ -268,8 +288,8 @@ function validateInsertStudent(){
         return false;
      }else{
         url = "/URSystem/servletweb?action=InsertCourse";  
-        document.forms[0].action = url;  
-        window.document.forms[0].submit();
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
         return true;
      }      
  }

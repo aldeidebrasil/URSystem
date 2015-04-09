@@ -24,8 +24,12 @@ listProfessorId = ProfessorDAO.getAllId();
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"> <form name="frmDeleteProfessor" method='post'>
-            <p>ID:</p> 
+        <div class="actions">
+             <h2>Update or Delete Professor</h2>
+            <p>To update an information or delete a professor, you have to choose the professor's ID and click the correspondent button.</p>
+            
+            <form name="frmDeleteProfessor" method='post'>
+            <b>Professor's ID:</b> 
             <select name='id'>                                
                                 <%
                                 String selected="";

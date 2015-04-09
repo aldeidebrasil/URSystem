@@ -30,7 +30,7 @@
                 </tr>
                 <tr class="even">
                     <td><%=student.getID()%></td>
-                    <td> <input type="text" name="id" id="id" size="30" value="<%=student.getID()%>" readonly="true" style="line-height: 40px; font-size: 20px;"></td>
+                    <td> <input type="text" name="id" id="id" size="30" value="<%=student.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
                 </tr>
                 <tr>
                     <th class="headTable" colspan="2">First Name</th>
@@ -58,7 +58,12 @@
                 </tr>
                 <tr class="even">
                     <td><%=student.getMajor()%></td>
-                    <td> <input type="text" name="major" id="major" size="30" value="<%=student.getMajor()%>" style="line-height: 40px; font-size: 20px;"></td>
+                    <td>  <select name="major">
+                <option value="Biology">Biology</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Physical Science">Physical Science</option>
+                <option value="Sociology">Sociology</option>
+           </select></td>
                 </tr>
                  <tr>
                     <th class="headTable" colspan="2">Billing</th>
@@ -68,7 +73,7 @@
                     <td> </td>
                 </tr>
             </table>
-            <button type="button" onClick="validateUpdateStudent()">Update Student</button>
+            <button type="button" onClick="validateUpdateStudent(<%=student.getID()%>)">Update Student</button>
                  
 	</form> 
         </div> 

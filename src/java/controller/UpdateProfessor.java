@@ -19,19 +19,47 @@ public class UpdateProfessor {
         String jsp = "";
         try {
             // 
-            String id = request.getParameter("id");
+            int idOld = Integer.parseInt(request.getParameter("IdProfessor"));
+            int id = Integer.parseInt(request.getParameter("id"));
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String password = request.getParameter("password");
             String title = request.getParameter("title");
          
-            Professor professor = new Professor();
-            professor.setID(Integer.parseInt(id));
-            professor.setFname(fname);
-            professor.setLname(lname);
-            professor.setPassword(password);
-            professor.setTitle(title);
-            Boolean update = ProfessorDAO.update(professor);
+            Professor professorOld = new Professor();
+            if(id!=idOld){
+                professorOld = ProfessorDAO.getById(idOld);
+                System.out.println("PROF OLD"+professorOld.getFname());
+                boolean deleteProfessor = ProfessorDAO.delete(professorOld);
+                if(deleteProfessor){
+                    Professor professorNew = new Professor();
+                    professorNew.setID(id);
+                    professorNew.setFname(fname);
+                    professorNew.setLname(lname);
+                    professorNew.setPassword(password);
+                    professorNew.setTitle(title);
+                    boolean createNew = ProfessorDAO.create(professorNew);
+                    if(createNew){
+                        jsp = ListProfessor.execute(request, session);
+                    }
+                    else{
+                        String erro = "Error Update";
+                        request.setAttribute("error", erro);
+                        jsp = "/error.jsp";
+                    }
+                }
+                else{
+                String erro = "Error Update";
+                request.setAttribute("error", erro);
+                jsp = "/error.jsp";
+            }
+            }else{
+            professorOld.setID(id);
+            professorOld.setFname(fname);
+            professorOld.setLname(lname);
+            professorOld.setPassword(password);
+            professorOld.setTitle(title);
+            Boolean update = ProfessorDAO.update(professorOld);
             if(update!=false)
                 jsp = ListProfessor.execute(request, session);
             else{
@@ -39,7 +67,7 @@ public class UpdateProfessor {
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
             }
-            
+            }
         } catch (Exception e) {
             e.printStackTrace();
             jsp = "";

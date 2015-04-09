@@ -22,15 +22,15 @@
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
           <form name="frmInsertProfessor" method='post' >
-            <p>ID:</p> 
+            <h2>Type the professor's ID:</h2> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>First Name:</p> 
+              <h2>Type the professor's first name:</h2> 
             <input type="text" name="fname" id="fname" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Last Name:</p> 
+              <h2>Type the professor's last name:</h2> 
             <input type="text" name="lname" id="lname" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Password:</p> 
+              <h2>Type the professor's password:</h2>  
             <input type="password" name="password" id="password" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Title:</p> 
+              <h2>Select the professor's title:</h2> 
            <select name="title">
                 <option value="Doctor">Doctor</option>
                 <option value="Master">Master</option>

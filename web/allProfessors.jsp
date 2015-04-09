@@ -29,7 +29,7 @@
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
           <table style="border: 2px black solid">
-            <tr ><th>ID</th>
+              <tr class="headTable"><th>ID</th>
                 <th>Title</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -38,8 +38,12 @@
             </tr>
             <%
                 for (int i = 0; i < listProfessor.size(); i++) {
+                 if(i%2==0){   
             %>
-            <tr>
+             <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %>
             <td>
                 <%=listProfessor.get(i).getID()%>
             </td>

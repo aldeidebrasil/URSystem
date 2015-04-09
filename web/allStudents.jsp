@@ -54,8 +54,10 @@
             <td>
                 <%=listStudents.get(i).getLname()%>
             </td>
-            <td>           
-                <%=listStudents.get(i).getPassword()%>
+            <td>  
+                <% for (int s=0; s<listStudents.get(i).getPassword().length();s++){ %>
+                *
+                <% } %>
             </td><td>    
                 <%=listStudents.get(i).getMajor()%>
             </td>

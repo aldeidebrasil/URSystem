@@ -21,15 +21,15 @@
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
         <form name="frmInsertUser" method='post'>
-            <p>ID:</p> 
+            <h2>Type the student's ID:</h2> 
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>First Name:</p> 
+            <h2>Type the student's First Name:</h2> 
             <input type="text" name="fname" id="fname" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Last Name:</p> 
+            <h2>Type the student's Last Name:</h2> 
             <input type="text" name="lname" id="lname" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Password:</p> 
+            <h2>Type the student's Password:</h2> 
             <input type="password" name="password" id="password" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Major:</p> 
+            <h2>Select the student's Major:</h2> 
             <select name="major">
                 <option value="Biology">Biology</option>
                 <option value="Computer Science">Computer Science</option>

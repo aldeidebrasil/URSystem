@@ -10,40 +10,40 @@
 <%@page import="controller.vo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%! ArrayList<Integer> listProfessorID;
-    ArrayList<String> listCourseID;
+<% ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
+    ArrayList<String> listCourseID = CourseDAO.getAllId();
 %>
-<%    
-    listProfessorID = ProfessorDAO.getAllId();
-    listCourseID = CourseDAO.getAllId();
-%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-    
+      
     </head>
-    <body><div class="header">
+    <body>
+        <div class="header">
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"> <form name="frmInsertCourse" method='post' >
-            <p>ID:</p> 
+        <div class="actions"> 
+             <form name="frmInsertCourse" method='post' >
+             <h2>Type the course's ID:</h2>
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Name:</p> 
+           
+             <h2>Type the course's Name:</h2>
             <input type="text" name="name" id="name" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Department:</p> 
+             <h2>Type the course's Department:</h2>
             <input type="text" name="department" id="department" size="30" style="line-height: 40px; font-size: 20px;">
-            <p>Prerequisite</p> 
+             <h2>Select the course's prerequisite:</h2>
             
            <select name='prerequisite'>                                
                                 <%
                                 String courseSelected="";
                                 %>
-                                <option value='' <%=courseSelected%>>None</option>
+                                <option value=''>None</option>
                                 <%
                                 for (int i = 0; i < listCourseID.size(); i++) {%>
                                 <option value='<%=listCourseID.get(i)%>' <%=courseSelected%>><%=listCourseID.get(i)%></option>
@@ -52,28 +52,34 @@
                                 %>
                             
            </select>            
-            <p>Value:</p> 
-            <input type="text" name="value" id="value" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
-            <p>Term</p> 
-            <input type="text" name="term" id="term" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
-            <p>Status:</p> 
+             <h2>Type the course's value(U$):</h2>
+            <input type="text" name="val" id="val" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
+             <h2>Select the course's term:</h2>
+              <select name='idTerm'>
+                <option value='1'>Spring</option>
+                <option value='2'>Fall</option>
+                <option value='3'>Summer</option>
+                
+            </select>
+           <br><br>
+             <h2>Select the course's status:</h2>
             <select name='status'>
                 <option value='open'>Open</option>
                 <option value='full'>Full</option>
                 <option value='canceled'>Canceled</option>
                 
             </select>
-            <p>ID Professor</p> 
+             <h2>Select the course's professor (ID): </h2>
            <select name='idProfessor'>                                
-                                <%
-                                String professorSelected="";
-                                
-                                for (int i = 0; i < listProfessorID.size(); i++) {%>
-                                <option value='<%=listProfessorID.get(i)%>' <%=professorSelected%>><%=listProfessorID.get(i)%></option>
-                                <% 
-                                }
-                                %>
-                            </select>
+                <%
+                String professorSelected="";
+
+                for (int i = 0; i < listProfessorID.size(); i++) {%>
+                <option value='<%=listProfessorID.get(i)%>' <%=professorSelected%>><%=listProfessorID.get(i)%></option>
+                <% 
+                }
+                %>
+            </select>
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
 	</form> 
             </div></div>
