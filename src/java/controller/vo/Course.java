@@ -15,7 +15,6 @@ public class Course {
     private String department;
     private String prerequisite;
     private Integer idTerm;
-    private String year;
     private String status;
     private Double value;
 
@@ -59,14 +58,6 @@ public class Course {
         this.idTerm = idTerm;
     }
 
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -83,4 +74,5 @@ public class Course {
         this.value = value;
     }
 
+   
 }

@@ -24,8 +24,12 @@ listCourseId = CourseDAO.getAllId();
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"><form name="frmDeleteCourse" method='post'>
-            <p>ID:</p> 
+        <div class="actions">
+            <h2>Update or Delete Course</h2>
+            <p>To update an information or delete a course, you have to choose the Course's ID and click the correspondent button.</p>
+            
+            <form name="frmDeleteCourse" method='post'>
+            <p>Course's ID:</p> 
             <select name='id'>                                
                                 <%
                                 String selected="";

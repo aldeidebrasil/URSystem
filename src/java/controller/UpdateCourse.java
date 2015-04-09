@@ -6,9 +6,11 @@
 package controller;
 
 import controller.vo.Course;
+import controller.vo.ProfessorxCourse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.CourseDAO;
+import model.ProfessorxCourseDAO;
 
 /**
  *
@@ -23,11 +25,16 @@ public class UpdateCourse {
             String name = request.getParameter("name");
             String department = request.getParameter("department");
             String prerequisite = request.getParameter("prerequisite");
+            if(prerequisite.isEmpty()){
+                prerequisite=null;
+            }
             Double value = Double.parseDouble(request.getParameter("value"));
-            Integer idTerm = Integer.parseInt(request.getParameter("idterm"));
+            Integer idTerm = Integer.parseInt(request.getParameter("idTerm"));
             String status = request.getParameter("status");
-            String year = request.getParameter("year");
-            
+            Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
+           
+            ProfessorxCourse professorxcourseOld = new ProfessorxCourse();
+            professorxcourseOld = ProfessorxCourseDAO.getByIdCourse(id);
             Course course = new Course();
             course.setID(id);
             course.setName(name);
@@ -36,11 +43,21 @@ public class UpdateCourse {
             course.setValue(value);
             course.setIdTerm(idTerm);
             course.setStatus(status);
-            course.setYear(year);
+            
             Boolean update = CourseDAO.update(course);
-            if(update!=false)
+            if(update!=false){
+               ProfessorxCourse professorxcourseNew = new ProfessorxCourse();
+                professorxcourseNew.setIdCourse(course.getID());
+                professorxcourseNew.setIdProfessor(idProfessor);
+                if(ProfessorxCourseDAO.updateByCourse(professorxcourseNew, professorxcourseOld.getIdCourse())){
                 jsp = ListCourses.execute(request, session);
-            else{
+                }
+                else{
+                String erro = "Error Update";
+                request.setAttribute("error", erro);
+                jsp = "/error.jsp";
+            }
+            }else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";

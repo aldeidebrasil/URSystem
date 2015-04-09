@@ -6,9 +6,12 @@
 package controller;
 
 import controller.vo.Course;
+import controller.vo.ProfessorxCourse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.CourseDAO;
+import model.ProfessorDAO;
+import model.ProfessorxCourseDAO;
 
 /**
  *
@@ -23,12 +26,15 @@ public class InsertCourse {
         String name = request.getParameter("name");
         String department = request.getParameter("department");
         String prerequisite = request.getParameter("prerequisite");
-        Double value = Double.parseDouble(request.getParameter("value"));
-        Integer idTerm = Integer.parseInt(request.getParameter("idterm"));
-        String year  = request.getParameter("year");
+        if(prerequisite.isEmpty()){
+            prerequisite=null;
+        }
+        Double value =Double.valueOf(request.getParameter("val"));
+        Integer idTerm = Integer.parseInt(request.getParameter("idTerm"));
         String status = request.getParameter("status");
-        
+        Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
         Course course = new Course();  
+        ProfessorxCourse professorxcourse = new ProfessorxCourse();
         try {
             
            course.setID(id);
@@ -38,11 +44,18 @@ public class InsertCourse {
            course.setValue(value);
            course.setIdTerm(idTerm);
            course.setStatus(status);
-           course.setYear(year);
-            Boolean create = CourseDAO.create(course);
-            if(create != false){
-                jsp = ListCourses.execute(request, session);
-               
+           
+           Boolean create = CourseDAO.create(course);
+           if(create != false){
+               professorxcourse.setIdCourse(course.getID());
+               professorxcourse.setIdProfessor(idProfessor);
+              if(ProfessorxCourseDAO.create(professorxcourse)){
+                 jsp = ListCourses.execute(request, session);
+                }else{
+                String erro = "ERROR!";
+                request.setAttribute("error", erro);
+                jsp = "/error.jsp";
+            }
             }else{
                 String erro = "ERROR!";
                 request.setAttribute("error", erro);

@@ -33,7 +33,7 @@ public class ListAllCoursesStudent {
                     if(!listCoursesStudent.get(i).getYear().equals(year)){
                         Course course = CourseDAO.getById(listCoursesStudent.get(i).getIdCourse());
                         course.setIdTerm(listCoursesStudent.get(i).getIdTerm());
-                        course.setYear(listCoursesStudent.get(i).getYear());
+                        //course.setYear(listCoursesStudent.get(i).getYear());
                         listCourse.add(course);
                     }
                 }

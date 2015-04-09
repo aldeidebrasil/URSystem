@@ -11,7 +11,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
-    ArrayList<String> listCourseID = CourseDAO.getAllId();
+   ArrayList<String> listCourseID = CourseDAO.getAllId();
+   ArrayList<String> department= CourseDAO.getAllDepartment();
 %>
 
 <html>
@@ -29,14 +30,19 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions"> 
-             <form name="frmInsertCourse" method='post' >
+             <form name="frmInsertCourse" method='post'>
              <h2>Type the course's ID:</h2>
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
-           
-             <h2>Type the course's Name:</h2>
+           <h2>Type the course's Name:</h2>
             <input type="text" name="name" id="name" size="30" style="line-height: 40px; font-size: 20px;">
-             <h2>Type the course's Department:</h2>
-            <input type="text" name="department" id="department" size="30" style="line-height: 40px; font-size: 20px;">
+             <h2>Select the course's Department:</h2>
+            
+             <select name='department'>
+               <% for (int i=0; i<department.size(); i++){ %>
+                 <option value='<%=department.get(i)%>'><%=department.get(i)%></option>
+               <% } %>
+                
+            </select>
              <h2>Select the course's prerequisite:</h2>
             
            <select name='prerequisite'>                                
@@ -80,6 +86,9 @@
                 }
                 %>
             </select>
+            <br><br>
+            
+          
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
 	</form> 
             </div></div>
