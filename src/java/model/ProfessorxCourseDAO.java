@@ -113,4 +113,18 @@ public class ProfessorxCourseDAO {
             return false;
         }
     }  
+
+    public static boolean deleteByIdProfessor(int idOld) {
+        try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "DELETE FROM professorxcourse WHERE idProfessor = ?");
+            pstmt.setInt(1, idOld);
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

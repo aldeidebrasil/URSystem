@@ -5,10 +5,15 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Professor;
+import controller.vo.ProfessorxCourse;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.ProfessorDAO;
+import model.ProfessorxCourseDAO;
 
 /**
  *
@@ -17,60 +22,83 @@ import model.ProfessorDAO;
 public class UpdateProfessor {
      public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         try {
             // 
             int idOld = Integer.parseInt(request.getParameter("IdProfessor"));
             int id = Integer.parseInt(request.getParameter("id"));
+            System.out.println("ID"+id);
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String password = request.getParameter("password");
             String title = request.getParameter("title");
-         
             Professor professorOld = new Professor();
             if(id!=idOld){
-                professorOld = ProfessorDAO.getById(idOld);
-                System.out.println("PROF OLD"+professorOld.getFname());
-                boolean deleteProfessor = ProfessorDAO.delete(professorOld);
-                if(deleteProfessor){
+                System.out.println("line 36");
+                ArrayList<ProfessorxCourse> listProfessorxcourse = ProfessorxCourseDAO.getByIdProfessor(idOld);
+                ArrayList<ProfessorxCourse> listProfessorxcourseNew = new ArrayList<>();
+                if(listProfessorxcourse!=null){
+                    System.out.println("line 42");
+                    for(int i=0; i<listProfessorxcourse.size();i++){
+                        ProfessorxCourse professorxcourseNew = new ProfessorxCourse();
+                        professorxcourseNew.setIdCourse(listProfessorxcourse.get(i).getIdCourse());
+                        professorxcourseNew.setIdProfessor(id);
+                        listProfessorxcourseNew.add(professorxcourseNew);
+                    }
+                    boolean professorxcourseDel = ProfessorxCourseDAO.deleteByIdProfessor(idOld);
+                    if(professorxcourseDel){
+                        System.out.println("line 49");
+                        Professor professor = ProfessorDAO.getById(idOld);
+                        System.out.println("line 62");
+                    
+                if(ProfessorDAO.delete(professor)){
                     Professor professorNew = new Professor();
                     professorNew.setID(id);
                     professorNew.setFname(fname);
                     professorNew.setLname(lname);
                     professorNew.setPassword(password);
                     professorNew.setTitle(title);
-                    boolean createNew = ProfessorDAO.create(professorNew);
-                    if(createNew){
+                    if(ProfessorDAO.create(professorNew)){
+                        for(int i=0; i<listProfessorxcourseNew.size();i++){
+                            System.out.println("LIST"+listProfessorxcourseNew.get(i).getIdProfessor());
+                            ProfessorxCourseDAO.create(listProfessorxcourseNew.get(i));
+                        }
                         jsp = ListProfessor.execute(request, session);
-                    }
-                    else{
+                    }else{
                         String erro = "Error Update";
+                        request.setAttribute("admin", admin);
                         request.setAttribute("error", erro);
-                        jsp = "/error.jsp";
+                        jsp = "/errorAdmin.jsp";
                     }
                 }
-                else{
-                String erro = "Error Update";
-                request.setAttribute("error", erro);
-                jsp = "/error.jsp";
-            }
-            }else{
-            professorOld.setID(id);
-            professorOld.setFname(fname);
-            professorOld.setLname(lname);
-            professorOld.setPassword(password);
-            professorOld.setTitle(title);
-            Boolean update = ProfessorDAO.update(professorOld);
-            if(update!=false)
-                jsp = ListProfessor.execute(request, session);
+                        
+                    }
+                }
+                
+             }   
             else{
-                String erro = "Error Update";
-                request.setAttribute("error", erro);
-                jsp = "/error.jsp";
-            }
+                    professorOld.setID(id);
+                    professorOld.setFname(fname);
+                    professorOld.setLname(lname);
+                    professorOld.setPassword(password);
+                    professorOld.setTitle(title);
+                    Boolean update = ProfessorDAO.update(professorOld);
+                    if(update!=false)
+                        jsp = ListProfessor.execute(request, session);
+                    else{
+                        request.setAttribute("admin", admin);
+                        String erro = "Error Update";
+                        request.setAttribute("error", erro);
+                        jsp = "/errorAdmin.jsp";
+                    }
             }
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+            request.setAttribute("admin", admin);
+            String erro = "Error Update";
+            request.setAttribute("error", erro);
+            jsp = "/errorAdmin.jsp";
+
         }
         return jsp;
     }

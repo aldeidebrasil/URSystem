@@ -30,7 +30,7 @@ public class EditStudent {
             }else{
                 String erro = "Error";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {

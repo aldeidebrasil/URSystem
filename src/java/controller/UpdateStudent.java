@@ -50,33 +50,35 @@ public class UpdateStudent {
                     }
                     boolean studentxcourseDel = StudentxCourseDAO.deleteByIdStudent(idOld);
                     if(studentxcourseDel){
-                        boolean createStudentCourse = false;
-                        for(int i=0; i<listStudentxcourseNew.size(); i++){
-                            createStudentCourse = StudentxCourseDAO.create(listStudentxcourseNew.get(i));
+                        Student student = StudentDAO.getById(idOld);
+                        if(StudentDAO.delete(student)){
+                            Student studentNew = new Student();
+                            studentNew.setID(id);
+                            studentNew.setFname(fname);
+                            studentNew.setLname(lname);
+                            studentNew.setPassword(password);
+                            studentNew.setMajor(major);
+                            Boolean createStudent = StudentDAO.create(studentNew);
+                            System.out.println("68");
+                            if(createStudent!=false){
+                                 for(int i=0; i<listStudentxcourseNew.size(); i++){
+                                   StudentxCourseDAO.create(listStudentxcourseNew.get(i));
+                                }
+                                jsp = ListStudents.execute(request, session);
+                            } else{
+                                request.setAttribute("admin", admin);
+                                String erro = "Error Update 64";
+                                request.setAttribute("error", erro);
+                                jsp = "/errorAdmin.jsp";
+                                 System.out.println("82");
+
+                            }
                         }
+                       
                     }
                 }
                 Student student = StudentDAO.getById(idOld);
-                if(StudentDAO.delete(student)){
-                    Student studentNew = new Student();
-                    studentNew.setID(id);
-                    studentNew.setFname(fname);
-                    studentNew.setLname(lname);
-                    studentNew.setPassword(password);
-                    studentNew.setMajor(major);
-                    Boolean createStudent = StudentDAO.create(studentNew);
-                    System.out.println("68");
-                    if(createStudent!=false)
-                        jsp = ListStudents.execute(request, session);
-                    else{
-                        request.setAttribute("admin", admin);
-                        String erro = "Error Update 64";
-                        request.setAttribute("error", erro);
-                        jsp = "/errorAdmin.jsp";
-                         System.out.println("82");
-                
-                    }
-            }
+               
             }else{
                 studentOld.setID(id);
                 studentOld.setFname(fname);

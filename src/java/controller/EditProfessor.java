@@ -28,9 +28,10 @@ public class EditProfessor {
                 request.setAttribute("professor",professor);            
                 jsp = "/updateProfessor.jsp";
             }else{
+                request.setAttribute("admin", admin);
                 String erro = "Error";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {

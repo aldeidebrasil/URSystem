@@ -9,8 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<Integer> listProfessorId = new ArrayList<Integer>();
-listProfessorId = ProfessorDAO.getAllId();
+ArrayList<Integer> listProfessorId = ProfessorDAO.getAllId();
 %>
 <html>
     <head>
