@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update Student</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>

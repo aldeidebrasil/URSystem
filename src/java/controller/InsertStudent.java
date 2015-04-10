@@ -5,9 +5,11 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Student;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.StudentDAO;
 
 /**
@@ -19,14 +21,17 @@ public class InsertStudent {
     static String execute(HttpServletRequest request, HttpSession session) {        
         
         String error="";        
-        String jsp=""; 
+        String jsp="";
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         Integer id = Integer.parseInt(request.getParameter("id"));
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
         String password = request.getParameter("password");
         String major = request.getParameter("major");
        
-        Student student = new Student();  
+        Student student = new Student(); 
+        
+        
         try {
            student.setID(id);
            student.setFname(fname);
@@ -39,14 +44,17 @@ public class InsertStudent {
                 jsp = ListStudents.execute(request, session);
                
             }else{
-                String erro = "ERROR!";
-                request.setAttribute("erro", erro);
-                jsp = "/erro.jsp";
+                request.setAttribute("admin", admin);
+                String erro = "Error during the operation: Insert Student";
+                request.setAttribute("error", erro);
+                jsp = "/erroAdmin.jsp";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
-        }
+            String erro = "Error during the operation: Insert Student";
+            request.setAttribute("error", erro);
+            jsp = "/errorAdmin.jsp";
+            }
         return jsp;
     
 }

@@ -66,9 +66,8 @@ function validateInsertStudent(){
  }
  function validateDeleteStudent(){    
     var frm = document.frmDeleteStudent;
-     var id = frm.id.value;
-   
-     if(id == ""){
+    var id = frm.id.value;
+    if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
@@ -101,8 +100,13 @@ function validateInsertStudent(){
      var lname = frm.lname.value;
      var password = frm.password.value;
      var major = frm.major.value;
+    if(isNaN(id)){
+        alert("Please, the ID must have only numbers!");
+        frm.id.focus();
+        return false;
+    } 
      
-     if(id == ""){
+    else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;

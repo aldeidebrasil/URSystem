@@ -9,8 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<Integer> listStudentId = new ArrayList<Integer>();
-listStudentId = StudentDAO.getAllId();
+ArrayList<Integer> listStudentId = StudentDAO.getAllId();
 %>
 <html>
     <head>
@@ -32,15 +31,10 @@ listStudentId = StudentDAO.getAllId();
             <b>Student's ID:</b> 
             
             <select name='id'>                                
-                                <%
-                                String selected="";
-                                
-                                for (int i = 0; i < listStudentId.size(); i++) {%>
-                                <option value='<%=listStudentId.get(i)%>' <%=selected%>><%=listStudentId.get(i)%></option>
-                                <% 
-                                }
-                                %>
-                            </select>
+                <%for (int i = 0; i < listStudentId.size(); i++) { %>
+                            <option value='<%=listStudentId.get(i)%>'><%=listStudentId.get(i)%></option>
+                    <%} %>
+           </select>
 
             <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <button type="button" onClick="validateEditStudent()">Edit Student</button>

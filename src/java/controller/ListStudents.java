@@ -28,7 +28,7 @@ public class ListStudents {
             }else{
                 String erro="There is no Students to show!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
             
@@ -51,13 +51,16 @@ public class ListStudents {
             }else{
                 String erro="There is no Students to show!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
             
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+           String erro="There is no Students to show! 60";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
+           
         }
         return jsp;
     }

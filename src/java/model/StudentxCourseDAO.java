@@ -37,6 +37,20 @@ public class StudentxCourseDAO {
             return false;
         }
     }
+      public static boolean deleteByIdStudent(int id) {
+           
+         try {
+             pstmt = Connection.getConnection().prepareStatement(
+                    "DELETE FROM studentxcourse WHERE idStudent = ?");
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
      public static boolean delete(StudentxCourse studentxcourse) {
          System.out.println(studentxcourse.getIdStudent());
          System.out.println(studentxcourse.getIdCourse());
