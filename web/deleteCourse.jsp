@@ -9,8 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<String> listCourseId = new ArrayList<String>();
-listCourseId = CourseDAO.getAllId();
+ArrayList<String> listCourseId = CourseDAO.getAllId();
 %>
 <html>
     <head>
@@ -29,7 +28,7 @@ listCourseId = CourseDAO.getAllId();
             <p>To update an information or delete a course, you have to choose the Course's ID and click the correspondent button.</p>
             
             <form name="frmDeleteCourse" method='post'>
-            <p>Course's ID:</p> 
+            <b>Course's ID:</b> <br>
             <select name='id'>                                
                                 <%
                                 String selected="";

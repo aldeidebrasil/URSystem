@@ -246,7 +246,6 @@ function validateInsertStudent(){
     var id = frm.id.value;
     var name = frm.name.value;
     var department = frm.department.value;
-    var prerequisite = frm.prerequisite.value;
     var val = frm.val.value;
     var idTerm = frm.idTerm.value;
     var status = frm.status.value;
@@ -294,7 +293,7 @@ function validateInsertStudent(){
      }     
  }
 
- function validateUpdateCourse(){    
+ function validateUpdateCourse(idOld){    
     var frm = document.frmUpdateCourse;
      var id = frm.id.value;
      var name = frm.name.value;
@@ -337,7 +336,7 @@ function validateInsertStudent(){
         frm.idProfessor.focus();
         return false;
      }else{
-        url = "/URSystem/servletweb?action=UpdateCourse";  
+        url = "/URSystem/servletweb?action=UpdateCourse&IdCourse="+idOld;  
         document.forms[2].action = url;  
         window.document.forms[2].submit();
         return true;

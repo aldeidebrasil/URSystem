@@ -118,7 +118,11 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                             <th class="headTable" colspan="2">Professor (ID):</th>
                         </tr>
                         <tr class="even">
-                           <td><%=professorxcourse.getIdProfessor()%>
+                           <td><%if(professorxcourse!=null){ %>
+                               <%=professorxcourse.getIdProfessor()%>
+                               <% } else{ %> None
+                               <% } %>
+                               
                            </td> 
                         <td><select name='idProfessor'>                                
                 <%
@@ -134,7 +138,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                     </table>
                         <br><br>
 
-                    <button type="button" onClick="validateUpdateCourse()">Update Course</button>   
+                    <button type="button" onClick="validateUpdateCourse('<%=course.getID()%>')">Update Course</button>   
             
              
                  

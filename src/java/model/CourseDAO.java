@@ -365,5 +365,38 @@ public class CourseDAO {
         }
         return null;
     }
+
+    public static ArrayList<Course> getAllPrerequisite(String id) throws SQLException {
+        try{
+            ArrayList<Course> listAll = null;
+            Course course = new Course();            
+            pstmt = Connection.getConnection().prepareStatement(
+                    "SELECT * FROM course WHERE prerequisite=?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();           
+            
+            if (rs.next()) {
+                listAll = new ArrayList<Course>();
+                do {                    
+                    course = new Course();
+                    course.setID(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setDepartment(rs.getString("department"));
+                    course.setPrerequisite(rs.getString("prerequisite"));
+                    course.setValue(rs.getDouble("value"));
+                    course.setIdTerm(rs.getInt("idTerm"));
+                    course.setStatus(rs.getString("status"));
+                    listAll.add(course);
+                } while (rs.next());
+            }
+            rs.close();
+            pstmt.close();
+            return listAll;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+    
 

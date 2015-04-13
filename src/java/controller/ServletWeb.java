@@ -87,7 +87,11 @@ public class ServletWeb extends HttpServlet {
         else if(action.equals("DeleteCourse"))
             jsp = DeleteCourse.execute(request, request.getSession());
         else if(action.equals("UpdateCourse"))
-            jsp = UpdateCourse.execute(request, request.getSession());
+            try {
+                jsp = UpdateCourse.execute(request, request.getSession());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+        }
         else if(action.equals("UpdatePasswordAdmin")){
             jsp = UpdatePasswordAdmin.execute(request);
             System.out.println("JSP"+jsp);

@@ -19,24 +19,29 @@ import model.CourseDAO;
 public class EditCourse {
     public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         try {
-            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
+            System.out.println("ID"+id);
             Course course = CourseDAO.getById(id);
             if(course != null){
                 request.setAttribute("admin", admin);
                 request.setAttribute("course",course);            
                 jsp = "/updateCourse.jsp";
             }else{
+                request.setAttribute("admin", admin);
                 String erro = "Error";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
-        }
+             request.setAttribute("admin", admin);
+                String erro = "Error";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
+            }
         return jsp;
     }
 }
