@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <% ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
    ArrayList<String> listCourseID = CourseDAO.getAllId();
-   ArrayList<String> department= CourseDAO.getAllDepartment();
+   //ArrayList<String> department= CourseDAO.getAllDepartment();
 %>
 
 <html>
@@ -39,9 +39,12 @@
              <h2>Select the course's Department:</h2>
             
              <select name='department'>
-               <% for (int i=0; i<department.size(); i++){ %>
-                 <option value='<%=department.get(i)%>'><%=department.get(i)%></option>
-               <% } %>
+              <%// for (int i=0; i<department.size(); i++){ %>
+                 <option value='Biology'>Biology</option>
+                 <option value='Computer Science'>Computer Science</option>
+                 <option value='Phisical Science'>Physical Science</option>
+                 <option value='Sociology'>Sociology</option>
+               <% //} %>
                 
             </select>
              <% if (listCourseID!=null){ %>
