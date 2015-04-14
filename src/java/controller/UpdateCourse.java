@@ -40,6 +40,7 @@ public class UpdateCourse {
             Double value = Double.parseDouble(request.getParameter("value"));
             Integer idTerm = Integer.parseInt(request.getParameter("idTerm"));
             String status = request.getParameter("status");
+            String year = request.getParameter("year");
             Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
            
             if(id!=idOld){
@@ -69,6 +70,7 @@ public class UpdateCourse {
                         courseNew.setValue(value);
                         courseNew.setIdTerm(idTerm);
                         courseNew.setStatus(status);
+                        courseNew.setYear(year);
                         if(CourseDAO.create(courseNew)){
                             if(listPrerequisite!=null){
                             for(int i=0; i<listPrerequisite.size(); i++){
@@ -127,7 +129,6 @@ public class UpdateCourse {
                ProfessorxCourse professorxcourseNew = new ProfessorxCourse();
                 professorxcourseNew.setIdCourse(course.getID());
                 professorxcourseNew.setIdProfessor(idProfessor);
-                System.out.println("OK");
                 if(professorxcourseOld!=null){
                     if(ProfessorxCourseDAO.updateByCourse(professorxcourseNew, professorxcourseOld.getIdCourse())){
                      jsp =  ListCourses.execute(request, session);

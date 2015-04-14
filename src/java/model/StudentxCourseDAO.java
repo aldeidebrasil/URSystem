@@ -52,16 +52,11 @@ public class StudentxCourseDAO {
         }
     }
      public static boolean delete(StudentxCourse studentxcourse) {
-         System.out.println(studentxcourse.getIdStudent());
-         System.out.println(studentxcourse.getIdCourse());
-           
          try {
              pstmt = Connection.getConnection().prepareStatement(
                     "DELETE FROM studentxcourse WHERE idCourse = ? AND idStudent = ?");
             pstmt.setString(1, studentxcourse.getIdCourse());
             pstmt.setInt(2, studentxcourse.getIdStudent());
-            System.out.println(studentxcourse.getIdStudent());
-            System.out.println(studentxcourse.getIdCourse());
             pstmt.executeUpdate();
             pstmt.close();
             return true;

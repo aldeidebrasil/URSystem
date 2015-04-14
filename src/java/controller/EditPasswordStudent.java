@@ -18,7 +18,6 @@ public class EditPasswordStudent {
         String jsp = "";
         try {
             String id = request.getParameter("IdStudent");
-            System.out.println(id);
             Student student = StudentDAO.getById(Integer.parseInt(id));
             if(student != null){
                 request.setAttribute("student",student);            

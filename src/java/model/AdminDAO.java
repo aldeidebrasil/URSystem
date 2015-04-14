@@ -19,7 +19,6 @@ public class AdminDAO {
     public static Admin getAdminLogin(String login, String password){
         try {
             Admin adm = null;
-            System.out.println(login);
             pstmt = Connection.getConnection().prepareStatement(
                       "select * from admin where id=? AND password=?");
             pstmt.setString(1, login);

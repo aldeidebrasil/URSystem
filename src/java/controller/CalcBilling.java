@@ -6,7 +6,10 @@
 package controller;
 
 import controller.vo.Course;
+import controller.vo.Student;
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
+import model.StudentDAO;
 
 /**
  *
@@ -14,15 +17,13 @@ import java.util.ArrayList;
  */
 public class CalcBilling {
    
-    static double execute(ArrayList<Course> listCourse) {
+    static double execute(ArrayList<Course> listCourse, HttpSession session) {
         double bill=0;
            for(int i=0; i<listCourse.size(); i++){
-               System.out.println("i"+i);
-               System.out.println("size"+listCourse.size());
-               System.out.println("list"+listCourse.get(i).getID());
-               System.out.println("value"+listCourse.get(i).getValue());
-                bill= bill + listCourse.get(i).getValue();
-                System.out.println(bill);
+               bill= bill + listCourse.get(i).getValue();
+               Student student = StudentDAO.getById((int)session.getAttribute("userid"));
+               student.setBilling(bill);
+               StudentDAO.update(student);
         }
         return bill;
     }

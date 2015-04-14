@@ -34,7 +34,6 @@ public class UpdateStudent {
             String password = request.getParameter("password");
             String major = request.getParameter("major");
             Student studentOld = new Student();
-            System.out.println("38");
             if(id!=idOld){
                 ArrayList<StudentxCourse> listStudentxcourse = StudentxCourseDAO.getByIdStudent(idOld);
                 ArrayList<StudentxCourse> listStudentxcourseNew = new ArrayList<>();
@@ -46,8 +45,7 @@ public class UpdateStudent {
                         studentxcourseNew.setIdTerm(listStudentxcourse.get(i).getIdTerm());
                         studentxcourseNew.setYear(listStudentxcourse.get(i).getYear());
                         listStudentxcourseNew.add(studentxcourseNew);
-                        System.out.println("50");
-                    }
+                     }
                     boolean studentxcourseDel = StudentxCourseDAO.deleteByIdStudent(idOld);
                     if(studentxcourseDel){
                         Student student = StudentDAO.getById(idOld);
@@ -59,7 +57,6 @@ public class UpdateStudent {
                             studentNew.setPassword(password);
                             studentNew.setMajor(major);
                             Boolean createStudent = StudentDAO.create(studentNew);
-                            System.out.println("68");
                             if(createStudent!=false){
                                  for(int i=0; i<listStudentxcourseNew.size(); i++){
                                    StudentxCourseDAO.create(listStudentxcourseNew.get(i));
@@ -70,8 +67,7 @@ public class UpdateStudent {
                                 String erro = "Error Update 64";
                                 request.setAttribute("error", erro);
                                 jsp = "/errorAdmin.jsp";
-                                 System.out.println("82");
-
+                                
                             }
                         }
                        
@@ -86,7 +82,6 @@ public class UpdateStudent {
                 studentOld.setPassword(password);
                 studentOld.setMajor(major);
                 Boolean update = StudentDAO.update(studentOld);
-                System.out.println("97");
                 if(update!=false)
                     jsp = ListStudents.execute(request, session);
                 else{

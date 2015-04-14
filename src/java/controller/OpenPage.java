@@ -19,7 +19,6 @@ public class OpenPage {
     static String execute(HttpServletRequest request, HttpSession session) {
         String page = request.getParameter("page");
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
-        
         request.setAttribute("admin", admin);
         return "/"+page+".jsp";
     }

@@ -57,7 +57,10 @@
                 <%=listProfessor.get(i).getLname()%>
             </td>
             <td>           
-                <%=listProfessor.get(i).getPassword()%>
+                <% 
+                for (int j=0; j<listProfessor.get(i).getPassword().length(); j++){ %>
+                    *
+                <% } %>
             </td>
             </tr>
             <%

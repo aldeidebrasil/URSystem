@@ -20,14 +20,10 @@ class VerifyTermDate {
     static boolean execute(int idTerm) {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
         Date date = new Date();
-        System.out.println("DATE"+dateFormat.format(date));
         Term term = TermDAO.getTerm(idTerm);
-        System.out.println(dateFormat.format(term.getDateLimit()));
-        
-        if(term.getDateLimit().after(date)){
+               if(term.getDateLimit().after(date)){
             return true;
         }
-        System.out.println(date);
         
         return false;
     }

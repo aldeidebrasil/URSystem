@@ -21,8 +21,7 @@ class ListTerm {
     static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
         try {
-            System.out.println("CHEGUEI AQUI");
-             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             ArrayList<Term> listTerm = TermDAO.getAll();
             if(listTerm != null){
                 request.setAttribute("admin", admin);

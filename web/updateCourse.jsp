@@ -114,7 +114,25 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                 <option value='2'>Fall</option>
                 <option value='3'>Summer</option> 
                 </select></td>
-                        </tr>  <tr>
+                        </tr>
+                        <tr>
+                            <th class="headTable" colspan="2">Year:</th>
+                        </tr>
+                        
+                        <tr class="even">
+                            <td>
+                                <% if(course.getYear()==null){%> TBA
+                                <% }else {%>
+                                <%=course.getYear()%>
+                                <% } %>
+                            </td><td>
+                        <select name='year'>
+                           <% for (int i=1990; i<2020; i++) { %> 
+                           <option value='<%=i%>'><%=i%></option>
+                           <% } %> 
+                        </select></td>
+                         </tr>          
+                        <tr>
                             <th class="headTable" colspan="2">Professor (ID):</th>
                         </tr>
                         <tr class="even">

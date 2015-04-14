@@ -17,7 +17,7 @@
     Professor professor = (Professor)request.getAttribute("professor");
     DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
     Date date = new Date();
-%>
+    %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

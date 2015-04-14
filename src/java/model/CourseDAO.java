@@ -24,21 +24,15 @@ public class CourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO course(id, name, department, prerequisite, value, idTerm, status) VALUES(?,?,?,?,?,?,?)");
-            System.out.println(course.getID());
+                    "INSERT INTO course(id, name, department, prerequisite, value, idTerm, status, year) VALUES(?,?,?,?,?,?,?,?)");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
-             System.out.println(course.getName());
             pstmt.setString(3, course.getDepartment());
-            System.out.println(course.getDepartment());
             pstmt.setString(4, course.getPrerequisite());
-            System.out.println(course.getPrerequisite());
             pstmt.setDouble(5, course.getValue());
-             System.out.println(course.getValue());
             pstmt.setInt   (6, course.getIdTerm());
-             System.out.println(course.getIdTerm());
             pstmt.setString(7, course.getStatus());
-             System.out.println(course.getStatus());
+            pstmt.setString(8, course.getYear());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
@@ -51,7 +45,7 @@ public class CourseDAO {
     public static boolean update(Course course) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE  course SET id = ?, name = ?, department = ?, prerequisite = ?, value = ?, idTerm = ?, status = ? WHERE id = ?");
+                    "UPDATE  course SET id = ?, name = ?, department = ?, prerequisite = ?, value = ?, idTerm = ?, status = ?, year = ? WHERE id = ?");
             pstmt.setString(1, course.getID());
             pstmt.setString(2, course.getName());
             pstmt.setString(3, course.getDepartment());
@@ -59,7 +53,8 @@ public class CourseDAO {
             pstmt.setDouble(5, course.getValue());
             pstmt.setInt(6, course.getIdTerm());
             pstmt.setString(7, course.getStatus());
-            pstmt.setString(8, course.getID());
+            pstmt.setString(8, course.getYear());
+            pstmt.setString(9, course.getID());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
@@ -116,6 +111,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }
@@ -169,6 +165,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }
@@ -199,6 +196,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }
@@ -227,6 +225,7 @@ public class CourseDAO {
                 course.setValue(rs.getDouble("value"));
                 course.setIdTerm(rs.getInt("idTerm"));
                 course.setStatus(rs.getString("status"));
+                course.setYear(rs.getString("year"));
             }
             rs.close();
             pstmt.close();
@@ -252,6 +251,7 @@ public class CourseDAO {
                 course.setValue(rs.getDouble("value"));
                 course.setIdTerm(rs.getInt("idTerm"));
                 course.setStatus(rs.getString("status"));
+                course.setYear(rs.getString("year"));
             }
             rs.close();
             pstmt.close();
@@ -278,6 +278,7 @@ public class CourseDAO {
                 course.setValue(rs.getDouble("value"));
                 course.setIdTerm(rs.getInt("idTerm"));
                 course.setStatus(rs.getString("status"));
+                course.setYear(rs.getString("year"));
             }
             rs.close();
             pstmt.close();
@@ -328,6 +329,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }
@@ -355,6 +357,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     
                 }
             rs.close();
@@ -386,6 +389,7 @@ public class CourseDAO {
                     course.setValue(rs.getDouble("value"));
                     course.setIdTerm(rs.getInt("idTerm"));
                     course.setStatus(rs.getString("status"));
+                    course.setYear(rs.getString("year"));
                     listAll.add(course);
                 } while (rs.next());
             }

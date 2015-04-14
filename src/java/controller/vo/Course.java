@@ -17,6 +17,7 @@ public class Course {
     private Integer idTerm;
     private String status;
     private Double value;
+    private String year;
 
     public String getID() {
         return ID;
@@ -72,6 +73,14 @@ public class Course {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
    

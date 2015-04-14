@@ -21,7 +21,6 @@ public class SeeStudents {
         String jsp = "";
         try {
             String id = request.getParameter("rd");
-            System.out.println(id);
             
             ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(id,VerifyTerm.execute());
             ArrayList<Student> listStudents = new ArrayList<Student>();

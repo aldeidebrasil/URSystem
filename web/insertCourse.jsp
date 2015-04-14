@@ -18,7 +18,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Insert Course</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
       
@@ -31,6 +31,7 @@
            <%@include file="profileAdmin.jsp" %>
         <div class="actions"> 
              <form name="frmInsertCourse" method='post'>
+                 <% if (listProfessorID!= null) { %>
              <h2>Type the course's ID:</h2>
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
            <h2>Type the course's Name:</h2>
@@ -43,6 +44,7 @@
                <% } %>
                 
             </select>
+             <% if (listCourseID!=null){ %>
              <h2>Select the course's prerequisite:</h2>
             
            <select name='prerequisite'>                                
@@ -57,7 +59,8 @@
                                 }
                                 %>
                             
-           </select>            
+           </select>  
+              <% } %>
              <h2>Type the course's value(U$):</h2>
             <input type="text" name="val" id="val" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
              <h2>Select the course's term:</h2>
@@ -68,6 +71,13 @@
                 
             </select>
            <br><br>
+           <h2>Select the course's year:</h2>
+           <select name='year'>
+               <% for (int i=2014; i<2025; i++) { %> 
+               <option value='<%=i%>'><%=i%></option>
+               <% } %> 
+            </select>
+           <br><br>
              <h2>Select the course's status:</h2>
             <select name='status'>
                 <option value='open'>Open</option>
@@ -76,20 +86,28 @@
                 
             </select>
              <h2>Select the course's professor (ID): </h2>
-           <select name='idProfessor'>                                
+             <% if(listProfessorID!=null){
+                %>
+             <select name='idProfessor'>                                
                 <%
                 String professorSelected="";
-
                 for (int i = 0; i < listProfessorID.size(); i++) {%>
                 <option value='<%=listProfessorID.get(i)%>' <%=professorSelected%>><%=listProfessorID.get(i)%></option>
                 <% 
-                }
+                }}
                 %>
-            </select>
+                </select>
             <br><br>
             
           
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
+            
+            <% } else {%>
+                <h2>
+                You cannot have a course without a professor. Please, insert at least one professor.  
+                </h2>
+                
+            <% } %>
 	</form> 
             </div></div>
                <div class="footer">

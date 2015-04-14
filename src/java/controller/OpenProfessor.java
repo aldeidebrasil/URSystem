@@ -39,12 +39,14 @@ public class OpenProfessor {
         Professor professor = ProfessorDAO.getById(prof.getID());
         ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor((int)session.getAttribute("userid"));
         ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
+        if(professorxcourse!=null){
         for(int i=0; i<professorxcourse.size(); i++){
              Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
              listCoursesTaught.add(courseTaught);
         }
-        Map<Course,ArrayList<Student>> mapStudent = new HashMap();
-           
+        Map<Course,ArrayList<Student>> mapStudent = null;
+       if(listCoursesTaught!=null){
+        mapStudent = new HashMap();
         for(int j=0; j<listCoursesTaught.size();j++){
         ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
         ArrayList<Student> listStudents = new ArrayList<Student>();
@@ -56,12 +58,25 @@ public class OpenProfessor {
             mapStudent.put(listCoursesTaught.get(j), listStudents);
             
            }
+       else{
+           
+           
+       }
         }
+       }
         request.setAttribute("mapStudent", mapStudent);
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);
         request.setAttribute("professor", professor);
         return "/welcomeProfessor.jsp";
+        }else{
+        request.setAttribute("mapStudent", null);
+        request.setAttribute("listCoursesTaught", null);
+        request.setAttribute("professorxcourse", null);
+        request.setAttribute("professor", professor);
+        return "/welcomeProfessor.jsp";
+            
+        }
     } 
      static String executeAlert(HttpServletRequest request, HttpSession session, String confirm) throws SQLException {
                         
@@ -72,12 +87,14 @@ public class OpenProfessor {
         Professor professor = ProfessorDAO.getById(prof.getID());
         ArrayList<ProfessorxCourse> professorxcourse = ProfessorxCourseDAO.getByIdProfessor((int)session.getAttribute("userid"));
         ArrayList<Course> listCoursesTaught = new ArrayList<Course>();
+        if(professorxcourse!=null){
         for(int i=0; i<professorxcourse.size(); i++){
              Course courseTaught = CourseDAO.getById(professorxcourse.get(i).getIdCourse());
              listCoursesTaught.add(courseTaught);
         }
-        Map<Course,ArrayList<Student>> mapStudent = new HashMap();
-           
+        Map<Course,ArrayList<Student>> mapStudent = null;
+       if(listCoursesTaught!=null){
+        mapStudent = new HashMap();
         for(int j=0; j<listCoursesTaught.size();j++){
         ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
         ArrayList<Student> listStudents = new ArrayList<Student>();
@@ -90,11 +107,20 @@ public class OpenProfessor {
             
            }
         }
+       }
         request.setAttribute("ok", confirm);
         request.setAttribute("mapStudent", mapStudent);
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);
         request.setAttribute("professor", professor);
         return "/welcomeProfessor.jsp";
+     }else{
+            request.setAttribute("ok", confirm);
+        request.setAttribute("mapStudent", null);
+        request.setAttribute("listCoursesTaught", null);
+        request.setAttribute("professorxcourse", null);
+        request.setAttribute("professor", professor);
+        return "/welcomeProfessor.jsp";
     }
+   }
 }

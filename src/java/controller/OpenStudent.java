@@ -46,8 +46,7 @@ public class OpenStudent {
                         Course courseTerm = CourseDAO.getByIdStatus(studentxcourseTerm.get(i).getIdCourse());
                         if(courseTerm!=null){
                             listTerm.add(courseTerm);
-                            System.out.println("COURSE TERM"+courseTerm);
-                        }
+                          }
                         }
                 
                 }

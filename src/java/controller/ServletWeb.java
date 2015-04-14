@@ -94,7 +94,6 @@ public class ServletWeb extends HttpServlet {
         }
         else if(action.equals("UpdatePasswordAdmin")){
             jsp = UpdatePasswordAdmin.execute(request);
-            System.out.println("JSP"+jsp);
             if(jsp.equals("OK")){
                 try {
                     jsp = OpenAdmin.executeAlert(request, request.getSession(),"OK");
@@ -163,10 +162,11 @@ public class ServletWeb extends HttpServlet {
             jsp = SeeStudents.execute(request);
         else if(action.equals("AddCourseStudent"))
           try {
-              jsp = AddCourseStudent.execute(request);
+              jsp = AddCourseStudent.execute(request, request.getSession());
         } catch (SQLException ex) {
             Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         else if(action.equals("ListCoursesStudent"))
             jsp = ListCoursesStudent.execute(request);
         else if(action.equals("DropCourseStudent"))
@@ -175,7 +175,7 @@ public class ServletWeb extends HttpServlet {
             jsp = ListAllCoursesStudent.execute(request);
          else if(action.equals("BillingInformation"))
             try {
-                jsp = BillingInformation.execute(request);
+                jsp = BillingInformation.execute(request, request.getSession());
         } catch (SQLException ex) {
             Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
         }

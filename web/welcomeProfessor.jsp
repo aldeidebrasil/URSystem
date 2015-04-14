@@ -35,27 +35,41 @@
              <%@include file="profileProfessor.jsp"%>
              <div class="actions" style="height: 500px;">
                 <form name="frmSeeStudents" method='post'>
-                <h2>Your Courses:</h2> 
-                <p>Click in the options bellow to see information about the course.</p>
-                <% for (int i=0; i< listCoursesTaught.size(); i++) {
-                    if(listCoursesTaught.get(i).getStatus().equals("open")){%>  
-                    <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%><br>
-                    <div id="all<%=i%>" style="display: none;">
-                        <table class="mapStudent"><tr><th>Students</th><th>Major</th></tr>
-                        <% for (int j=0; j<mapStudent.size(); j++){
-                            if(j%2==0){
-                        %>
-                            
-                            <tr class="even">
-                                <% }else{ %>
-                             <tr class="odd">  
-                                 <% } %>
-                                <td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
-                        <%} %>
-                        </table>
-                    </div>
-                <% }} %><br>
-                </form>
+                
+                
+                <% 
+                    if(listCoursesTaught!= null){%>
+                        <h2>Your Courses:</h2> 
+                        <p>Click in the options bellow to see information about the course.</p>
+                        <% for (int i=0; i< listCoursesTaught.size(); i++) {
+                        if(listCoursesTaught.get(i).getStatus().equals("open")){ %>
+                            <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%><br>
+                            <div id="all<%=i%>" style="display: none;">
+                            <% if (!mapStudent.isEmpty()) {  %>
+                                <table class="mapStudent"><tr><th>Students</th><th>Major</th></tr>
+                                <%  for (int j=0; j<mapStudent.size(); j++){
+                                        if(mapStudent.get(j)!=null){
+                                            if(j%2==0){
+                                %>
+                                                <tr class="even">
+                                            <% }else{ %>
+                                                <tr class="odd">  
+                                            <% } %>
+                                                <td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
+                      
+                                </table>
+                                        <% }else{  %>
+                                             You do not have any student yet 
+                                        <% }} %>
+                            </div>
+                            <% }}else{%>
+                                You are not registered to teach any course yet.
+                            <%} %>
+                            <br>
+                    <% }} else{%>
+                                <h2>You are not registered to teach any course yet.</h2>
+                            <%} %>
+            </form>
             </div>
         </div>      
         <div class="footer">

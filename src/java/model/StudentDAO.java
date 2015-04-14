@@ -43,13 +43,14 @@ public class StudentDAO {
     public static boolean update(Student student) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE STUDENT SET id = ?, fname = ?, lname=?, password=?, major=? WHERE id = ?");
+                    "UPDATE STUDENT SET id = ?, fname = ?, lname=?, password=?, major=?, billing=? WHERE id = ?");
             pstmt.setInt(1, student.getID());
             pstmt.setString(2, student.getFname());
             pstmt.setString(3,student.getLname());
             pstmt.setString(4, student.getPassword());
             pstmt.setString(5,student.getMajor());
-            pstmt.setInt(6, student.getID());
+            pstmt.setDouble(6,student.getBilling());
+            pstmt.setInt(7, student.getID());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
@@ -76,7 +77,6 @@ public class StudentDAO {
     public static Student getStudentLogin(String login, String password){
         try {
             Student student = null;
-            System.out.println(login);
             pstmt = Connection.getConnection().prepareStatement(
                       "select * from student where id=? AND password=?");
             pstmt.setString(1, login);

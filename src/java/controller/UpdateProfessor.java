@@ -27,18 +27,15 @@ public class UpdateProfessor {
             // 
             int idOld = Integer.parseInt(request.getParameter("IdProfessor"));
             int id = Integer.parseInt(request.getParameter("id"));
-            System.out.println("ID"+id);
-            String fname = request.getParameter("fname");
+             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String password = request.getParameter("password");
             String title = request.getParameter("title");
             Professor professorOld = new Professor();
             if(id!=idOld){
-                System.out.println("line 36");
                 ArrayList<ProfessorxCourse> listProfessorxcourse = ProfessorxCourseDAO.getByIdProfessor(idOld);
                 ArrayList<ProfessorxCourse> listProfessorxcourseNew = new ArrayList<>();
                 if(listProfessorxcourse!=null){
-                    System.out.println("line 42");
                     for(int i=0; i<listProfessorxcourse.size();i++){
                         ProfessorxCourse professorxcourseNew = new ProfessorxCourse();
                         professorxcourseNew.setIdCourse(listProfessorxcourse.get(i).getIdCourse());
@@ -47,11 +44,8 @@ public class UpdateProfessor {
                     }
                     boolean professorxcourseDel = ProfessorxCourseDAO.deleteByIdProfessor(idOld);
                     if(professorxcourseDel){
-                        System.out.println("line 49");
                         Professor professor = ProfessorDAO.getById(idOld);
-                        System.out.println("line 62");
-                    
-                if(ProfessorDAO.delete(professor)){
+                       if(ProfessorDAO.delete(professor)){
                     Professor professorNew = new Professor();
                     professorNew.setID(id);
                     professorNew.setFname(fname);
@@ -60,7 +54,6 @@ public class UpdateProfessor {
                     professorNew.setTitle(title);
                     if(ProfessorDAO.create(professorNew)){
                         for(int i=0; i<listProfessorxcourseNew.size();i++){
-                            System.out.println("LIST"+listProfessorxcourseNew.get(i).getIdProfessor());
                             ProfessorxCourseDAO.create(listProfessorxcourseNew.get(i));
                         }
                         jsp = ListProfessor.execute(request, session);

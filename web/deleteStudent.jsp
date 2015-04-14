@@ -14,7 +14,7 @@ ArrayList<Integer> listStudentId = StudentDAO.getAllId();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Student - Update/Delete</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
@@ -25,7 +25,9 @@ ArrayList<Integer> listStudentId = StudentDAO.getAllId();
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if (listStudentId != null){ %>
             <h2>Update or Delete a Student</h2>
+            
             <p>To update an information or delete a student, you have to choose the student's ID and click the button.</p>
             <form name="frmDeleteStudent" method='post'>
             <b>Student's ID:</b> 
@@ -38,6 +40,9 @@ ArrayList<Integer> listStudentId = StudentDAO.getAllId();
 
             <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <button type="button" onClick="validateEditStudent()">Edit Student</button>
+            <% } else {%>
+                <h2>There is no students yet.</h2>
+            <% } %>
 	</form> 
         </div>
         </div>

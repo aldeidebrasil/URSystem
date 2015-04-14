@@ -22,7 +22,6 @@ public class EditCourse {
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         try {
             String id = request.getParameter("id");
-            System.out.println("ID"+id);
             Course course = CourseDAO.getById(id);
             if(course != null){
                 request.setAttribute("admin", admin);

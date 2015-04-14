@@ -58,7 +58,6 @@ public class TermDAO {
     public static Term getTerm(int id){
         try {
             Term term = null;
-           // System.out.println(login);
             pstmt = Connection.getConnection().prepareStatement(
                       "select * from term where id=?");
             pstmt.setInt(1, id);

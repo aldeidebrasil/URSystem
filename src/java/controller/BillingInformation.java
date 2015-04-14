@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 import model.StudentDAO;
 import model.StudentxCourseDAO;
@@ -21,7 +22,7 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 public class BillingInformation {
-     public static String execute(HttpServletRequest request) throws SQLException {
+     public static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String jsp = "";
         String erro = "Erro";
         double bill = 0;
@@ -40,7 +41,7 @@ public class BillingInformation {
                 
                 }
             if(listCourse!=null){
-              bill = CalcBilling.execute(listCourse);
+              bill = CalcBilling.execute(listCourse, session);
             }
             request.setAttribute("student", student);
             request.setAttribute("listCourse", listCourse);

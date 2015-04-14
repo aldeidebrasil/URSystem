@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 import model.StudentDAO;
 import model.StudentxCourseDAO;
@@ -23,7 +24,7 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 public class AddCourseStudent {
-     public static String execute(HttpServletRequest request) throws SQLException, ServletException, IOException{
+     public static String execute(HttpServletRequest request, HttpSession session) throws SQLException, ServletException, IOException{
         String error="";        
         String jsp=""; 
         boolean confirm = false;
@@ -41,8 +42,6 @@ public class AddCourseStudent {
                     if(allStudentxcourse.get(i).getIdCourse().equals(courseNew.getPrerequisite()) && !allStudentxcourse.get(i).getIdTerm().equals(courseNew.getIdTerm())){
                         confirm = true;
                     }
-                    System.out.println(confirm);
-
                 }
             }
             if(courseNew.getPrerequisite()== null || confirm == true){
@@ -74,7 +73,7 @@ public class AddCourseStudent {
                 listCourse.add(course);
             }
 
-
+            CalcBilling.execute(listCourse, request.getSession());
             request.setAttribute("listCourse", listCourse);
             return "allCoursesStudent.jsp";
            }else{
@@ -93,4 +92,6 @@ public class AddCourseStudent {
         }
          return jsp;
     }
+
+   
 }

@@ -127,4 +127,27 @@ public class ProfessorxCourseDAO {
             return false;
         }
     }
+
+    public static int countCourseByProfessor(int idProfessor, int idTerm, String year) {
+        try {
+            int count = 0;
+                        
+            pstmt = Connection.getConnection().prepareStatement(
+                     "SELECT COUNT(idCourse) FROM professorxcourse WHERE idProfessor = ? AND idTerm = ? AND year=?");
+            pstmt.setInt(1, idProfessor);
+            pstmt.setInt(2, idTerm);
+            pstmt.setString(3, year);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()){
+                 
+                count = rs.getInt("count(idCourse)");
+            }   
+            return count;
+       } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
 }

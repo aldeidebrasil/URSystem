@@ -19,7 +19,6 @@ public class UpdatePasswordAdmin {
         try {
             String password = request.getParameter("password");
             String id = request.getParameter("IdAdmin");
-            System.out.println("OKKK");
             Admin admin = AdminDAO.getById(id);
             Boolean update = AdminDAO.updatePassword(admin,password);
             if(update!=false)

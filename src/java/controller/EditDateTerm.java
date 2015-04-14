@@ -50,8 +50,7 @@ class EditDateTerm {
         if(TermDAO.update(term)==true){
             jsp=ListTerm.execute(request, session);
         }else{
-            System.out.println("NOT OK");
-             String erro = "ERRO - NAO ATUALIZOU";
+            String erro = "ERRO - NAO ATUALIZOU";
             request.setAttribute("error", erro);
             jsp = "/error.jsp";
         }
