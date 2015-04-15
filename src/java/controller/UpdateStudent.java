@@ -33,6 +33,7 @@ public class UpdateStudent {
             String lname = request.getParameter("lname");
             String password = request.getParameter("password");
             String major = request.getParameter("major");
+            Double billing = Double.parseDouble(request.getParameter("billing"));
             Student studentOld = new Student();
             if(id!=idOld){
                 ArrayList<StudentxCourse> listStudentxcourse = StudentxCourseDAO.getByIdStudent(idOld);
@@ -44,6 +45,7 @@ public class UpdateStudent {
                         studentxcourseNew.setIdStudent(id);
                         studentxcourseNew.setIdTerm(listStudentxcourse.get(i).getIdTerm());
                         studentxcourseNew.setYear(listStudentxcourse.get(i).getYear());
+                        
                         listStudentxcourseNew.add(studentxcourseNew);
                      }
                     boolean studentxcourseDel = StudentxCourseDAO.deleteByIdStudent(idOld);
@@ -56,6 +58,7 @@ public class UpdateStudent {
                             studentNew.setLname(lname);
                             studentNew.setPassword(password);
                             studentNew.setMajor(major);
+                            studentNew.setBilling(billing);
                             Boolean createStudent = StudentDAO.create(studentNew);
                             if(createStudent!=false){
                                  for(int i=0; i<listStudentxcourseNew.size(); i++){
@@ -81,6 +84,7 @@ public class UpdateStudent {
                 studentOld.setLname(lname);
                 studentOld.setPassword(password);
                 studentOld.setMajor(major);
+                studentOld.setBilling(billing);
                 Boolean update = StudentDAO.update(studentOld);
                 if(update!=false)
                     jsp = ListStudents.execute(request, session);

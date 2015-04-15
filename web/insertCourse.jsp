@@ -39,12 +39,10 @@
              <h2>Select the course's Department:</h2>
             
              <select name='department'>
-              <%// for (int i=0; i<department.size(); i++){ %>
                  <option value='Biology'>Biology</option>
                  <option value='Computer Science'>Computer Science</option>
                  <option value='Phisical Science'>Physical Science</option>
                  <option value='Sociology'>Sociology</option>
-               <% //} %>
                 
             </select>
              <% if (listCourseID!=null){ %>
@@ -104,7 +102,7 @@
           
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
             
-            <%}else{ %>
+            <%}}else{ %>
                 <h2>
                 You cannot have a course without a professor. Please, insert at least one professor.  
                 </h2>

@@ -100,12 +100,18 @@ function validateInsertStudent(){
      var lname = frm.lname.value;
      var password = frm.password.value;
      var major = frm.major.value;
+     var billing = frm.billing.value;
     if(isNaN(id)){
         alert("Please, the ID must have only numbers!");
         frm.id.focus();
         return false;
     } 
-     
+    else if(isNaN(billing)){
+        alert("Please, the billing must have only numbers!");
+        frm.billing.focus();
+        return false;
+        
+    } 
     else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
@@ -250,7 +256,7 @@ function validateInsertStudent(){
     var idTerm = frm.idTerm.value;
     var status = frm.status.value;
     var idProfessor = frm.idProfessor.value;
-    if(isNaN(val)){
+     if(isNaN(val)){
       alert("The field Value must be a number");
         frm.val.focus();
        return false;  
@@ -285,7 +291,9 @@ function validateInsertStudent(){
         alert("Please, fill out the field  ID Professor!");
         frm.idProfessor.focus();
         return false;
-     }else{
+     }
+    
+     else{
         url = "/URSystem/servletweb?action=InsertCourse";  
         document.forms[2].action = url;  
         window.document.forms[2].submit();
