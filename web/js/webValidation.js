@@ -312,17 +312,20 @@ function validateInsertStudent(){
     var department = frm.department.value;
     var val = frm.val.value;
     var idTerm = frm.idTerm.value;
+    var prerequisite = frm.prerequisite.value;
     var status = frm.status.value;
     var idProfessor = frm.idProfessor.value;
      if(isNaN(val)){
       alert("The field Value must be a number");
         frm.val.focus();
        return false;  
-    } else if(/^[a-zA-Z0-0-9-]*$/.test(id) == false){
+    } 
+    if(/^[a-zA-Z0-9-]*$/.test(id) == false){
         alert("The course's ID cannot have special characters");
         frm.id.focus;
         return false;
      }
+     
      else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
@@ -341,7 +344,8 @@ function validateInsertStudent(){
         alert("Please, fill out the field Department!");
         frm.department.focus();
         return false;
-     }else if(val == ""){
+     }
+     else if(val == ""){
         alert("Please, fill out the field Value!");
         frm.value.focus();
         return false;
@@ -358,7 +362,7 @@ function validateInsertStudent(){
         frm.idProfessor.focus();
         return false;
      }
-    
+   
      else{
         url = "/URSystem/servletweb?action=InsertCourse";  
         document.forms[2].action = url;  
@@ -542,4 +546,3 @@ function validateInsertStudent(){
         return true;
      }      
  }
- 

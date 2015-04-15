@@ -5,10 +5,12 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Course;
 import controller.vo.ProfessorxCourse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.CourseDAO;
 import model.ProfessorDAO;
 import model.ProfessorxCourseDAO;
@@ -19,10 +21,12 @@ import model.ProfessorxCourseDAO;
  */
 public class InsertCourse {
     static String execute(HttpServletRequest request, HttpSession session) {        
-        
+          Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+      
         String error="";        
         String jsp=""; 
         String id = request.getParameter("id");
+        
         String name = request.getParameter("name");
         String department = request.getParameter("department");
         String prerequisite = request.getParameter("prerequisite");
@@ -34,6 +38,8 @@ public class InsertCourse {
         String status = request.getParameter("status");
         String year = request.getParameter("year");
         Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
+        Course verifyCourse = CourseDAO.getById(id);
+        if(verifyCourse==null){
         Course course = new Course();  
         ProfessorxCourse professorxcourse = new ProfessorxCourse();
         try {
@@ -58,26 +64,44 @@ public class InsertCourse {
                     if(ProfessorxCourseDAO.create(professorxcourse)){
                        jsp = ListCourses.execute(request, session);
                       }else{
+                         request.setAttribute("admin", admin);
+      
                 String erro = "ERROR!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
                }
                 else{
+                     request.setAttribute("admin", admin);
+      
                         String erro = "The professor "+ idProfessor+" is going to teach 4 courses ";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                  }
 
             }else{
+                request.setAttribute("admin", admin);
+      
                 String erro = "ERROR!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
+        
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+             request.setAttribute("admin", admin);
+      
+                 String erro = "This course already exists!";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
         }
+        }else{
+                request.setAttribute("admin", admin);
+      
+                 String erro = "This course already exists!";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
+         }
         return jsp;
     
 }

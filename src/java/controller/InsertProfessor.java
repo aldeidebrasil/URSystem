@@ -5,9 +5,11 @@
  */
 package controller;
 
+import controller.vo.Admin;
 import controller.vo.Professor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 import model.ProfessorDAO;
 
 /**
@@ -16,7 +18,7 @@ import model.ProfessorDAO;
  */
 public class InsertProfessor {
     static String execute(HttpServletRequest request, HttpSession session) {        
-        
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         String error="";        
         String jsp=""; 
          Integer id = Integer.parseInt(request.getParameter("id"));
@@ -38,6 +40,7 @@ public class InsertProfessor {
                 jsp = ListProfessor.execute(request, session);
                
             }else{
+                request.setAttribute("admin", admin);
                 String erro = "ERROR!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";

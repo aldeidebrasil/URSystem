@@ -34,6 +34,7 @@
                  <% if (listProfessorID!= null) { %>
              <h2>Type the course's ID:</h2>
             <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
+           
            <h2>Type the course's Name:</h2>
             <input type="text" name="name" id="name" size="30" style="line-height: 40px; font-size: 20px;">
              <h2>Select the course's Department:</h2>
@@ -54,7 +55,8 @@
                                 %>
                                 <option value=''>None</option>
                                 <%
-                                for (int i = 0; i < listCourseID.size(); i++) {%>
+                                for (int i = 0; i < listCourseID.size(); i++) {
+                                %>
                                 <option value='<%=listCourseID.get(i)%>' <%=courseSelected%>><%=listCourseID.get(i)%></option>
                                 <% 
                                 }
