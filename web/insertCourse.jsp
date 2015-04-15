@@ -89,15 +89,14 @@
                 
             </select>
              <h2>Select the course's professor (ID): </h2>
-             <% if(listProfessorID!=null){
-                %>
+             <% if(listProfessorID!= null){ %>
              <select name='idProfessor'>                                
                 <%
                 String professorSelected="";
                 for (int i = 0; i < listProfessorID.size(); i++) {%>
                 <option value='<%=listProfessorID.get(i)%>' <%=professorSelected%>><%=listProfessorID.get(i)%></option>
                 <% 
-                }}
+                }
                 %>
                 </select>
             <br><br>
@@ -105,7 +104,7 @@
           
             <button type="button" onClick="validateInsertCourse()">Insert Course</button>
             
-            <% } else {%>
+            <%}else{ %>
                 <h2>
                 You cannot have a course without a professor. Please, insert at least one professor.  
                 </h2>
