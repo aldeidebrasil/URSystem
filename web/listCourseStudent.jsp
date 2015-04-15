@@ -28,10 +28,10 @@
     <script>
  function validateDropCourse(idStudent){    
     var frm = document.frmDropCourse;
-     var id = frm.id.value; 
-     if(id == ""){
+     var id = frm.rd.value; 
+     if(id === ""){
         alert("Please, choose a course!");
-        frm.id.focus();
+        frm.rd.focus();
         return false;
      }else{
         url = "/URSystem/servletweb?action=DropCourseStudent&IdStudent="+idStudent+"&IdCourse="+id;  
@@ -83,7 +83,7 @@
                 <tr class="odd"> 
                 <% } %>
                 <td>
-                <input type="radio" id="id" name="rd" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
+                <input type="radio" name="rd" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
             </td>
             <td>    
                 <%=listCourses.get(i).getName()%>

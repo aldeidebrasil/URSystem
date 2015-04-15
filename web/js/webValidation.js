@@ -444,4 +444,18 @@ function validateInsertStudent(){
         return true;
      }      
  }
+ function validateRegisterCourse(id){    
+    var frm = document.frmRegisterCourse;
+     var course = frm.rd.value;
+     if(course == ""){
+        alert("Please, choose one course!");
+        frm.course.focus();
+        return false;
+     }else{
+        url = "/URSystem/servletweb?action=AddCourseStudent&IdStudent="+id;  
+        document.forms[2].action = url;  
+        window.document.forms[2].submit();
+        return true;
+     }      
+ }
  
