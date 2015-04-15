@@ -61,6 +61,7 @@
             <%@include file="profile.jsp"%>
             <div class="actions2">
        <form name="frmDropCourse" method='post'>
+           <% if(listCourses!= null){ %>
       <table style="border: 2px black solid">
             <tr class="headTable"><th>ID</th>
                 <th>Course</th>
@@ -113,6 +114,9 @@
             %>
             </table><br>
          <button type="button" onClick="validateDropCourse(<%=student.getID()%>)">Drop Course</button>
+         <% }else { %>
+            There is no course to show.
+        <% } %>
         </form></div>
         </div><div class="footer">
             <%@include file="footer.jsp" %>

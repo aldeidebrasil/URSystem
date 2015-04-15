@@ -23,6 +23,7 @@
         <div class="content">
             <%@include file="profileAdmin.jsp" %>
             <div class="actions">
+                <% if(professor!=null){ %>
                 <form name="frmUpdateProfessor" method='post'>
                     <table style="border: 2px black solid">
                         <tr>
@@ -70,7 +71,10 @@
 
                     <button type="button" onClick="validateUpdateProfessor(<%=professor.getID()%>)">Update Professor</button>
 
-                </form> 
+                </form>
+                    <%} else {%>
+                    <h2>There is no professor to show</h2>
+                    <%}%>
             </div></div>
         <div class="footer">
             <%@include file="footer.jsp" %>

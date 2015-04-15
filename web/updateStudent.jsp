@@ -23,6 +23,7 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if(student!=null){ %>
            <form name="frmUpdateStudent" method='post'>
             <table style="border: 2px black solid">
                 <tr>
@@ -75,7 +76,10 @@
             </table>
             <button type="button" onClick="validateUpdateStudent(<%=student.getID()%>)">Update Student</button>
                  
-	</form> 
+	</form>
+            <%} else {%>
+            <h2>There is no course to show</h2>
+            <% } %>
         </div> 
         </div> 
         <div class="footer">

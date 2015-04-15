@@ -18,7 +18,6 @@
 ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.getID());
  ArrayList<String> listCourseID = CourseDAO.getAllId();
  ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
-  ArrayList<String> department= CourseDAO.getAllDepartment();
 %>
 <html>
     <head>
@@ -33,6 +32,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
         <div class="content">
             <%@include file="profileAdmin.jsp" %>
             <div class="actions">
+                <% if(course!=null){ %>
          <form name="frmUpdateCourse" method='post'>
                <table style="border: 2px black solid">
                         <tr>
@@ -79,10 +79,10 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                                 String courseSelected="";
                                 %>
                                 <option value=''>None</option>
-                                <% for (int i = 0; i < listCourseID.size(); i++) {%>
+                                <%if(listCourseID!=null){ for (int i = 0; i < listCourseID.size(); i++) {%>
                                 <option value='<%=listCourseID.get(i)%>' <%=courseSelected%>><%=listCourseID.get(i)%></option>
                                 <% 
-                                }
+                                }}
                                 %></select>
                           </td>
                         </tr>
@@ -147,11 +147,11 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                                
                            </td> 
                         <td><select name='idProfessor'>                                
-                <%
+                <%if(listProfessorID!=null){
                 for (int i = 0; i < listProfessorID.size(); i++) {%>
                 <option value='<%=listProfessorID.get(i)%>'><%=listProfessorID.get(i)%></option>
                 <% 
-                }
+                }}
                 %></select>
                         </td>
                         </tr>
@@ -163,7 +163,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                     <button type="button" onClick="validateUpdateCourse('<%=course.getID()%>')">Update Course</button>   
             
              
-                 
+                 <% } %>
 	</form> 
         </div></div>
         <div class="footer">

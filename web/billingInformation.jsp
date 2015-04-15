@@ -71,7 +71,13 @@
                 <% } else {%>
                 <tr class="odd"> 
                 <% } %><th colspan="3">Total</th>
-                <td><%=bill%></td>
+                <td>
+                    <% if(bill!=null) { %>
+                        <%=bill%>
+                    <% }else { %>
+                        0
+                    <% } %>
+                </td>
                 </tr>
                 
             </table>

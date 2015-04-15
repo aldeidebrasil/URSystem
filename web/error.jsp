@@ -27,7 +27,11 @@ error = (String)request.getAttribute("error");
         <div class="content">
            <%@include file="profile.jsp"%>
      <div class="actions2">
+            <% if(error != null){ %>
              <h2><%=error%></h2>
+             <% } else { %>
+                OH! Something went wrong!
+             <% } %>
         </div>
         </div>
         <div class="footer">
