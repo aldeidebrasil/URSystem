@@ -23,6 +23,7 @@ public class EditProfessor {
             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
             Professor professor = ProfessorDAO.getById(Integer.parseInt(id));
+            
             if(professor != null){
                 request.setAttribute("admin", admin);
                 request.setAttribute("professor",professor);            

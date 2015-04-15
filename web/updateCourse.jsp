@@ -54,12 +54,17 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                         </tr>
                         <tr class="even">
                             <td> <%=course.getDepartment()%></td>
-                            <td><select name='department'>
-               <% for (int i=0; i<department.size(); i++){ %>
-                 <option value='<%=department.get(i)%>'><%=department.get(i)%></option>
-               <% } %>
+                            <td> <select name='department'>
+                                    <option value='Biology'>Biology</option>
+                 <option value='Computer Science'>Computer Science</option>
+                 <option value='Phisical Science'>Physical Science</option>
+                 <option value='Sociology'>Sociology</option>
                 
-            </select></td>
+              <!-- for (int i=0; i<department.size(); i++){ %>
+                 //} -->
+                
+            </select>
+            </td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Prerequisite</th>
@@ -74,8 +79,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                                 String courseSelected="";
                                 %>
                                 <option value=''>None</option>
-                                <%
-                                for (int i = 0; i < listCourseID.size(); i++) {%>
+                                <% for (int i = 0; i < listCourseID.size(); i++) {%>
                                 <option value='<%=listCourseID.get(i)%>' <%=courseSelected%>><%=listCourseID.get(i)%></option>
                                 <% 
                                 }
@@ -127,7 +131,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                                 <% } %>
                             </td><td>
                         <select name='year'>
-                           <% for (int i=1990; i<2020; i++) { %> 
+                           <% for (int i=2014; i<2020; i++) { %> 
                            <option value='<%=i%>'><%=i%></option>
                            <% } %> 
                         </select></td>

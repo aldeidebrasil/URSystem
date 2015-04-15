@@ -12,6 +12,8 @@ package controller.vo;
 public class ProfessorxCourse {
     private Integer idProfessor;
     private String idCourse;
+    private Integer idTerm;
+    private String year;
 
     public Integer getIdProfessor() {
         return idProfessor;
@@ -27,6 +29,22 @@ public class ProfessorxCourse {
 
     public void setIdCourse(String idCourse) {
         this.idCourse = idCourse;
+    }
+
+    public Integer getIdTerm() {
+        return idTerm;
+    }
+
+    public void setIdTerm(Integer idTerm) {
+        this.idTerm = idTerm;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
     
 }

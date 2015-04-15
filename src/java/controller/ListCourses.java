@@ -20,6 +20,7 @@ import model.CourseDAO;
 public class ListCourses {
     public static String execute(HttpServletRequest request) {
         String jsp = "";
+            
         try {
             ArrayList<Course> listCourse = CourseDAO.getAll();
             if(listCourse != null){
@@ -28,7 +29,7 @@ public class ListCourses {
             }else{
                 String erro="There is no courses to show!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {
@@ -40,22 +41,27 @@ public class ListCourses {
 
     static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+            
         try {
-            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             ArrayList<Course> listCourse = CourseDAO.getAll();
             if(listCourse != null){
                 request.setAttribute("admin", admin);
                 request.setAttribute("listCourse", listCourse);
                 jsp = "/allCourses.jsp";    
             }else{
+                request.setAttribute("admin", admin);
                 String erro="There is no courses to show!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+            request.setAttribute("admin", admin);
+                String erro="There is no courses to show!";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
         }
         return jsp;
     }

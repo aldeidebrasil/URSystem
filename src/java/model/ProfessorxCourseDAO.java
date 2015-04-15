@@ -35,6 +35,8 @@ public class ProfessorxCourseDAO {
                     professorxcourse = new ProfessorxCourse();
                     professorxcourse.setIdProfessor(rs.getInt("idProfessor"));
                     professorxcourse.setIdCourse(rs.getString("idCourse"));
+                    professorxcourse.setIdTerm(rs.getInt("idTerm"));
+                    professorxcourse.setYear(rs.getString("year"));
                     listAll.add(professorxcourse);
                 } while (rs.next());
             }
@@ -59,7 +61,10 @@ public class ProfessorxCourseDAO {
                     professorxcourse = new ProfessorxCourse();
                     professorxcourse.setIdProfessor(rs.getInt("idProfessor"));
                     professorxcourse.setIdCourse(rs.getString("idCourse"));
-                }
+                    professorxcourse.setIdTerm(rs.getInt("idTerm"));
+                    professorxcourse.setYear(rs.getString("year"));
+                
+            }
             rs.close();
             pstmt.close();
             return professorxcourse;
@@ -72,9 +77,11 @@ public class ProfessorxCourseDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO professorxcourse(idCourse, idProfessor) VALUES(?,?)");
+                    "INSERT INTO professorxcourse(idCourse, idProfessor, idTerm, year) VALUES(?,?,?,?)");
             pstmt.setString(1, professorxcourse.getIdCourse());
             pstmt.setInt(2, professorxcourse.getIdProfessor());
+            pstmt.setInt(3, professorxcourse.getIdTerm());
+            pstmt.setString(4, professorxcourse.getYear());
             
             pstmt.executeUpdate();
             pstmt.close();
@@ -87,10 +94,12 @@ public class ProfessorxCourseDAO {
     public static boolean updateByCourse(ProfessorxCourse professorxcourse, String idCourse) {
         try {
              pstmt = Connection.getConnection().prepareStatement(
-                    "UPDATE  professorxcourse SET idCourse = ?, idProfessor = ? WHERE idCourse = ?");
+                    "UPDATE  professorxcourse SET idCourse = ?, idProfessor = ?, idTerm=?, year=? WHERE idCourse = ?");
             pstmt.setString(1, professorxcourse.getIdCourse());
             pstmt.setInt(2, professorxcourse.getIdProfessor());
-            pstmt.setString(3, idCourse);
+            pstmt.setInt(3, professorxcourse.getIdTerm());
+            pstmt.setString(4, professorxcourse.getYear());
+            pstmt.setString(5, idCourse);
             pstmt.executeUpdate();
             pstmt.close();
             return true;

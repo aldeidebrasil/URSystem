@@ -47,6 +47,7 @@
                     <h2>Your schedule is full!</h2>You are registered for 6 courses (4 regular and 2 extra). You have to unregister for some classes to add others. 
                 <%} else{ %>
                 <form action="/URSystem/servletweb?action=AddCourseStudent&IdStudent=<%=student.getID()%>" method="post">
+                    <%if(!listNew.isEmpty()){ %>
                     <h2>Courses Open:</h2> 
                     <div id="linkMore" style="display: block">
                         <a href="#" onclick="showHideDiv('allCourses','courseMajor','linkMore','linkLess')">See all courses</a>
@@ -64,7 +65,9 @@
                         <% } %><br>
                     </div>
                     <button type="submit">Register for this Course</button>
-                    
+                    <% } else { %>
+                        <h2> Sorry! There is no open courses. </h2>
+                    <% } %>
                     <br>
                 </form>
                     <div id="divcourse"></div>

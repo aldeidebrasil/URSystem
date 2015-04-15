@@ -26,7 +26,7 @@ public class InsertCourse {
         String name = request.getParameter("name");
         String department = request.getParameter("department");
         String prerequisite = request.getParameter("prerequisite");
-        if(prerequisite.isEmpty()){
+        if(prerequisite==null || prerequisite.isEmpty()){
             prerequisite=null;
         }
         Double value =Double.valueOf(request.getParameter("val"));
@@ -51,6 +51,8 @@ public class InsertCourse {
            if(create != false){
                professorxcourse.setIdCourse(course.getID());
                professorxcourse.setIdProfessor(idProfessor);
+               professorxcourse.setIdTerm(course.getIdTerm());
+               professorxcourse.setYear(year);
                int countCourses = ProfessorxCourseDAO.countCourseByProfessor(idProfessor, idTerm, year);
                if(countCourses<=4){
                     if(ProfessorxCourseDAO.create(professorxcourse)){

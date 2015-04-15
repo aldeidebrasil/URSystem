@@ -35,7 +35,7 @@ ArrayList<Integer> listProfessorId = ProfessorDAO.getAllId();
                                 String selected="";
                                 
                                 for (int i = 0; i < listProfessorId.size(); i++) {%>
-                                <option value='<%=listProfessorId.get(i)%>' <%=selected%>><%=listProfessorId.get(i)%></option>
+                                <option value='<%=listProfessorId.get(i)%>'><%=listProfessorId.get(i)%></option>
                                 <% 
                                 }
                                 %>

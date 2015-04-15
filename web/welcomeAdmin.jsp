@@ -38,6 +38,7 @@
       
          <h2>Term</h2>
         <a href="/URSystem/servletweb?action=OpenPage&page=editTerm">Edit Term</a><br>
+         
         </div>
  </div>
         <div class="footer">

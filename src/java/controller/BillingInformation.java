@@ -40,16 +40,17 @@ public class BillingInformation {
                         }
                 
                 }
+        }
             if(listCourse!=null){
               bill = CalcBilling.execute(listCourse, session);
-            }
+            
             request.setAttribute("student", student);
             request.setAttribute("listCourse", listCourse);
             request.setAttribute("billing", bill);
             jsp = "/billingInformation.jsp";
-        }else{
-            
-            request.setAttribute("error", erro );
+            }else{
+            request.setAttribute("student", student);
+            request.setAttribute("You do not have any registration for this semester", erro );
             jsp = "/error.jsp";
         }
           return jsp;

@@ -123,12 +123,15 @@ public class UpdateCourse {
             course.setValue(value);
             course.setIdTerm(idTerm);
             course.setStatus(status);
+            course.setYear(year);
             
             Boolean update = CourseDAO.update(course);
             if(update!=false){
                ProfessorxCourse professorxcourseNew = new ProfessorxCourse();
                 professorxcourseNew.setIdCourse(course.getID());
                 professorxcourseNew.setIdProfessor(idProfessor);
+                professorxcourseNew.setIdTerm(course.getIdTerm());
+                professorxcourseNew.setYear(year);
                 if(professorxcourseOld!=null){
                     if(ProfessorxCourseDAO.updateByCourse(professorxcourseNew, professorxcourseOld.getIdCourse())){
                      jsp =  ListCourses.execute(request, session);

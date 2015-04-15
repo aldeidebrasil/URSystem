@@ -42,6 +42,7 @@ public class ProfessorDAO {
     
     public static boolean update(Professor professor) {
         try {
+            System.out.println("professorID"+professor.getID());
              pstmt = Connection.getConnection().prepareStatement(
                     "UPDATE professor SET id = ?, fname = ?, lname=?, password=?, title=? WHERE id = ?");
             pstmt.setInt(1, professor.getID());
@@ -58,7 +59,25 @@ public class ProfessorDAO {
             return false;
         }
     }
-    
+     public static boolean updateID(Professor professor, int IdOld) {
+        try {
+            System.out.println("professorID"+professor.getID());
+             pstmt = Connection.getConnection().prepareStatement(
+                    "UPDATE professor SET id = ?, fname = ?, lname=?, password=?, title=? WHERE id = ?");
+            pstmt.setInt(1, professor.getID());
+            pstmt.setString(2, professor.getFname());
+            pstmt.setString(3,professor.getLname());
+            pstmt.setString(4, professor.getPassword());
+            pstmt.setString(5,professor.getTitle());
+            pstmt.setInt(6, IdOld);
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public static boolean delete(Professor professor) {
         try {
              pstmt = Connection.getConnection().prepareStatement(

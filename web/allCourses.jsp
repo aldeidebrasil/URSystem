@@ -9,12 +9,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!
-    ArrayList<Course> listCourse;
-%>
 <%
-    listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
-    
+    ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");   
 %>
 <html>
     <head>
@@ -27,6 +23,7 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <%if(listCourse!=null){ %>
             <table style="border: 2px black solid">
            <tr class="headTable"><th>ID</th>
                 <th>Course</th>
@@ -79,6 +76,9 @@
                 }
             %>
         </table>
+        <% } else { %>
+           <h2> There is no courses to show.</h2>
+        <% }%>
         </div>
         </div>
          <div class="footer">

@@ -55,9 +55,10 @@ public class OpenStudent {
                 ArrayList<Course> listCoursesDepartment = CourseDAO.getByDepartment(student.getMajor());
                 ArrayList<String> idCourseNew = VerifyCourseNew.execute(listAllTaken);
                 ArrayList<Course> listNew = new ArrayList<>();
+                if(idCourseNew!=null){
                 for(int k=0; k<idCourseNew.size(); k++){
                     listNew.add(CourseDAO.getCourseOpen(idCourseNew.get(k)));
-                }
+                }}
                 request.setAttribute("listNew",listNew);
                 request.setAttribute("listTerm",listTerm);        
                 request.setAttribute("listCoursesDepartment", listCoursesDepartment);
@@ -98,9 +99,11 @@ public class OpenStudent {
                 ArrayList<Course> listCoursesDepartment = CourseDAO.getByDepartment(student.getMajor());
                 ArrayList<String> idCourseNew = VerifyCourseNew.execute(listAllTaken);
                 ArrayList<Course> listNew = new ArrayList<>();
+               if(idCourseNew!=null){
                 for(int k=0; k<idCourseNew.size(); k++){
                     listNew.add(CourseDAO.getById(idCourseNew.get(k)));
                 }
+               }
                 request.setAttribute("ok", confirm);
                 request.setAttribute("listNew",listNew);
                 request.setAttribute("listTerm",listTerm);        

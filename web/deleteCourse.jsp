@@ -24,6 +24,7 @@ ArrayList<String> listCourseId = CourseDAO.getAllId();
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if(listCourseId!= null){ %>
             <h2>Update or Delete Course</h2>
             <p>To update an information or delete a course, you have to choose the Course's ID and click the correspondent button.</p>
             
@@ -44,6 +45,9 @@ ArrayList<String> listCourseId = CourseDAO.getAllId();
             <button type="button" onClick="validateEditCourse()">Edit Course</button>
             <button type="button" onClick="validateDeleteCourse()">Delete Course</button>
 	</form> 
+            <% } else {%>
+                <h2>There is no course yet</h2>
+            <% } %>
         </div></div>
                              <div class="footer">
             <%@include file="footer.jsp" %>

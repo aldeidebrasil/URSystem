@@ -23,12 +23,14 @@ public class VerifyCourseNew {
         ArrayList<String> idAllTaken = new ArrayList<>();
         
         ArrayList<Course> listAllCourses = CourseDAO.getAllOpen();
+        if((listAllCourses!=null)&& (listAllTaken!=null)){
       for(int i=0; i<listAllCourses.size();i++){
           idAllCourses.add(listAllCourses.get(i).getID());
       }
-      for(int j=0; j<listAllTaken.size();j++){
+        for(int j=0; j<listAllTaken.size();j++){
           idAllTaken.add(listAllTaken.get(j).getID());
       }
+       
        idAllCourses.removeAll(idAllTaken);
       for(int k=0; k<idAllCourses.size();k++){
           idCourseNew.add(idAllCourses.get(k));
@@ -37,6 +39,9 @@ public class VerifyCourseNew {
       
        return idCourseNew;
        }
+
+    return null;
+    }
     }
     
 
