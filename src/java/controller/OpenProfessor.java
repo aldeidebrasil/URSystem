@@ -27,8 +27,9 @@ import model.StudentxCourseDAO;
  * @author Aldeide Brasil
  */
 public class OpenProfessor {
-
+    
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
+        String jsp = "";
          if(!VerifyTermDate.execute(VerifyTerm.execute())){
            ChangeStatusCourses.execute();
         }                
@@ -48,36 +49,35 @@ public class OpenProfessor {
        if(listCoursesTaught!=null){
         mapStudent = new HashMap();
         for(int j=0; j<listCoursesTaught.size();j++){
-        ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
-        ArrayList<Student> listStudents = new ArrayList<Student>();
-       if(studentxcourse!=null){
-            for(int i = 0; i < studentxcourse.size(); i++){
-                Student student = StudentDAO.getById(studentxcourse.get(i).getIdStudent());
-                listStudents.add(student);
+            ArrayList<StudentxCourse> studentxcourse = StudentxCourseDAO.getByIdCourseTerm(listCoursesTaught.get(j).getID(),VerifyTerm.execute());
+            ArrayList<Student> listStudents = new ArrayList<Student>();
+            if(studentxcourse!=null){
+                for(int i = 0; i < studentxcourse.size(); i++){
+                    Student student = StudentDAO.getById(studentxcourse.get(i).getIdStudent());
+                    listStudents.add(student);
+                }
+                mapStudent.put(listCoursesTaught.get(j), listStudents);
             }
-            mapStudent.put(listCoursesTaught.get(j), listStudents);
-            
-           }
-       else{
-           
-           
-       }
         }
-       }
         request.setAttribute("mapStudent", mapStudent);
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);
         request.setAttribute("professor", professor);
-        return "/welcomeProfessor.jsp";
+        jsp = "/welcomeProfessor.jsp";
+        
+        
+     }
         }else{
         request.setAttribute("mapStudent", null);
         request.setAttribute("listCoursesTaught", null);
         request.setAttribute("professorxcourse", null);
         request.setAttribute("professor", professor);
-        return "/welcomeProfessor.jsp";
+        jsp =  "/welcomeProfessor.jsp";
             
         }
-    } 
+        return jsp;
+    }
+    
      static String executeAlert(HttpServletRequest request, HttpSession session, String confirm) throws SQLException {
                         
         Professor prof = ProfessorDAO.getById((int)session.getAttribute("userid"));
