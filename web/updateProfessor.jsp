@@ -31,28 +31,28 @@
                         </tr> 
                         <tr class="even">
                             <td><%=professor.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" value="<%=professor.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="3" value="<%=professor.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">First Name</th>
                         </tr>
                         <tr class="even">
                             <td><%=professor.getFname()%> </td>
-                            <td><input type="text" name="fname" id="fname" size="30" value="<%=professor.getFname()%> " style="line-height: 40px; font-size: 20px;"></td>
+                            <td><input type="text" name="fname" id="fname" size="30" maxlength="50" value="<%=professor.getFname()%> " style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Last Name</th>
                         </tr>
                         <tr class="even">
                             <td> <%=professor.getLname()%></td>
-                            <td><input type="text" name="lname" id="lname" size="30" value=" <%=professor.getLname()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td><input type="text" name="lname" id="lname" size="30" maxlength="100" value=" <%=professor.getLname()%>" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Password</th>
                         </tr>
                         <tr class="even">
                             <td><%=professor.getPassword()%></td>
-                            <td> <input type="password" name="password" id="password" size="30" value="<%=professor.getPassword()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="password" name="password" id="password" size="30" maxlength="16" value="<%=professor.getPassword()%>" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Major</th>

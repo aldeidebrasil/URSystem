@@ -40,14 +40,14 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                         </tr> 
                         <tr class="even">
                             <td><%=course.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" value="<%=course.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=course.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Name</th>
                         </tr>
                         <tr class="even">
                             <td><%=course.getName()%> </td>
-                            <td><input type="text" name="name" id="name" size="30" value="<%=course.getName()%> " style="line-height: 40px; font-size: 20px;"></td>
+                            <td><input type="text" name="name" id="name" size="30" maxlength="100" value="<%=course.getName()%> " style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Department</th>

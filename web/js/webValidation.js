@@ -41,7 +41,11 @@ function validateInsertStudent(){
         frm.id.focus;
         return false;
      }
-    
+    if(id.length<4){
+        alert("The ID is too short.");
+        frm.id.focus();
+        return false;
+    }
     else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();

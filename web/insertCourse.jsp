@@ -33,10 +33,10 @@
              <form name="frmInsertCourse" method='post'>
                  <% if (listProfessorID!= null) { %>
              <h2>Type the course's ID:</h2>
-            <input type="text" name="id" id="id" size="30" style="line-height: 40px; font-size: 20px;">
+             <input type="text" name="id" id="id" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;">
            
            <h2>Type the course's Name:</h2>
-            <input type="text" name="name" id="name" size="30" style="line-height: 40px; font-size: 20px;">
+            <input type="text" name="name" id="name" size="30" maxlength="100" style="line-height: 40px; font-size: 20px;">
              <h2>Select the course's Department:</h2>
             
              <select name='department'>
@@ -65,7 +65,7 @@
            </select>  
               <% } %>
              <h2>Type the course's value(U$):</h2>
-            <input type="text" name="val" id="val" size="30" style="line-height: 40px; font-size: 20px;"><br><br>
+            <input type="text" name="val" id="val" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;"><br><br>
              <h2>Select the course's term:</h2>
               <select name='idTerm'>
                 <option value='1'>Spring</option>
