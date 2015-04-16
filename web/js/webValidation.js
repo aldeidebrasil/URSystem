@@ -32,13 +32,8 @@ function validateInsertStudent(){
      var password = frm.password.value;
      var major = frm.major.value;
      
-    if(isNaN(id)){
-        alert("Please, the ID must have only numbers!");
-        frm.id.focus();
-        return false;
-    } 
-    else if(/^[0-9-]*$/.test(id) == false){
-        alert("The student's ID must have only numbers");
+    if(/^[0-9]*$/.test(id) == false){
+        alert("The student's ID must have only numbers!");
         frm.id.focus;
         return false;
      }
@@ -47,7 +42,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(fname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(fname) == false){
         alert("The student's first name cannot have special characters or numbers");
         frm.fname.focus;
         return false;
