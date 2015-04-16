@@ -7,8 +7,12 @@
     var frm = document.frmLogin;
      var login = frm.login.value;
      var password = frm.password.value;
-     
-     if(login == ""){
+     if(/^[a-zA-Z0-9-]*$/.test(login) == false){
+        alert("Please, fill out the field Login!");
+        frm.login.focus;
+        return false;
+     }
+     else if(login == ""){
         alert("Please, fill out the field Login!");
         frm.login.focus();
         return false;
@@ -50,7 +54,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field First Name!");
         frm.fname.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(lname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(lname) == false){
         alert("The student's last name cannot have special characters or numbers");
         frm.lname.focus;
         return false;
@@ -129,7 +133,7 @@ function validateInsertStudent(){
         frm.id.focus();
         return false;
      }
-     else if(/^[a-zA-Z]*$/.test(fname) == false){
+     else if(/^[a-zA-Z ]*$/.test(fname) == false){
         alert("The student's first name cannot have special characters or numbers");
         frm.fname.focus;
         return false;
@@ -140,7 +144,7 @@ function validateInsertStudent(){
         frm.fname.focus();
         return false;
      }
-     else if(/^[a-zA-Z]*$/.test(lname) == false){
+     else if(/^[a-zA-Z ]*$/.test(lname) == false){
         alert("The student's last name cannot have special characters");
         frm.lname.focus;
         return false;
@@ -186,7 +190,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(fname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(fname) == false){
         alert("The professor's first name cannot have special characters or numbers");
         frm.fname.focus;
         return false;
@@ -194,7 +198,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field First Name!");
         frm.fname.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(lname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(lname) == false){
         alert("The professor's last name cannot have special characters or numbers");
         frm.lname.focus;
         return false;
@@ -267,7 +271,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(fname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(fname) == false){
         alert("The professor's first name cannot have special characters");
         frm.fname.focus;
         return false;
@@ -276,7 +280,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field First Name!");
         frm.fname.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(lname) == false){
+     }else if(/^[a-zA-Z ]*$/.test(lname) == false){
         alert("The student's last name cannot have special characters");
         frm.lname.focus;
         return false;
@@ -389,7 +393,7 @@ function validateInsertStudent(){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;
-     }else if(/^[a-zA-Z]*$/.test(name) == false){
+     }else if(/^[a-zA-Z ]*$/.test(name) == false){
         alert("The course's name cannot have special characters");
         frm.name.focus;
         return false;
