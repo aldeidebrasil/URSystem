@@ -59,7 +59,10 @@
                 <option value="Physical Science">Physical Science</option>
                 <option value="Sociology">Sociology</option>
            </select><br><br>
-            <button type="button" onClick="validateInsertStudent()">Insert Student</button>
+           <h2>Type the student's billing:</h2> 
+            <input type="text" name="billing" id="billing" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;">
+             
+           <button type="button" onClick="validateInsertStudent()">Insert Student</button>
 	</form> 
         </div></div>
         <div class="footer">

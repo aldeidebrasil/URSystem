@@ -28,6 +28,7 @@ public class InsertStudent {
         String lname = request.getParameter("lname");
         String password = request.getParameter("password");
         String major = request.getParameter("major");
+        Double billing = Double.parseDouble(request.getParameter("billing"));
        
         Student student = new Student(); 
         
@@ -38,6 +39,7 @@ public class InsertStudent {
            student.setLname(lname);
            student.setPassword(password);
            student.setMajor(major);
+           student.setBilling(billing);
            Boolean create = StudentDAO.create(student);
             if(create != false){
                 jsp = ListStudents.execute(request, session);
