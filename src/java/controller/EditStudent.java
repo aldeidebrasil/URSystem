@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Admin;
 import controller.vo.Student;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.AdminDAO;
@@ -23,9 +24,11 @@ public class EditStudent {
             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
             Student student = StudentDAO.getById(Integer.parseInt(id));
+            ArrayList<Integer> students = StudentDAO.getAllId();
             if(student != null){
                 request.setAttribute("admin", admin);
-                request.setAttribute("student",student);            
+                request.setAttribute("student",student);
+                request.setAttribute("student", students);
                 jsp = "/updateStudent.jsp";
             }else{
                 String erro = "Error";

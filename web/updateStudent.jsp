@@ -8,6 +8,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% Student student = (Student)request.getAttribute("student");
+    ArrayList<Integer> students = (ArrayList<Integer>)request.getAttribute("students"); 
+
 %>
 <html>
     <head>
@@ -18,10 +20,10 @@
         <script type="text/javascript" src="ajaxrequest.js"></script>
 <script type="text/javascript">
 
-  function callAjax(value,student)
+  function callAjax(value,students)
   {
-     for(var i=0; i<student.length; i++){
-         if(student[i]==value){
+     for(var i=0; i<students.length; i++){
+         if(students[i]==value){
              alert("This ID already exists");
             
              return false;
@@ -47,7 +49,7 @@
                 </tr>
                 <tr class="even">
                     <td><%=student.getID()%></td>
-                    <td> <input type="text" name="id" id="id" size="30" maxlength="10" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=student%>); if(boolean==false) this.value = null" value="<%=student.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                    <td> <input type="text" name="id" id="id" size="30" maxlength="10" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=students%>); if(boolean==false) this.value = null" value="<%=student.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
                 </tr>
                 <tr>
                     <th class="headTable" colspan="2">First Name</th>
