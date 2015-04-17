@@ -28,7 +28,7 @@ public class InsertStudent {
         String lname = request.getParameter("lname");
         String password = request.getParameter("password");
         String major = request.getParameter("major");
-        Double billing = Double.parseDouble(request.getParameter("billing"));
+        Double billing = 0.0;
        
         Student student = new Student(); 
         

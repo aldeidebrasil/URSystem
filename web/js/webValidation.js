@@ -35,7 +35,7 @@ function validateInsertStudent(student){
      var lname = frm.lname.value;
      var password = frm.password.value;
      var major = frm.major.value;
-     
+     var billing = frm.billing.value;
     if(/^[0-9]*$/.test(id) == false){
         alert("The student's ID must have only numbers!");
         frm.id.focus;
