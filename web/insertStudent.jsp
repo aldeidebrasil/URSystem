@@ -59,7 +59,6 @@
                 <option value="Physical Science">Physical Science</option>
                 <option value="Sociology">Sociology</option>
            </select><br><br>
-           <h2>Type the student's billing:</h2> 
              
            <button type="button" onClick="validateInsertStudent()">Insert Student</button>
 	</form> 
