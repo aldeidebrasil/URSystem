@@ -4,13 +4,34 @@
     Author     : Aldeide Brasil
 --%>
 
+<%@page import="model.StudentDAO"%>
+<%@page import="controller.vo.Student"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    ArrayList<Integer> student = (ArrayList<Integer>)request.getAttribute("student"); 
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Student</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+         <script type="text/javascript" src="ajaxrequest.js"></script>
+<script type="text/javascript">
+
+  function callAjax(value,student)
+  {
+     for(var i=0; i<student.length; i++){
+         if(student[i]==value){
+             alert("This ID already exists");
+            
+             return false;
+         }
+     }
+     
+  }
+
+</script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
@@ -22,7 +43,9 @@
         <div class="actions">
         <form name="frmInsertUser" method='post'>
             <h2>Type the student's ID:</h2> 
-            <input type="text" name="id" id="id" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;">
+            <% if(student!=null){ %>
+            <% } %>
+            <input type="text" name="id" id="id" size="30" maxlength="10" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=student%>); if(boolean==false) this.value = null" style="line-height: 40px; font-size: 20px;">
             <h2>Type the student's First Name:</h2> 
             <input type="text" name="fname" id="fname" size="30" maxlength="50" style="line-height: 40px; font-size: 20px;">
             <h2>Type the student's Last Name:</h2> 

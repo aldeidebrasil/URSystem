@@ -38,8 +38,7 @@ public class InsertStudent {
            student.setLname(lname);
            student.setPassword(password);
            student.setMajor(major);
-                    
-            Boolean create = StudentDAO.create(student);
+           Boolean create = StudentDAO.create(student);
             if(create != false){
                 jsp = ListStudents.execute(request, session);
                
@@ -47,10 +46,10 @@ public class InsertStudent {
                 request.setAttribute("admin", admin);
                 String erro = "Error during the operation: Insert Student";
                 request.setAttribute("error", erro);
-                jsp = "/erroAdmin.jsp";
+                jsp = "/errorAdmin.jsp";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+          
             String erro = "Error during the operation: Insert Student";
             request.setAttribute("error", erro);
             jsp = "/errorAdmin.jsp";

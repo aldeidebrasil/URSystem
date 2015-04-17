@@ -31,7 +31,7 @@
         <div class="content">
            <%@include file="profile.jsp"%>
      <div class="actions2">
-    <% if(!listCourse.isEmpty()|| listCourse!=null){ %>
+    <% if(!listCourse.isEmpty()&&listCourse!=null){ %>
             <table style="border: 2px black solid">
              <tr class="headTable"><th>ID</th>
                 <th>Course</th>

@@ -100,7 +100,13 @@
                 <%=listCourses.get(i).getValue()%>
             </td>
             <td>           
-                <%=listCourses.get(i).getIdTerm()%>
+                <% if(listCourses.get(i).getIdTerm()==1){%>
+                    Spring
+                <% }else if(listCourses.get(i).getIdTerm()==2){ %>
+                    Fall
+                <% }else if(listCourses.get(i).getIdTerm()==3){ %>
+                    Summer
+                <% } %>
             </td>
             <td>           
                 <%=listCourses.get(i).getStatus()%>

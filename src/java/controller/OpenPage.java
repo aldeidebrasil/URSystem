@@ -6,9 +6,13 @@
 package controller;
 
 import controller.vo.Admin;
+import controller.vo.Student;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.AdminDAO;
+import model.StudentDAO;
 
 /**
  *
@@ -16,9 +20,11 @@ import model.AdminDAO;
  */
 public class OpenPage {
 
-    static String execute(HttpServletRequest request, HttpSession session) {
+    static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String page = request.getParameter("page");
+        ArrayList<Integer> student = StudentDAO.getAllId();
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+        request.setAttribute("student", student);
         request.setAttribute("admin", admin);
         return "/"+page+".jsp";
     }

@@ -8,7 +8,7 @@
      var login = frm.login.value;
      var password = frm.password.value;
      if(/^[a-zA-Z0-9-]*$/.test(login) == false){
-        alert("Please, fill out the field Login!");
+        alert("Your Login(ID) is incorrect! Please, try again!");
         frm.login.focus;
         return false;
      }
@@ -28,7 +28,7 @@
      }      
  }
 
-function validateInsertStudent(){    
+function validateInsertStudent(student){    
     var frm = document.frmInsertUser;
      var id = frm.id.value;
      var fname = frm.fname.value;
@@ -316,6 +316,7 @@ function validateInsertStudent(){
     var val = frm.val.value;
     var idTerm = frm.idTerm.value;
     var prerequisite = frm.prerequisite.value;
+
     var status = frm.status.value;
     var idProfessor = frm.idProfessor.value;
      if(isNaN(val)){
@@ -334,7 +335,7 @@ function validateInsertStudent(){
         frm.id.focus();
         return false;
      }
-     else if(/^[a-zA-Z]*$/.test(name) == false){
+     else if(/^[a-zA-Z ]*$/.test(name) == false){
         alert("The course's name cannot have special characters or numbers");
         frm.name.focus;
         return false;

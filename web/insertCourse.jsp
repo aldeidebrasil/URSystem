@@ -46,24 +46,23 @@
                  <option value='Sociology'>Sociology</option>
                 
             </select>
-             <% if (listCourseID!=null){ %>
+             <% %>
              <h2>Select the course's prerequisite:</h2>
             
            <select name='prerequisite'>                                
                                 <%
                                 String courseSelected="";
                                 %>
-                                <option value=''>None</option>
-                                <%
+                                <option value="">None</option>
+                                <%if (listCourseID!=null){ 
                                 for (int i = 0; i < listCourseID.size(); i++) {
                                 %>
                                 <option value='<%=listCourseID.get(i)%>' <%=courseSelected%>><%=listCourseID.get(i)%></option>
                                 <% 
-                                }
+                                }}
                                 %>
                             
            </select>  
-              <% } %>
              <h2>Type the course's value(U$):</h2>
             <input type="text" name="val" id="val" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;"><br><br>
              <h2>Select the course's term:</h2>
