@@ -15,6 +15,22 @@
         <title>Update Student</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="ajaxrequest.js"></script>
+<script type="text/javascript">
+
+  function callAjax(value,student)
+  {
+     for(var i=0; i<student.length; i++){
+         if(student[i]==value){
+             alert("This ID already exists");
+            
+             return false;
+         }
+     }
+     
+  }
+
+</script>
     </head>
     <body>
       <div class="header">
@@ -31,7 +47,7 @@
                 </tr>
                 <tr class="even">
                     <td><%=student.getID()%></td>
-                    <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=student.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                    <td> <input type="text" name="id" id="id" size="30" maxlength="10" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=student%>); if(boolean==false) this.value = null" value="<%=student.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
                 </tr>
                 <tr>
                     <th class="headTable" colspan="2">First Name</th>
