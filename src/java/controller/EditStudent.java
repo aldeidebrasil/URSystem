@@ -28,7 +28,7 @@ public class EditStudent {
             if(student != null){
                 request.setAttribute("admin", admin);
                 request.setAttribute("student",student);
-                request.setAttribute("student", students);
+                request.setAttribute("students", students);
                 jsp = "/updateStudent.jsp";
             }else{
                 String erro = "Error";
