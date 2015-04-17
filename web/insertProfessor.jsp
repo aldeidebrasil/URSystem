@@ -6,13 +6,29 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    ArrayList<Integer> professor = (ArrayList<Integer>)request.getAttribute("professor"); 
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Professor</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-    
+    <script type="text/javascript">
+        function callAjax(value,professor)
+        {
+           for(var i=0; i<professor.length; i++){
+               if(professor[i]==value){
+                   alert("This ID already exists");
+
+                   return false;
+               }
+           }
+
+        }
+    </script>
+
     </head>
     <body>
        <div class="header">

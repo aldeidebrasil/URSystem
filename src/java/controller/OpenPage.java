@@ -23,8 +23,10 @@ public class OpenPage {
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String page = request.getParameter("page");
         ArrayList<Integer> student = StudentDAO.getAllId();
+        ArrayList<Integer> professor = StudentDAO.getAllId();
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         request.setAttribute("student", student);
+        request.setAttribute("professor", professor);
         request.setAttribute("admin", admin);
         return "/"+page+".jsp";
     }

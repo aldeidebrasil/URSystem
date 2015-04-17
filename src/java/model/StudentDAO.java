@@ -25,12 +25,13 @@ public class StudentDAO {
         try {
               
             pstmt = Connection.getConnection().prepareStatement(
-                    "INSERT INTO STUDENT(id, fname, lname, password, major) VALUES(?,?,?,?,?)");
+                    "INSERT INTO STUDENT(id, fname, lname, password, major, billing) VALUES(?,?,?,?,?,?)");
             pstmt.setInt(1, student.getID());
             pstmt.setString(2, student.getFname());
             pstmt.setString(3,student.getLname());
             pstmt.setString(4, student.getPassword());
             pstmt.setString(5,student.getMajor());
+            pstmt.setDouble(6,student.getBilling());
             pstmt.executeUpdate();
             pstmt.close();
             return true;
