@@ -7,6 +7,8 @@ package controller;
 
 import controller.vo.Admin;
 import controller.vo.Course;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.AdminDAO;
@@ -17,14 +19,16 @@ import model.CourseDAO;
  * @author CMarcelo
  */
 public class EditCourse {
-    public static String execute(HttpServletRequest request, HttpSession session) {
+    public static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String jsp = "";
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+        ArrayList<String> courses  = CourseDAO.getAllId();
         try {
             String id = request.getParameter("id");
             Course course = CourseDAO.getById(id);
             if(course != null){
                 request.setAttribute("admin", admin);
+                request.setAttribute("courses", courses);
                 request.setAttribute("course",course);            
                 jsp = "/updateCourse.jsp";
             }else{

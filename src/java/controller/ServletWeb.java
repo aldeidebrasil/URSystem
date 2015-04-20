@@ -56,7 +56,11 @@ public class ServletWeb extends HttpServlet {
         }
         //Admin Action
          else if(action.equals("OpenPage")){
-            jsp = OpenPage.execute(request, request.getSession());
+            try {
+                jsp = OpenPage.execute(request, request.getSession());
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+            }
           }
          else if(action.equals("EditDateTerm"))
             try { 
@@ -83,7 +87,11 @@ public class ServletWeb extends HttpServlet {
         else if(action.equals("InsertCourse"))
             jsp = InsertCourse.execute(request, request.getSession());
         else if(action.equals("EditCourse"))
-            jsp = EditCourse.execute(request, request.getSession());
+            try {
+                jsp = EditCourse.execute(request, request.getSession());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletWeb.class.getName()).log(Level.SEVERE, null, ex);
+        }
         else if(action.equals("DeleteCourse"))
             jsp = DeleteCourse.execute(request, request.getSession());
         else if(action.equals("UpdateCourse"))
