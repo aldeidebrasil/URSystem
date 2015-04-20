@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <%
     ArrayList<Integer> professor = (ArrayList<Integer>)request.getAttribute("professor"); 
+    
+     ArrayList<Integer> professors = (ArrayList<Integer>)request.getAttribute("professors"); 
 %>
 <html>
     <head>
@@ -39,7 +41,7 @@
         <div class="actions">
           <form name="frmInsertProfessor" method='post' >
             <h2>Type the professor's ID:</h2> 
-            <input type="text" name="id" id="id" size="30" maxlength="3" style="line-height: 40px; font-size: 20px;">
+            <input type="text" name="id" id="id" size="30" maxlength="3" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=professors%>); if(boolean==false) this.value = null" style="line-height: 40px; font-size: 20px;">
               <h2>Type the professor's first name:</h2> 
             <input type="text" name="fname" id="fname" size="30" maxlength="50" style="line-height: 40px; font-size: 20px;">
               <h2>Type the professor's last name:</h2> 
