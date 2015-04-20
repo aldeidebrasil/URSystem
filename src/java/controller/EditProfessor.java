@@ -7,6 +7,7 @@ package controller;
 
 import controller.vo.Admin;
 import controller.vo.Professor;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.AdminDAO;
@@ -23,10 +24,11 @@ public class EditProfessor {
             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
             Professor professor = ProfessorDAO.getById(Integer.parseInt(id));
-            
+            ArrayList<Integer> professors = ProfessorDAO.getAllId();
             if(professor != null){
                 request.setAttribute("admin", admin);
-                request.setAttribute("professor",professor);            
+                request.setAttribute("professor",professor);  
+                request.setAttribute("professors", professors);
                 jsp = "/updateProfessor.jsp";
             }else{
                 request.setAttribute("admin", admin);
