@@ -9,12 +9,30 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <% Professor professor = (Professor) request.getAttribute("professor");
+     ArrayList<Integer> professors = (ArrayList<Integer>)request.getAttribute("professors"); 
+
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
+        <script type="text/javascript" src="ajaxrequest.js"></script>
+<script type="text/javascript">
+
+  function callAjax(value,professors)
+  {
+     for(var i=0; i<professors.length; i++){
+         if(professors[i]==value){
+             alert("This ID already exists");
+            
+             return false;
+         }
+     }
+     
+  }
+
+</script>
     </head>
     <body>
         <div class="header">
@@ -31,7 +49,7 @@
                         </tr> 
                         <tr class="even">
                             <td><%=professor.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" maxlength="3" value="<%=professor.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="3" value="<%=professor.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=professors%>); if(boolean==false) this.value = null '\t'" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">First Name</th>
