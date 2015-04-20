@@ -49,7 +49,7 @@
                         </tr> 
                         <tr class="even">
                             <td><%=professor.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" maxlength="3" value="<%=professor.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=professors%>); if(boolean==false) this.value = null '\t'" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="3" value="<%=professor.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=professors%>); if(boolean==false) this.value = null" style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">First Name</th>

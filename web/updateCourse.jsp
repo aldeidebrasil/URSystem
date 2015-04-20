@@ -18,6 +18,7 @@
 ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.getID());
  ArrayList<String> listCourseID = CourseDAO.getAllId();
  ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
+ ArrayList<String> courses = (ArrayList<String>) request.getAttribute("courses");
 %>
 <html>
     <head>
@@ -40,7 +41,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                         </tr> 
                         <tr class="even">
                             <td><%=course.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=course.getID()%>" style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=course.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=courses%>); if(boolean==false) this.value = null " style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Name</th>
