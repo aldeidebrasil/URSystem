@@ -60,7 +60,7 @@ public class InsertCourse {
                professorxcourse.setIdTerm(course.getIdTerm());
                professorxcourse.setYear(year);
                int countCourses = ProfessorxCourseDAO.countCourseByProfessor(idProfessor, idTerm, year);
-               if(countCourses<=4){
+               if(countCourses<=3){
                     if(ProfessorxCourseDAO.create(professorxcourse)){
                        jsp = ListCourses.execute(request, session);
                       }else{
@@ -73,7 +73,7 @@ public class InsertCourse {
                }
                 else{
                      request.setAttribute("admin", admin);
-                    String erro = "The professor "+ idProfessor+" is going to teach 4 courses ";
+                    String erro = "The professor "+ idProfessor+" is going to teach 3 courses ";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                  }

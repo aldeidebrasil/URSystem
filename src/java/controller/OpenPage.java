@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.AdminDAO;
+import model.CourseDAO;
+import model.ProfessorDAO;
 import model.StudentDAO;
 
 /**
@@ -23,10 +25,12 @@ public class OpenPage {
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String page = request.getParameter("page");
         ArrayList<Integer> student = StudentDAO.getAllId();
-        ArrayList<Integer> professor = StudentDAO.getAllId();
+        ArrayList<Integer> professor = ProfessorDAO.getAllId();
+        ArrayList<String> course = CourseDAO.getAllId();
         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         request.setAttribute("student", student);
-        request.setAttribute("professor", professor);
+        request.setAttribute("professors", professor);
+        request.setAttribute("courses", course);
         request.setAttribute("admin", admin);
         return "/"+page+".jsp";
     }

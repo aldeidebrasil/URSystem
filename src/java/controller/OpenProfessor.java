@@ -57,8 +57,11 @@ public class OpenProfessor {
                     listStudents.add(student);
                 }
                 mapStudent.put(listCoursesTaught.get(j), listStudents);
+            }else{
+                mapStudent.put(listCoursesTaught.get(j), null);
             }
         }
+        
         request.setAttribute("mapStudent", mapStudent);
         request.setAttribute("listCoursesTaught", listCoursesTaught);
         request.setAttribute("professorxcourse", professorxcourse);

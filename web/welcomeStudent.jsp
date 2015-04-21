@@ -57,7 +57,7 @@
                     </div><br> 
                     <div id="courseMajor" style="display: block"><% for (int i=0; i< listNew.size(); i++) {
                         if(listNew.get(i).getDepartment().equals(student.getMajor())){%> 
-                            <input type="radio" name="rd" value="<%=listNew.get(i).getID() %>"><%=listNew.get(i).getID() %> - <%=listNew.get(i).getName()%><br>
+                        <input type="radio" name="rd" value="<%=listNew.get(i).getID() %>"><%=listNew.get(i).getID() %> - <%=listNew.get(i).getName()%><br>
                         <% }} %><br></div>
                     <div id="allCourses" style="display: none">
                         <% for (int i=0; i< listNew.size(); i++) {%> 

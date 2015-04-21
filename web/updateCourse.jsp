@@ -20,12 +20,28 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
  ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
  ArrayList<String> courses = (ArrayList<String>) request.getAttribute("courses");
 %>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
          <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
-    </head>
+         <script type="text/javascript" src="ajaxrequest.js"></script>
+<script type="text/javascript">
+function callAjax(value,courses){
+    var a = courses.indexOf(value);
+    
+    if(a != -1){
+         alert("This ID already exists");
+            
+             return false;
+         }
+     
+     
+  }
+
+</script>
+     </head>
    <body>
         <div class="header">
             <%@include file="header.jsp" %>
@@ -41,7 +57,7 @@ ProfessorxCourse professorxcourse = ProfessorxCourseDAO.getByIdCourse(course.get
                         </tr> 
                         <tr class="even">
                             <td><%=course.getID()%></td>
-                            <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=course.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=courses%>); if(boolean==false) this.value = null " style="line-height: 40px; font-size: 20px;"></td>
+                            <td> <input type="text" name="id" id="id" size="30" maxlength="10" value="<%=course.getID()%>" onchange="if(this.value != '') var boolean = callAjax(this.value, '<%=courses%>'); if(boolean==false) this.value = null " style="line-height: 40px; font-size: 20px;"></td>
                         </tr>
                         <tr>
                             <th class="headTable" colspan="2">Name</th>

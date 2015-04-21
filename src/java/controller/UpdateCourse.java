@@ -42,7 +42,15 @@ public class UpdateCourse {
             String status = request.getParameter("status");
             String year = request.getParameter("year");
             Integer idProfessor = Integer.parseInt(request.getParameter("idProfessor"));
-           
+            int countCourses = ProfessorxCourseDAO.countCourseByProfessor(idProfessor, idTerm, year);
+            System.out.println(countCourses);
+            if(countCourses>=3){
+                System.out.println("BLA"+countCourses);
+                String erro = "This professor will teach "+countCourses+" courses already. Please, choose another professor.";
+                request.setAttribute("admin", admin);
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
+            }else{
             if(id!=idOld){
                 Course course = CourseDAO.getById(idOld);
                 ProfessorxCourse professorxcourseOld = ProfessorxCourseDAO.getByIdCourse(idOld);
@@ -159,7 +167,7 @@ public class UpdateCourse {
                 String erro = "Error during the operation Update Course.";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
-            }
+            }}
             
             } catch (Exception e) {
                 e.printStackTrace();

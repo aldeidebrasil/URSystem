@@ -44,9 +44,10 @@
                         <% for (int i=0; i< listCoursesTaught.size(); i++) {%>
                             <input type="checkbox" id="rd" name="rd" onclick="showHideDiv('all<%=i%>')" value="<%=listCoursesTaught.get(i).getID() %>"><%=listCoursesTaught.get(i).getID() %> - <%=listCoursesTaught.get(i).getName()%> - <%=listCoursesTaught.get(i).getStatus().toUpperCase() %><br>
                             <div id="all<%=i%>" style="display: none;">
-                            <% if (!mapStudent.isEmpty()) {  %>
+                                <% if(mapStudent.get(listCoursesTaught.get(i))!=null){
+                                if (!mapStudent.get(listCoursesTaught.get(i)).isEmpty()) {  %>
                                 <table class="mapStudent"><tr><th>Students</th><th>Major</th></tr>
-                                <%  for (int j=0; j<mapStudent.size(); j++){
+                                <%  for (int j=0; j<mapStudent.get(listCoursesTaught.get(i)).size(); j++){
                                         
                                             if(j%2==0){
                                 %>
@@ -55,9 +56,11 @@
                                                 <tr class="odd">  
                                             <% } %>
                                                 <td><%=mapStudent.get(listCoursesTaught.get(i)).get(j).getFname()%> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getLname()%> </td><td> <%=mapStudent.get(listCoursesTaught.get(i)).get(j).getMajor() %>  </td></tr>   
-                      
+                                            <% } %>
                                 </table>
-                                       <% }} else{ %>
+                                       <% } else{ %>
+                                        You do not have any student yet
+                                        <% }} else{ %>
                                         You do not have any student yet
                                         <% } %>
                             </div>

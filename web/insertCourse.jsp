@@ -12,6 +12,9 @@
 <!DOCTYPE html>
 <% ArrayList<Integer> listProfessorID = ProfessorDAO.getAllId();
    ArrayList<String> listCourseID = CourseDAO.getAllId();
+   ArrayList<String> courses = (ArrayList<String>)request.getAttribute("courses"); 
+  
+        
    //ArrayList<String> department= CourseDAO.getAllDepartment();
 %>
 
@@ -21,7 +24,21 @@
         <title>Insert Course</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
-      
+      <script type="text/javascript" src="ajaxrequest.js"></script>
+<script type="text/javascript">
+function callAjax(value,courses){
+    var a = courses.indexOf(value);
+    
+    if(a != -1){
+         alert("This ID already exists");
+            
+             return false;
+         }
+     
+     
+  }
+
+</script>
     </head>
     <body>
         <div class="header">
@@ -33,9 +50,9 @@
              <form name="frmInsertCourse" method='post'>
                  <% if (listProfessorID!= null) { %>
              <h2>Type the course's ID:</h2>
-             <input type="text" name="id" id="id" size="30" maxlength="10" style="line-height: 40px; font-size: 20px;">
-           
-           <h2>Type the course's Name:</h2>
+             
+             <input type="text" name="id" id="id" size="30" maxlength="10" onchange=" if(this.value != '') var boolean = callAjax(this.value,'<%=courses%>'); if(boolean==false) this.value=null" style="line-height: 40px; font-size: 20px;">
+          <h2>Type the course's Name:</h2>
             <input type="text" name="name" id="name" size="30" maxlength="100" style="line-height: 40px; font-size: 20px;">
              <h2>Select the course's Department:</h2>
             

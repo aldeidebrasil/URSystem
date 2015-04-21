@@ -45,7 +45,7 @@
             <h2>Type the student's ID:</h2> 
             <% if(student!=null){ %>
             <% } %>
-            <input type="text" name="id" id="id" size="30" maxlength="10" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=student%>); if(boolean==false) this.value = null" style="line-height: 40px; font-size: 20px;">
+            <input type="text" name="id" id="id" size="30" maxlength="6" onchange="if(this.value != '') var boolean = callAjax(this.value, <%=student%>); if(boolean==false) this.value = null" style="line-height: 40px; font-size: 20px;">
             <h2>Type the student's First Name:</h2> 
             <input type="text" name="fname" id="fname" size="30" maxlength="50" style="line-height: 40px; font-size: 20px;">
             <h2>Type the student's Last Name:</h2> 
