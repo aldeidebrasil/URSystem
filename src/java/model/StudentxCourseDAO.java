@@ -179,7 +179,7 @@ public class StudentxCourseDAO {
             ArrayList<StudentxCourse> listAll = null;
             StudentxCourse studentxcourse = new StudentxCourse();            
             pstmt = Connection.getConnection().prepareStatement(
-                     "SELECT * FROM studentxcourse WHERE idTerm = ? AND idStudent= ? AND year = ?");
+                     "SELECT * FROM studentxcourse WHERE idTerm = ? AND idStudent= ? AND year = ? order by date");
             pstmt.setInt(1, IdTerm);
             pstmt.setInt(2, IdStudent);
             pstmt.setString(3, Year);

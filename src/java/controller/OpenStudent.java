@@ -25,7 +25,7 @@ public class OpenStudent {
     
     static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
              if(!VerifyTermDate.execute(VerifyTerm.execute())){
-              ChangeStatusCourses.execute();
+                ChangeStatusCourses.execute();
              }else{
                     ChangeStatusCourses.executeCanceled(); 
                 }
