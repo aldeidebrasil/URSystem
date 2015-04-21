@@ -42,8 +42,8 @@ ArrayList<Integer> listProfessorId = ProfessorDAO.getAllId();
                             </select>
 
            
-            <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
             <button type="button" onClick="validateEditProfessor()">Edit Professor</button>
+            <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
             <% } else {%>
                 <h2>There is no professors yet.</h2>
             <% } %>

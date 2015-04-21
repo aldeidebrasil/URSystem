@@ -38,8 +38,8 @@ ArrayList<Integer> listStudentId = StudentDAO.getAllId();
                     <%} %>
            </select>
 
-            <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <button type="button" onClick="validateEditStudent()">Edit Student</button>
+            <button type="button" onClick="validateDeleteStudent()">Delete Student</button>
             <% } else {%>
                 <h2>There is no students yet.</h2>
             <% } %>
