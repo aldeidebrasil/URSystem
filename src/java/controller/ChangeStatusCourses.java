@@ -20,15 +20,19 @@ class ChangeStatusCourses {
         ArrayList<Course> listCourses = CourseDAO.getAll();
         for(int i=0; i<listCourses.size(); i++){
             int student = VerifyStudentxCourse.execute(listCourses.get(i).getID());
+            if(!listCourses.get(i).getStatus().equals("canceled")){
+                
             if(student <= 3){
-                listCourses.get(i).setStatus("canceled");
-                CourseDAO.updateStatus(listCourses.get(i));
+                    listCourses.get(i).setStatus("canceled");
+                    CourseDAO.updateStatus(listCourses.get(i));
+                
             }else if(student >= 10){
                 listCourses.get(i).setStatus("full");
                 CourseDAO.updateStatus(listCourses.get(i));
             }else{
                 listCourses.get(i).setStatus("open");
                 CourseDAO.updateStatus(listCourses.get(i));
+            }
             }
             
         }        

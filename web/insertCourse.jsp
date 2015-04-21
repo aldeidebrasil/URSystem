@@ -98,12 +98,8 @@ function callAjax(value,courses){
             </select>
            <br><br>
              <h2>Select the course's status:</h2>
-            <select name='status'>
-                <option value='open'>Open</option>
-                <option value='full'>Full</option>
-                <option value='canceled'>Canceled</option>
-                
-            </select>
+             <input type="text" name="status" id="status" size="30" maxlength="10" readonly="true" value="open" style="line-height: 40px; font-size: 20px;"><br><br>
+              
              <h2>Select the course's professor (ID): </h2>
              <% if(listProfessorID!= null){ %>
              <select name='idProfessor'>                                

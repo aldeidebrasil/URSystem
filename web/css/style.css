@@ -129,6 +129,12 @@ input[type="text"], [type="password"]{
     height: 40px;
 
 }
+
+.odd{
+    background-color:#FFF;
+    height: 40px;
+
+}
 .headTable{
     background-color: #003366;
     color: white;

@@ -113,19 +113,16 @@ function callAjax(value,courses){
                          <tr>
                             <th class="headTable" colspan="2">Status</th>
                         </tr>
-                        <tr class="even">
-                            <td><%=course.getStatus()%></td>
-                            <td> <select name="status" id="status">
-                <option value='open'>    Open</option>
-                <option value='full'>    Full</option>
-                <option value='canceled'>Canceled</option>  
-            </select></td>
-                        </tr>
-                         <tr>
+                       <tr class="even">
+                             <td><%=course.getStatus()%></td>
+                           
+                            <td> <input type="text" name="status" id="status" size="30" maxlength="10" readonly="true" value="<%=course.getStatus()%>" style="line-height: 40px; font-size: 20px;"></td></tr>
+                        <tr>
                             <th class="headTable" colspan="2">Term</th>
                         </tr>
                         <tr class="even">
-                            <td><% if(course.getIdTerm()==1){ %>Spring
+                            <td>
+                                <% if(course.getIdTerm()==1) { %>Spring
                                 <%} else if(course.getIdTerm()==2) { %>Fall
                                  <%} else if(course.getIdTerm()==3) { %>Summer
                                  <% } %>
@@ -148,7 +145,7 @@ function callAjax(value,courses){
                                 <% } %>
                             </td><td>
                         <select name='year'>
-                           <% for (int i=2014; i<2020; i++) { %> 
+                           <% for (int i=2015; i<2020; i++) { %> 
                            <option value='<%=i%>'><%=i%></option>
                            <% } %> 
                         </select></td>

@@ -36,7 +36,9 @@ public class BillingInformation {
             for(int i=0; i<studentxcourse.size(); i++){
                         Course courseTerm = CourseDAO.getByIdStatus(studentxcourse.get(i).getIdCourse());
                         if(courseTerm!=null){
+                            if(i<4){
                             listCourse.add(courseTerm);
+                            }
                         }
                 
                 }
