@@ -62,7 +62,7 @@ public class UpdateProfessor {
                                     }
                                    jsp = ListProfessor.execute(request, session);
                                 }else{
-                                    String erro = "Error Update";
+                                    String erro = "Error during the operation Update Professor";
                                     request.setAttribute("admin", admin);
                                     request.setAttribute("error", erro);
                                     jsp = "/errorAdmin.jsp";
@@ -82,7 +82,7 @@ public class UpdateProfessor {
                         jsp = ListProfessor.execute(request, session);
                     else{
                         request.setAttribute("admin", admin);
-                        String erro = "Error Update";
+                        String erro = "Error during the operation Update Professor";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                     }
@@ -99,7 +99,7 @@ public class UpdateProfessor {
                         jsp = ListProfessor.execute(request, session);
                     else{
                         request.setAttribute("admin", admin);
-                        String erro = "Error Update";
+                        String erro = "Error during the operation Update Professor";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                     }
@@ -107,7 +107,7 @@ public class UpdateProfessor {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("admin", admin);
-            String erro = "Error Update";
+            String erro = "Error during the operation Update Professor";
             request.setAttribute("error", erro);
             jsp = "/errorAdmin.jsp";
 

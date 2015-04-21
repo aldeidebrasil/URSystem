@@ -49,7 +49,9 @@ public class ListAllCoursesStudent {
                 
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+            String erro="There is no courses to show!";
+            request.setAttribute("error", erro);
+            jsp = "/error.jsp";
         }
         return jsp;
     }

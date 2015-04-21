@@ -24,7 +24,7 @@ import model.StudentxCourseDAO;
 public class BillingInformation {
      public static String execute(HttpServletRequest request, HttpSession session) throws SQLException {
         String jsp = "";
-        String erro = "Erro";
+        String erro = "";
         double bill = 0;
         Integer idStudent = Integer.parseInt(request.getParameter("IdStudent"));
         Student student = StudentDAO.getById(idStudent);
@@ -49,8 +49,9 @@ public class BillingInformation {
             request.setAttribute("billing", bill);
             jsp = "/billingInformation.jsp";
             }else{
+                erro = "You do not have any registration for this semester";
             request.setAttribute("student", student);
-            request.setAttribute("You do not have any registration for this semester", erro );
+            request.setAttribute("error", erro );
             jsp = "/error.jsp";
         }
           return jsp;

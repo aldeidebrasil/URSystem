@@ -23,7 +23,7 @@ public class EditPasswordStudent {
                 request.setAttribute("student",student);            
                 jsp = "/updatePasswordStudent.jsp";
             }else{
-                String erro = "Error";
+                String erro = "An error occurred during the operation Change Password";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
             }

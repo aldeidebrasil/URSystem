@@ -24,9 +24,9 @@ public class EditPasswordProfessor {
                 request.setAttribute("professor", professor);            
                 jsp = "/updatePasswordProfessor.jsp";
             }else{
-                String erro = "Error";
+                String erro = "An error occurred during the operation Change Password";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorProfessor.jsp";
             }
                 
         } catch (Exception e) {

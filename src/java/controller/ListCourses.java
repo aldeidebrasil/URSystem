@@ -20,7 +20,6 @@ import model.CourseDAO;
 public class ListCourses {
     public static String execute(HttpServletRequest request) {
         String jsp = "";
-            
         try {
             ArrayList<Course> listCourse = CourseDAO.getAll();
             if(listCourse != null){

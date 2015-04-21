@@ -15,7 +15,7 @@ import model.CourseDAO;
  * @author Aldeide Brasil
  */
 class ChangeStatusCourses {
-
+    
     static void execute() throws SQLException {
         ArrayList<Course> listCourses = CourseDAO.getAll();
         for(int i=0; i<listCourses.size(); i++){

@@ -34,12 +34,12 @@ public class DropCourseStudent {
                 jsp = ListCoursesStudent.execute(request);
                 
             }else{
-                String erro = "An error occurred!";
+                String erro = "An error occurred during the operation Unregister Course!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
             }}
            else{
-           String erro = "Student does not exist";
+           String erro = "An error occurred during the operation Unregister Course!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
            }

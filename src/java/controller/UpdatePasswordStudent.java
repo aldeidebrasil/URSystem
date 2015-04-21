@@ -28,7 +28,8 @@ public class UpdatePasswordStudent {
             }
                // jsp = SeeInformationStudent.execute(request);
             else{
-                String erro = "Error Update";
+                request.setAttribute("student", student);
+                String erro = "Error during the operation Update Password";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
             }

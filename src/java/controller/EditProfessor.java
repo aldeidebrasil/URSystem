@@ -20,8 +20,8 @@ import model.ProfessorDAO;
 public class EditProfessor {
     public static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
+        Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         try {
-            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             String id = request.getParameter("id");
             Professor professor = ProfessorDAO.getById(Integer.parseInt(id));
             ArrayList<Integer> professors = ProfessorDAO.getAllId();
@@ -32,15 +32,18 @@ public class EditProfessor {
                 jsp = "/updateProfessor.jsp";
             }else{
                 request.setAttribute("admin", admin);
-                String erro = "Error";
+                String erro = "An error occurred during the operation Edit Professor";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
                 
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
-        }
+            request.setAttribute("admin", admin);
+            String erro = "An error occurred during the operation Edit Professor";
+            request.setAttribute("error", erro);
+            jsp = "/errorAdmin.jsp";
+            }
         return jsp;
     }
 

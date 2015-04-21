@@ -41,14 +41,16 @@ public class ListStudents {
 
     static String execute(HttpServletRequest request, HttpSession session) {
          String jsp = "";
+         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
+            
         try {
             ArrayList<Student> listStudents = StudentDAO.getAll();
             if(listStudents != null){
-            Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             request.setAttribute("admin", admin);
             request.setAttribute("listStudents", listStudents);
                 jsp = "/allStudents.jsp";    
             }else{
+                 request.setAttribute("admin", admin);
                 String erro="There is no Students to show!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
@@ -57,7 +59,9 @@ public class ListStudents {
             
         } catch (Exception e) {
             e.printStackTrace();
-           String erro="There is no Students to show! 60";
+             request.setAttribute("admin", admin);
+           
+            String erro="There is no Students to show! 60";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
            

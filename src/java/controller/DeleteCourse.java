@@ -54,14 +54,14 @@ public class DeleteCourse {
                     jsp = ListCourses.execute(request, session);
                 }else{
                     request.setAttribute("admin", admin);
-                    String erro = "An error occurred!";
+                    String erro = "An error occurred during the operation Delete Course!";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
             }
            
             } else{
                 request.setAttribute("admin", admin);
-                String erro = "An error occurred!";
+                String erro = "An error occurred during the operation Delete Course!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
@@ -84,7 +84,7 @@ public class DeleteCourse {
                     jsp = ListCourses.execute(request, session);
                 }else{
                     request.setAttribute("admin", admin);
-                    String erro = "An error occurred!";
+                    String erro = "An error occurred during the operation Delete Course!";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 }
@@ -93,7 +93,7 @@ public class DeleteCourse {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("admin", admin);
-                    String erro = "An error occurred!";
+                    String erro = "An error occurred during the operation Delete Course!";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 

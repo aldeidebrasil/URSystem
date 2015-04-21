@@ -33,7 +33,7 @@ public class EditCourse {
                 jsp = "/updateCourse.jsp";
             }else{
                 request.setAttribute("admin", admin);
-                String erro = "Error";
+                String erro = "An error occurred during the operation Edit Course!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }

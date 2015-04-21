@@ -66,15 +66,14 @@ public class InsertCourse {
                       }else{
                          request.setAttribute("admin", admin);
       
-                String erro = "ERROR!";
+                String erro = "An error occurred during the operation Insert Course!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
                }
                 else{
                      request.setAttribute("admin", admin);
-      
-                        String erro = "The professor "+ idProfessor+" is going to teach 4 courses ";
+                    String erro = "The professor "+ idProfessor+" is going to teach 4 courses ";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                  }
@@ -82,7 +81,7 @@ public class InsertCourse {
             }else{
                 request.setAttribute("admin", admin);
       
-                String erro = "ERROR!";
+                String erro = "An error occurred during the operation Insert Course!";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }

@@ -67,7 +67,7 @@ public class UpdateStudent {
                                 jsp = ListStudents.execute(request, session);
                             } else{
                                 request.setAttribute("admin", admin);
-                                String erro = "Error Update 64";
+                                String erro = "Error during the operation Update Student";
                                 request.setAttribute("error", erro);
                                 jsp = "/errorAdmin.jsp";
                                 
@@ -91,7 +91,7 @@ public class UpdateStudent {
                 else{
                     request.setAttribute("admin", admin);
 
-                    String erro = "Error Update 90";
+                    String erro = "Error during the operation Update Studnet";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 }
@@ -100,7 +100,7 @@ public class UpdateStudent {
             request.setAttribute("admin", admin);
        
             e.printStackTrace();
-             String erro = "Error Update 96";
+             String erro = "Error during the operation Update Student";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
         }

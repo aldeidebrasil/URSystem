@@ -46,14 +46,14 @@ public class InsertStudent {
                
             }else{
                 request.setAttribute("admin", admin);
-                String erro = "Error during the operation: Insert Student";
-                request.setAttribute("error", erro);
+                error = "Error during the operation Insert Student";
+                request.setAttribute("error", error);
                 jsp = "/errorAdmin.jsp";
             }
         } catch (Exception e) {
-          
-            String erro = "Error during the operation: Insert Student";
-            request.setAttribute("error", erro);
+            request.setAttribute("admin", admin);
+            error = "Error during the operation Insert Student";
+            request.setAttribute("error", error);
             jsp = "/errorAdmin.jsp";
             }
         return jsp;

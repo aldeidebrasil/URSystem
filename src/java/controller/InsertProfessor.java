@@ -41,13 +41,16 @@ public class InsertProfessor {
                
             }else{
                 request.setAttribute("admin", admin);
-                String erro = "ERROR!";
+                String erro = "An error occurred during the operation Insert Professor!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
+            request.setAttribute("admin", admin);
+            String erro = "An error occurred during the operation Insert Professor!";
+            request.setAttribute("error", erro);
+            jsp = "/errorAdmin.jsp";    
         }
         return jsp;
     

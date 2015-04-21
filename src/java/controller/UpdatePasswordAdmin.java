@@ -24,9 +24,10 @@ public class UpdatePasswordAdmin {
             if(update!=false)
                 jsp = "OK";    
             else{
-                String erro = "Error Update";
+                request.setAttribute("admin", admin);
+                String erro = "Error during the operation Change Password";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
             
         } catch (Exception e) {

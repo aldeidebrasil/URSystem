@@ -52,7 +52,7 @@ public class AddCourseStudent {
                studentxcourse.setYear(""+Calendar.getInstance().get(Calendar.YEAR));
                Boolean create = StudentxCourseDAO.create(studentxcourse);
                 if(create == false){
-                    String erro = "ERROR!";
+                    String erro = "Sorry! An error occurred during the operation: Register Course.";
                     request.setAttribute("error", erro);
                    jsp = "/error.jsp";
                 }else{

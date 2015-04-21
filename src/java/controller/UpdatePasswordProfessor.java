@@ -24,11 +24,11 @@ public class UpdatePasswordProfessor {
             Boolean update = ProfessorDAO.updatePassword(professor,password);
             if(update!=false)
                 jsp = "OK";    
-            //jsp = SeeInformationProfessor.execute(request);
             else{
                 String erro = "Error Update";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                request.setAttribute("professor", professor);
+                jsp = "/errorProfessor.jsp";
             }
             
         } catch (Exception e) {

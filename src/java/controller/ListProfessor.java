@@ -41,24 +41,28 @@ public class ListProfessor {
 
     static String execute(HttpServletRequest request, HttpSession session) {
         String jsp = "";
+         Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
         try {
-             Admin admin = AdminDAO.getById((String)session.getAttribute("userid"));
             ArrayList<Professor> listProfessor = ProfessorDAO.getAll();
             if(listProfessor != null){
                 request.setAttribute("admin", admin);
                 request.setAttribute("listProfessor", listProfessor);
                 jsp = "/allProfessors.jsp";    
             }else{
+                request.setAttribute("admin", admin);
                 String erro="There is no Professors to show!";
                 request.setAttribute("error", erro);
-                jsp = "/error.jsp";
+                jsp = "/errorAdmin.jsp";
             }
                 
             
         } catch (Exception e) {
             e.printStackTrace();
-            jsp = "";
-        }
+            request.setAttribute("admin", admin);
+                String erro="There is no Professors to show!";
+                request.setAttribute("error", erro);
+                jsp = "/errorAdmin.jsp";
+            }
         return jsp;
     }
 }

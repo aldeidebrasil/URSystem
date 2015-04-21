@@ -98,7 +98,7 @@ public class UpdateCourse {
                              jsp = ListCourses.execute(request, session);
                   
                            } else{
-                            String erro = "Error Update";
+                            String erro = "Error during the operation Update Course.";
                             request.setAttribute("admin", admin);
                            
                             request.setAttribute("error", erro);
@@ -139,7 +139,7 @@ public class UpdateCourse {
                     
                 else{
                     request.setAttribute("admin", admin);
-                     String erro = "Error Update 134";
+                     String erro = "Error during the operation Update Course.";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 }
@@ -149,14 +149,14 @@ public class UpdateCourse {
                         jsp =  ListCourses.execute(request, session);
                     }else{
                         request.setAttribute("admin", admin);
-                        String erro = "Error Update 148";
+                        String erro = "Error during the operation Update Course.";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                     }
                 }
             }else{
                 request.setAttribute("admin", admin);
-                String erro = "Error Update 155";
+                String erro = "Error during the operation Update Course.";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }
@@ -164,7 +164,7 @@ public class UpdateCourse {
             } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("admin", admin);
-                String erro = "Error Update 147";
+                String erro = "Error during the operation Update Course.";
                 request.setAttribute("error", erro);
                 jsp = "/errorAdmin.jsp";
             }

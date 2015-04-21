@@ -35,7 +35,7 @@ public class DeleteProfessor {
                     jsp = ListProfessor.execute(request, session);
                 }else{
                     request.setAttribute("admin", admin);
-                    String erro = "An error occurred 38!";
+                    String erro = "An error occurred during the operation Delete Professor!";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 }
@@ -46,7 +46,7 @@ public class DeleteProfessor {
                    deleteProfessorxCourse = ProfessorxCourseDAO.delete(professorxcourse.get(i));
                    if(!deleteProfessorxCourse){
                         request.setAttribute("admin", admin);
-                        String erro = "An error occurred 49!";
+                        String erro = "An error occurred during the operation Delete Professor!";
                         request.setAttribute("error", erro);
                         jsp = "/errorAdmin.jsp";
                    }
@@ -57,7 +57,7 @@ public class DeleteProfessor {
                    jsp = ListProfessor.execute(request, session);
                 }else{
                     request.setAttribute("admin", admin);
-                    String erro = "An error occurred 60!";
+                    String erro = "An error occurred during the operation Delete Professor!";
                     request.setAttribute("error", erro);
                     jsp = "/errorAdmin.jsp";
                 }
@@ -65,7 +65,7 @@ public class DeleteProfessor {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("admin", admin);
-            String erro = "An error occurred 68!";
+            String erro = "An error occurred during the operation Delete Professor!";
             request.setAttribute("error", erro);
             jsp = "/errorAdmin.jsp";
         }
