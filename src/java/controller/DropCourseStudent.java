@@ -6,10 +6,12 @@
 package controller;
 
 import controller.vo.Course;
+import controller.vo.Student;
 import controller.vo.StudentxCourse;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import model.CourseDAO;
+import model.StudentDAO;
 import model.StudentxCourseDAO;
 
 /**
@@ -24,6 +26,10 @@ public class DropCourseStudent {
 
             String id = request.getParameter("IdCourse");
             int idStudent = Integer.parseInt(request.getParameter("IdStudent"));
+            Student student = StudentDAO.getById(idStudent);
+            request.setAttribute("student", student);
+            if(VerifyTermDate.execute(VerifyTerm.execute())){
+       
             StudentxCourse studentxcourse = StudentxCourseDAO.getByIdCourseStudent(id, idStudent);
             Course course = CourseDAO.getById(id);
            if(studentxcourse!=null){
@@ -42,7 +48,12 @@ public class DropCourseStudent {
            String erro = "An error occurred during the operation Unregister Course!";
                 request.setAttribute("error", erro);
                 jsp = "/error.jsp";
-           }
+           }}
+            else{
+            String erro = "Sorry! You cannot change your schedule anymore.";
+            request.setAttribute("error", erro);
+            jsp = "/error.jsp";
+        }
         } catch (Exception e) {
             e.printStackTrace();
             }
