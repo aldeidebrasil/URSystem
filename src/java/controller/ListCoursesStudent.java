@@ -37,6 +37,7 @@ class ListCoursesStudent {
                     }
                     
                 }
+                request.setAttribute("listCoursesStudent", listCoursesStudent);
                 request.setAttribute("student", student);
                 request.setAttribute("listCourses", listCourses);
                 jsp = "/listCourseStudent.jsp";    

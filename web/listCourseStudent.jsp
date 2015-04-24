@@ -14,6 +14,8 @@
 <!DOCTYPE html>
 <%
     ArrayList<Course> listCourses = (ArrayList<Course>) request.getAttribute("listCourses");
+      ArrayList<StudentxCourse> listCoursesStudent = (ArrayList<StudentxCourse>) request.getAttribute("listCoursesStudent");
+ 
 %>
 <html>
     <head>
@@ -111,9 +113,15 @@
             <td>           
                 <%=listCourses.get(i).getStatus()%>
             </td>
+            <% if(listCoursesStudent!=null){ 
+                for(int j=0; j<listCoursesStudent.size();j++){
+                    if(listCoursesStudent.get(j).getIdCourse().equals(listCourses.get(i).getID())){
+                
+            %>
             <td>           
-                <%=listCourses.get(i).getYear()%>
+                <%=listCoursesStudent.get(j).getYear() %>
             </td>
+            <% }}} %>
             </tr>
             <%
                 }
