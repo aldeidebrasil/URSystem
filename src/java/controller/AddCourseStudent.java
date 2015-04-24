@@ -74,7 +74,8 @@ public class AddCourseStudent {
             }
 
             CalcBilling.execute(listCourse, request.getSession());
-            request.setAttribute("listCourse", listCourse);
+             request.setAttribute("listCoursesStudent", studentxcourseList);
+               request.setAttribute("listCourse", listCourse);
             return "allCoursesStudent.jsp";
            }else{
               String erro = "Sorry! You do not have the prerequisite!<br><br>You have to take "+courseNew.getPrerequisite()+" first.";

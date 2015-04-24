@@ -86,7 +86,11 @@
             <td>           
                 <%=listCoursesStudent.get(j).getYear() %>
             </td>
-            <% }}} %>
+            <% }}}else{ %>
+            <td>
+                <%=listCourse.get(i).getYear()%>
+            <% } %>
+            </td>
             </tr>
             <%
                 }

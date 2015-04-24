@@ -26,6 +26,7 @@ public class BillingInformation {
         String jsp = "";
         String erro = "";
         double bill = 0;
+        int j=0;
         Integer idStudent = Integer.parseInt(request.getParameter("IdStudent"));
         Student student = StudentDAO.getById(idStudent);
         String year = ""+Calendar.getInstance().get(Calendar.YEAR);
@@ -36,8 +37,10 @@ public class BillingInformation {
             for(int i=0; i<studentxcourse.size(); i++){
                         Course courseTerm = CourseDAO.getByIdStatus(studentxcourse.get(i).getIdCourse());
                         if(courseTerm!=null){
-                            if(i<4){
-                            listCourse.add(courseTerm);
+                            
+                            if(j<4){
+                                listCourse.add(courseTerm);
+                                j++;
                             }
                         }
                 
