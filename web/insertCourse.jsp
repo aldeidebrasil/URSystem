@@ -51,7 +51,7 @@ function callAjax(value,courses){
                  <% if (listProfessorID!= null) { %>
              <h2>Type the course's ID:</h2>
              
-             <input type="text" name="id" id="id" size="30" maxlength="10" onchange=" if(this.value != '') var boolean = callAjax(this.value,'<%=courses%>'); if(boolean==false) this.value=null" style="line-height: 40px; font-size: 20px;">
+             <input type="text" name="id" id="id" size="30" maxlength="5" onchange=" if(this.value != '') var boolean = callAjax(this.value,'<%=courses%>'); if(boolean==false) this.value=null" style="line-height: 40px; font-size: 20px;">
           <h2>Type the course's Name:</h2>
             <input type="text" name="name" id="name" size="30" maxlength="100" style="line-height: 40px; font-size: 20px;">
              <h2>Select the course's Department:</h2>
