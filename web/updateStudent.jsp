@@ -87,12 +87,7 @@
                  <tr>
                     <th class="headTable" colspan="2">Billing</th>
                 </tr>
-                <tr class="even">
-                    <td><%=student.getBilling()%></td>
-                    <td> 
-                        <input type="text" name="billing" id="billing" size="30" maxlength="10" value="<%=student.getBilling()%>" style="line-height: 40px; font-size: 20px;">
-                    </td>
-                </tr>
+                
             </table>
             <button type="button" onClick="validateUpdateStudent(<%=student.getID()%>)">Update Student</button>
                  
