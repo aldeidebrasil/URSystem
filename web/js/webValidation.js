@@ -116,7 +116,6 @@ function validateInsertStudent(student){
      var lname = frm.lname.value;
      var password = frm.password.value;
      var major = frm.major.value;
-     var billing = frm.billing.value;
     if(isNaN(id)){
         alert("Please, the ID must have only numbers!");
         frm.id.focus();
@@ -126,12 +125,7 @@ function validateInsertStudent(student){
         frm.id.focus;
         return false;
      }
-    else if(isNaN(billing)){
-        alert("Please, the billing must have only numbers!");
-        frm.billing.focus();
-        return false;
-        
-    }else if(id == ""){
+    else if(id == ""){
         alert("Please, fill out the field ID!");
         frm.id.focus();
         return false;

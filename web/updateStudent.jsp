@@ -84,10 +84,6 @@
                 <option value="Sociology">Sociology</option>
            </select></td>
                 </tr>
-                 <tr>
-                    <th class="headTable" colspan="2">Billing</th>
-                </tr>
-                
             </table>
             <button type="button" onClick="validateUpdateStudent(<%=student.getID()%>)">Update Student</button>
                  
