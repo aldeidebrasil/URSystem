@@ -328,6 +328,11 @@ function validateInsertStudent(student){
         frm.id.focus;
         return false;
      }
+     else if(id.length<5){
+         alert("The course's ID must have 5 characters");
+        frm.id.focus;
+        return false;
+     }
      
      else if(id == ""){
         alert("Please, fill out the field ID!");
@@ -389,6 +394,12 @@ function validateInsertStudent(student){
        return false;  
     } else if(/^[a-zA-Z0-9-]*$/.test(id) == false){
         alert("The course's ID cannot have special characters");
+        frm.id.focus;
+        return false;
+     }
+     
+     else if(id.length<5){
+         alert("The course's ID must have 5 characters");
         frm.id.focus;
         return false;
      }
