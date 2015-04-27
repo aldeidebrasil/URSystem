@@ -46,7 +46,8 @@
                 <% if (listTerm.size()>=6){ %>
                     <h2>Your schedule is full!</h2>You are registered for 6 courses (4 regular and 2 extra). You have to unregister for some classes to add others. 
                 <%} else{ %>
-                <form action="/URSystem/servletweb?action=AddCourseStudent&IdStudent=<%=student.getID()%>" method="post">
+                <form name="frmRegisterCourse" method="post">
+                    <%if(!listNew.isEmpty()){ %>
                     <h2>Courses Open:</h2> 
                     <div id="linkMore" style="display: block">
                         <a href="#" onclick="showHideDiv('allCourses','courseMajor','linkMore','linkLess')">See all courses</a>
@@ -56,15 +57,17 @@
                     </div><br> 
                     <div id="courseMajor" style="display: block"><% for (int i=0; i< listNew.size(); i++) {
                         if(listNew.get(i).getDepartment().equals(student.getMajor())){%> 
-                            <input type="radio" name="rd" value="<%=listNew.get(i).getID() %>"><%=listNew.get(i).getID() %> - <%=listNew.get(i).getName()%><br>
+                        <input type="radio" name="rd" value="<%=listNew.get(i).getID() %>"><%=listNew.get(i).getID() %> - <%=listNew.get(i).getName()%><br>
                         <% }} %><br></div>
                     <div id="allCourses" style="display: none">
                         <% for (int i=0; i< listNew.size(); i++) {%> 
                             <input type="radio" name="rd" value="<%=listNew.get(i).getID() %>"><%=listNew.get(i).getID() %> - <%=listNew.get(i).getName()%><br>
                         <% } %><br>
                     </div>
-                    <button type="submit">Register for this Course</button>
-                    
+                    <button type="button" onclick="validateRegisterCourse(<%=student.getID()%>)">Register for this Course</button>
+                    <% } else { %>
+                        <h2> Sorry! There is no open courses. </h2>
+                    <% } %>
                     <br>
                 </form>
                     <div id="divcourse"></div>

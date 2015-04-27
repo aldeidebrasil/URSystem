@@ -3,22 +3,101 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/profileAdmin.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/Connection.java</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListAllCoursesStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditPasswordStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListStudents.java</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OpenStudent.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ServletWeb.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/DeleteProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/js/professorJS.js</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/style.css</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/billingInformation.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/CourseDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/VerifyCourseNew.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/AddCourseStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/AdminDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/adminStyle.css</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/profileProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdateStudent.java</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OpenPage.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/TermDAO.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/error.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/listCourseStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdatePasswordAdmin.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/index.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/VerifyTerm.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/js/webValidation.js</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/studentStyle.css</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/js/showContent.js</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/StudentxCourseDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/deleteCourse.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OpenAdmin.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/ProfessorDAO.java</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListCourses.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/Login.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/CalcBilling.java</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/editTerm.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/ok.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/Admin.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ChangeStatusCourses.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OpenProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allProfessors.jsp</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/welcomeAdmin.jsp</file>
-            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditDateTerm.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allStudents.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/Student.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/InsertCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/deleteStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/Logout.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/profileAdmin.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/DropCourseStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/SeeStudents.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/insertProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/footer.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OLD_SeeInformationProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/css/professorStyle.css</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/insertCourse.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/errorProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdatePasswordProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allTerm.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/BillingInformation.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/TermDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/listCourseStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdateProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/Login.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allCourses.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/CalcBilling.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/header.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/VerifyStudentxCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditPasswordProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/ProfessorxCourseDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/profile.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/Course.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/allCoursesStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/StudentxCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/DeleteCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/errorAdmin.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/updateStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/VerifyTermDate.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ServletWeb.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListCoursesStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/OLD_SeeInformationStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/error.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/updateProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListCoursesProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/InsertProfessor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/deleteProfessor.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/model/StudentDAO.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/DeleteStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/Professor.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdateCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/editTerm.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/InsertStudent.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/updateCourse.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/UpdatePasswordStudent.java</file>
             <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/Term.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/web/insertStudent.jsp</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/EditDateTerm.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/vo/ProfessorxCourse.java</file>
+            <file>file:/C:/Users/Aldeide%20Brasil/Documents/NetBeansProjects/URSystem/src/java/controller/ListTerm.java</file>
         </group>
     </open-files>
 </project-private>

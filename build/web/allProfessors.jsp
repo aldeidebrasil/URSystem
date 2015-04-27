@@ -9,11 +9,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!
-    ArrayList<Professor> listProfessor;
-%>
 <%
-    listProfessor = (ArrayList<Professor>) request.getAttribute("listProfessor");
+    ArrayList<Professor> listProfessor = (ArrayList<Professor>) request.getAttribute("listProfessor");
     
 %>
 <html>
@@ -28,8 +25,9 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if (listProfessor!=null || !listProfessor.isEmpty()) { %>
           <table style="border: 2px black solid">
-            <tr ><th>ID</th>
+              <tr class="headTable"><th>ID</th>
                 <th>Title</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -38,8 +36,12 @@
             </tr>
             <%
                 for (int i = 0; i < listProfessor.size(); i++) {
+                 if(i%2==0){   
             %>
-            <tr>
+             <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %>
             <td>
                 <%=listProfessor.get(i).getID()%>
             </td>
@@ -53,14 +55,19 @@
                 <%=listProfessor.get(i).getLname()%>
             </td>
             <td>           
-                <%=listProfessor.get(i).getPassword()%>
+                <% 
+                for (int j=0; j<listProfessor.get(i).getPassword().length(); j++){ %>
+                    *
+                <% } %>
             </td>
             </tr>
             <%
                 }
             %>
         </table>
-        
+        <% } else { %>
+            There is no professors to show.
+        <% } %>
         </div>
         </div>
         <div class="footer">

@@ -33,6 +33,7 @@
             <div class="actions2">
      
        <form name="frmDropCourse" method='post'>
+           <% if (!listCourse.isEmpty()){ %>
       <table style="border: 2px black solid">
             <tr class="headTable"><th>ID</th>
                 <th>Course</th>
@@ -70,9 +71,20 @@
                 <% } else {%>
                 <tr class="odd"> 
                 <% } %><th colspan="3">Total</th>
-                <td><%=bill%></td>
+                <td>
+                    <% if(bill!=null) { %>
+                        <%=bill%>
+                    <% }else { %>
+                        0
+                    <% } %>
+                </td>
                 </tr>
-            </table><br>
+                
+            </table>
+                <% } else { %>
+                    <h2>You do not have any registration yet.</h2>
+                   <% } %>
+                <br>
           
             </div>
        </div>

@@ -9,12 +9,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!
-    ArrayList<Course> listCourse;
-%>
 <%
-    listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
-    
+    ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");   
 %>
 <html>
     <head>
@@ -26,22 +22,26 @@
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"><table style="border: 2px black solid">
-            <tr ><th>ID</th>
+        <div class="actions">
+            <%if(listCourse!=null){ %>
+            <table style="border: 2px black solid">
+           <tr class="headTable"><th>ID</th>
                 <th>Course</th>
                 <th>Department</th>
                 <th>Prerequisites</th>
                 <th>Value</th>
                 <th>Term</th>
                 <th>Status</th>
-                <th>Year</th>
-                
                 
             </tr>
             <%
                 for (int i = 0; i < listCourse.size(); i++) {
-            %>
-            <tr>
+            if(i%2==0){
+                    %>
+            <tr class="even">
+                <% } else {%>
+                <tr class="odd"> 
+                <% } %>
             <td>
                 <%=listCourse.get(i).getID()%>
             </td>
@@ -52,25 +52,33 @@
                 <%=listCourse.get(i).getDepartment() %> 
             </td>
             <td>
+                <% if(listCourse.get(i).getPrerequisite()==null){ %>None
+                <%} else{ %> 
                 <%=listCourse.get(i).getPrerequisite()%>
+                <% }%>
             </td>
             <td>           
                 <%=listCourse.get(i).getValue()%>
             </td>
-            <td>           
-                <%=listCourse.get(i).getIdTerm()%>
+            <td> 
+                <% if(listCourse.get(i).getIdTerm()==1){ %>Spring
+                <%} else if(listCourse.get(i).getIdTerm()==2){ %>Fall 
+                <%} else{ %> Summer
+                <% }%>
+                
             </td>
             <td>           
                 <%=listCourse.get(i).getStatus()%>
             </td>
-            <td>           
-                <%=listCourse.get(i).getYear()%>
-            </td>
+           
             </tr>
             <%
                 }
             %>
         </table>
+        <% } else { %>
+           <h2> There is no courses to show.</h2>
+        <% }%>
         </div>
         </div>
          <div class="footer">

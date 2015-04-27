@@ -9,8 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<String> listCourseId = new ArrayList<String>();
-listCourseId = CourseDAO.getAllId();
+ArrayList<String> listCourseId = CourseDAO.getAllId();
 %>
 <html>
     <head>
@@ -24,8 +23,13 @@ listCourseId = CourseDAO.getAllId();
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"><form name="frmDeleteCourse" method='post'>
-            <p>ID:</p> 
+        <div class="actions">
+            <% if(listCourseId!= null){ %>
+            <h2>Update or Delete Course</h2>
+            <p>To update an information or delete a course, you have to choose the Course's ID and click the correspondent button.</p>
+            
+            <form name="frmDeleteCourse" method='post'>
+            <b>Course's ID:</b> <br>
             <select name='id'>                                
                                 <%
                                 String selected="";
@@ -41,6 +45,9 @@ listCourseId = CourseDAO.getAllId();
             <button type="button" onClick="validateEditCourse()">Edit Course</button>
             <button type="button" onClick="validateDeleteCourse()">Delete Course</button>
 	</form> 
+            <% } else {%>
+                <h2>There is no course yet</h2>
+            <% } %>
         </div></div>
                              <div class="footer">
             <%@include file="footer.jsp" %>

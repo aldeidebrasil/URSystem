@@ -23,6 +23,7 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if(listTerm != null || !listTerm.isEmpty()) { %>
             <table style="border: 2px black solid">
             <tr class="headTable">
                
@@ -53,6 +54,9 @@
                 }
             %>
         </table>
+        <% }else{ %>
+            There is no terms to show
+        <% } %>
             </div></div>
         <div class="footer">
             <%@include file="footer.jsp" %>

@@ -25,7 +25,7 @@ error = (String)request.getAttribute("error");
             <%@include file="header.jsp" %>
         </div>
         <div class="content">
-           <%@include file="profile.jsp"%>
+           <%@include file="profileProfessor.jsp"%>
      <div class="actions2">
             <% if(error != null){ %>
              <h2><%=error%></h2>

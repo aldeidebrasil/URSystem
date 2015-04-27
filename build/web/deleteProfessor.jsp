@@ -9,13 +9,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-ArrayList<Integer> listProfessorId = new ArrayList<Integer>();
-listProfessorId = ProfessorDAO.getAllId();
+ArrayList<Integer> listProfessorId = ProfessorDAO.getAllId();
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Professor - Update/Delete</title>
         <script type="text/javascript" language="JavaScript" src="js/webValidation.js"></script>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
@@ -24,22 +23,30 @@ listProfessorId = ProfessorDAO.getAllId();
         </div>
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
-        <div class="actions"> <form name="frmDeleteProfessor" method='post'>
-            <p>ID:</p> 
+        <div class="actions">
+           <% if(listProfessorId!= null){ %>
+            <h2>Update or Delete Professor</h2>
+            <p>To update an information or delete a professor, you have to choose the professor's ID and click the correspondent button.</p>
+            
+            <form name="frmDeleteProfessor" method='post'>
+            <b>Professor's ID:</b> 
             <select name='id'>                                
                                 <%
                                 String selected="";
                                 
                                 for (int i = 0; i < listProfessorId.size(); i++) {%>
-                                <option value='<%=listProfessorId.get(i)%>' <%=selected%>><%=listProfessorId.get(i)%></option>
+                                <option value='<%=listProfessorId.get(i)%>'><%=listProfessorId.get(i)%></option>
                                 <% 
                                 }
                                 %>
                             </select>
 
            
-            <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
             <button type="button" onClick="validateEditProfessor()">Edit Professor</button>
+            <button type="button" onClick="validateDeleteProfessor()">Delete Professor</button>
+            <% } else {%>
+                <h2>There is no professors yet.</h2>
+            <% } %>
 	</form> 
         </div></div>
                <div class="footer">

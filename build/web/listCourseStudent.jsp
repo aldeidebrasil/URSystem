@@ -14,6 +14,8 @@
 <!DOCTYPE html>
 <%
     ArrayList<Course> listCourses = (ArrayList<Course>) request.getAttribute("listCourses");
+      ArrayList<StudentxCourse> listCoursesStudent = (ArrayList<StudentxCourse>) request.getAttribute("listCoursesStudent");
+ 
 %>
 <html>
     <head>
@@ -28,10 +30,10 @@
     <script>
  function validateDropCourse(idStudent){    
     var frm = document.frmDropCourse;
-     var id = frm.id.value; 
-     if(id == ""){
+     var id = frm.rd.value; 
+     if(id === ""){
         alert("Please, choose a course!");
-        frm.id.focus();
+        frm.rd.focus();
         return false;
      }else{
         url = "/URSystem/servletweb?action=DropCourseStudent&IdStudent="+idStudent+"&IdCourse="+id;  
@@ -61,6 +63,7 @@
             <%@include file="profile.jsp"%>
             <div class="actions2">
        <form name="frmDropCourse" method='post'>
+           <% if(listCourses!= null){ %>
       <table style="border: 2px black solid">
             <tr class="headTable"><th>ID</th>
                 <th>Course</th>
@@ -82,7 +85,7 @@
                 <tr class="odd"> 
                 <% } %>
                 <td>
-                <input type="radio" id="id" name="rd" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
+                <input type="radio" name="rd" value="<%=listCourses.get(i).getID()%>"><%=listCourses.get(i).getID()%>
             </td>
             <td>    
                 <%=listCourses.get(i).getName()%>
@@ -99,20 +102,35 @@
                 <%=listCourses.get(i).getValue()%>
             </td>
             <td>           
-                <%=listCourses.get(i).getIdTerm()%>
+                <% if(listCourses.get(i).getIdTerm()==1){%>
+                    Spring
+                <% }else if(listCourses.get(i).getIdTerm()==2){ %>
+                    Fall
+                <% }else if(listCourses.get(i).getIdTerm()==3){ %>
+                    Summer
+                <% } %>
             </td>
             <td>           
                 <%=listCourses.get(i).getStatus()%>
             </td>
+            <% if(listCoursesStudent!=null){ 
+                for(int j=0; j<listCoursesStudent.size();j++){
+                    if(listCoursesStudent.get(j).getIdCourse().equals(listCourses.get(i).getID())){
+                
+            %>
             <td>           
-                <%=listCourses.get(i).getYear()%>
+                <%=listCoursesStudent.get(j).getYear() %>
             </td>
+            <% }}} %>
             </tr>
             <%
                 }
             %>
             </table><br>
          <button type="button" onClick="validateDropCourse(<%=student.getID()%>)">Drop Course</button>
+         <% }else { %>
+            There is no course to show.
+        <% } %>
         </form></div>
         </div><div class="footer">
             <%@include file="footer.jsp" %>

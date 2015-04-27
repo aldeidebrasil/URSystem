@@ -38,8 +38,7 @@
             <%@include file="footer.jsp" %>
         </div>
         <% 
-             System.out.println(confirm);
-        if(confirm != null) {confirm = null; %>
+             if(confirm != null) {confirm = null; %>
             <script>alert("User not found");</script>
             
         <%} %>

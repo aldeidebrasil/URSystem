@@ -1,5 +1,5 @@
 <%-- 
-    Document   : ok
+    Document   : allStudents
     Created on : Feb 3, 2015, 10:26:22 PM
     Author     : Aldeide Brasil
 --%>
@@ -9,11 +9,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!
-    ArrayList<Student> listStudents;
-%>
 <%
-    listStudents = (ArrayList<Student>) request.getAttribute("listStudents");
+    ArrayList<Student> listStudents = (ArrayList<Student>) request.getAttribute("listStudents");
     
 %>
 <html>
@@ -29,6 +26,7 @@
         <div class="content">
            <%@include file="profileAdmin.jsp" %>
         <div class="actions">
+            <% if(listStudents!= null || !listStudents.isEmpty()){ %>
          <table style="border: 2px black solid">
             <tr class="headTable"><th>ID</th>
                 <th>First Name</th>
@@ -54,8 +52,10 @@
             <td>
                 <%=listStudents.get(i).getLname()%>
             </td>
-            <td>           
-                <%=listStudents.get(i).getPassword()%>
+            <td>  
+                <% for (int s=0; s<listStudents.get(i).getPassword().length();s++){ %>
+                *
+                <% } %>
             </td><td>    
                 <%=listStudents.get(i).getMajor()%>
             </td>
@@ -67,6 +67,9 @@
                 }
             %>
         </table>
+        <% } else { %>
+        There is no students to show
+        <% } %>
         </div>
         </div> 
         <div class="footer">

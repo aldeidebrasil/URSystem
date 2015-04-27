@@ -16,6 +16,7 @@
 <!DOCTYPE html>
 <%
     ArrayList<Course> listCourse = (ArrayList<Course>) request.getAttribute("listCourse");
+   ArrayList<StudentxCourse> listCoursesStudent = (ArrayList<StudentxCourse>) request.getAttribute("listCoursesStudent");
    
 %>
 <html>
@@ -31,7 +32,7 @@
         <div class="content">
            <%@include file="profile.jsp"%>
      <div class="actions2">
-    <% if(!listCourse.isEmpty()){ %>
+    <% if(!listCourse.isEmpty()&&listCourse!=null){ %>
             <table style="border: 2px black solid">
              <tr class="headTable"><th>ID</th>
                 <th>Course</th>
@@ -77,8 +78,18 @@
                     Summer
                 <% } %>
             </td>
+            <% if(listCoursesStudent!=null){ 
+                for(int j=0; j<listCoursesStudent.size();j++){
+                    if(listCoursesStudent.get(j).getIdCourse().equals(listCourse.get(i).getID())){
+                
+            %>
             <td>           
+                <%=listCoursesStudent.get(j).getYear() %>
+            </td>
+            <% }}}else{ %>
+            <td>
                 <%=listCourse.get(i).getYear()%>
+            <% } %>
             </td>
             </tr>
             <%
