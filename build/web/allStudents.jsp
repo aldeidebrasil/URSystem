@@ -32,8 +32,7 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Password</th>
-                <th>Major</th>
-                <th>Billing</th> 
+                <th>Major</th> 
             </tr>
             <%
                 for (int i = 0; i < listStudents.size(); i++) {
@@ -58,9 +57,6 @@
                 <% } %>
             </td><td>    
                 <%=listStudents.get(i).getMajor()%>
-            </td>
-            <td>
-                <%=listStudents.get(i).getBilling()%>
             </td>
             </tr>
             <%
